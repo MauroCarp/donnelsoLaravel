@@ -25,6 +25,9 @@ Auth::routes();
 
 Route::get('/home', function() {    return view('home'); })->name('home')->middleware('auth');
 Route::post('/home/uploadStudents', 'App\Http\Controllers\StudentsController@excelImport')->name('students.upload');
+Route::post('/home/uploadPagos', 'App\Http\Controllers\StudentsController@importarPagos')->name('students.uploadPagos');
+
 Route::get('/home/validateData', 'App\Http\Controllers\StudentsController@validateData')->name('students.validateData');
+Route::post('/home/update', 'App\Http\Controllers\StudentsController@update')->name('students.update');
 
 
