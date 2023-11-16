@@ -18,6 +18,7 @@ class StudentsController extends Controller
      */
     public function index()
     {
+
     }
 
     /**
@@ -151,16 +152,16 @@ class StudentsController extends Controller
                 $nov = $worksheet->getCell('T'.$row)->getValue();
                 $dic = $worksheet->getCell('U'.$row)->getValue();
 
-                StudentsController::payment($mar,$student->course,$student->id);
-                StudentsController::payment($apr,$student->course,$student->id);
-                StudentsController::payment($may,$student->course,$student->id);
-                StudentsController::payment($jun,$student->course,$student->id);
-                StudentsController::payment($jul,$student->course,$student->id);
-                StudentsController::payment($aug,$student->course,$student->id);
-                StudentsController::payment($sep,$student->course,$student->id);
-                StudentsController::payment($oct,$student->course,$student->id);
-                StudentsController::payment($nov,$student->course,$student->id);
-                StudentsController::payment($dic,$student->course,$student->id);
+                StudentsController::payment($mar,$student->course,$student->id,'2023-03-01');
+                StudentsController::payment($apr,$student->course,$student->id,'2023-04-01');
+                StudentsController::payment($may,$student->course,$student->id,'2023-05-01');
+                StudentsController::payment($jun,$student->course,$student->id,'2023-06-01');
+                StudentsController::payment($jul,$student->course,$student->id,'2023-07-01');
+                StudentsController::payment($aug,$student->course,$student->id,'2023-08-01');
+                StudentsController::payment($sep,$student->course,$student->id,'2023-09-01');
+                StudentsController::payment($oct,$student->course,$student->id,'2023-10-01');
+                StudentsController::payment($nov,$student->course,$student->id,'2023-11-01');
+                StudentsController::payment($dic,$student->course,$student->id,'2023-12-01');
              
             }
 
@@ -169,21 +170,20 @@ class StudentsController extends Controller
         }
     }
 
-    public static function payment($month,$course,$id)
+    public static function payment($month,$course,$id,$installment)
     {
 
-        if(strlen($month) > 1 && !is_null($month) && $month != 'era flia'){
+        if(strlen($month) > 1 && !is_null($month) && $month != 'era flia' && strlen($month) <= 9){
 
             $pattern = '/^(\S+)\s+([\d\/]+)\s+(\S+)$/';
 
             if (preg_match($pattern, $month, $matches)) {
-                
+
                 $part1 = $matches[1]; // 'P'
                 $date = $matches[2]; // '10/3'
                 $type = $matches[3]; // 'E'
-                
+                $datetmp = $date;
                 $date = date('Y-m-d',strtotime(str_replace('/','-',$date).'-2023'));
-
                 $costoCuota = Tariff::where('course',$course)
                 ->where('period','<=',$date)->first();
 
@@ -191,7 +191,15 @@ class StudentsController extends Controller
                 $fecha2 = new DateTime($date);
                 
                 $diferencia = $fecha1->diff($fecha2);
-                
+
+                if(is_null($costoCuota)){
+                    dump($month);
+                    dump($course);
+                    dump($datetmp);
+                    dump($date);
+                    dump($id);
+                    dump($installment);
+                }
                 $mount = $costoCuota->mount;
 
                 if($diferencia->format('%R%a días') > 10){
@@ -202,11 +210,67 @@ class StudentsController extends Controller
 
                 Payment::create([
                     'idStudent'=>$id,
-                    'installments'=>'2023-03-01',
+                    'installments'=>$installment,
                     'mount'=>$mount,
                     'date'=>$date,
                     'type'=>$type
                 ]);
+
+            }
+
+        }
+
+    }
+
+    public function importStudents(Request $request)
+    {
+        if($request->hasFile('excelStudents')){
+
+            $path = $request->file('excelStudents')->getRealPath();
+
+            $spreadsheet = IOFactory::load($path);
+
+            $worksheet = $spreadsheet->getActiveSheet();
+            
+            $highestRow = $worksheet->getHighestRow();
+
+            // OBTENER LOS COSTOS PARA CALCULAR EL MONTO QUE 
+            
+            for ($row = 2; $row <= $highestRow; ++$row) {
+
+                $surname = $worksheet->getCell('A'.$row)->getValue();
+                $name = $worksheet->getCell('B'.$row)->getValue();
+                $dni = '202300' . $row;
+                $course = $worksheet->getCell('N'.$row)->getValue();
+
+                $studentId = Student::create([
+                    'name'=>$name,
+                    'surname'=>$surname,
+                    'dni'=>$dni,
+                    'course'=>$course
+                ])->id;
+
+                $mar = $worksheet->getCell('C'.$row)->getValue();
+                $apr = $worksheet->getCell('D'.$row)->getValue();
+                $may = $worksheet->getCell('E'.$row)->getValue();
+                $jun = $worksheet->getCell('F'.$row)->getValue();
+                $jul = $worksheet->getCell('G'.$row)->getValue();
+                $aug = $worksheet->getCell('H'.$row)->getValue();
+                $sep = $worksheet->getCell('I'.$row)->getValue();
+                $oct = $worksheet->getCell('J'.$row)->getValue();
+                $nov = $worksheet->getCell('K'.$row)->getValue();
+                $dic = $worksheet->getCell('L'.$row)->getValue();
+
+                StudentsController::payment($mar,$course,$studentId,'2023-03-01');
+                StudentsController::payment($apr,$course,$studentId,'2023-04-01');
+                StudentsController::payment($may,$course,$studentId,'2023-05-01');
+                StudentsController::payment($jun,$course,$studentId,'2023-06-01');
+                StudentsController::payment($jul,$course,$studentId,'2023-07-01');
+                StudentsController::payment($aug,$course,$studentId,'2023-08-01');
+                StudentsController::payment($sep,$course,$studentId,'2023-09-01');
+                StudentsController::payment($oct,$course,$studentId,'2023-10-01');
+                StudentsController::payment($nov,$course,$studentId,'2023-11-01');
+                StudentsController::payment($dic,$course,$studentId,'2023-12-01');
 
             }
 

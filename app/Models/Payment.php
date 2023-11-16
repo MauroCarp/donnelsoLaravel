@@ -16,4 +16,8 @@ class Payment extends Model
         'special',
         'comment'
     ];
+
+    public function student(){
+        return $this->belongsTo(Student::class,'idStudent');
+    }
 }

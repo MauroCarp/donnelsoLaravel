@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $students = Student::with('payments')->orderby('students.course','asc')->get();
+
+        return view('home',['students'=>$students]);
+    }
+
+    public function inicio()
+    {
+        return view('index');
     }
 }

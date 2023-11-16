@@ -16,4 +16,8 @@ class Student extends Model
         'dni',
         'course'
     ];
+
+    public function payments(){
+        return $this->hasMany(Payment::class,'idStudent');
+    }
 }

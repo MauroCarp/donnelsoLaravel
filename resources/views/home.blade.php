@@ -74,12 +74,45 @@
                 
                     @endisset
                     <hr>
+                    <form action="{{ route('students.uploadStudents') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <h5>Carga Alumnos No inscriptos</h5>
+                        <input type="file" name="excelStudents">
+                        <button type="submit">CARGAR</button>
+                    </form>
                     <hr>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped dataTable">
+                        <thead>
+                            <th>Curso</th>
+                            <th>Nombre y Apellido</th>
+                            <th>Dni</th>
+                        </thead>
+                        <tbody>
 
+                            @foreach ($students as $student)
+
+                                <tr>
+                                    <td>{{$student->course}}</td>
+                                    <td>{{$student->surname}} {{$student->name}}</td>
+                                    <td>{{$student->dni}}</td>
+                                </tr>
+
+                            @endforeach
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @stop
 
@@ -152,6 +185,8 @@
         })
 
     })
+
+    $('.dataTable').dataTable();
 
 </script>
 @endsection
