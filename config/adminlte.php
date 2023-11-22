@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -90,7 +90,7 @@ return [
             'alt' => 'Mandela Logo',
             'class' => '',
             'width' => 60,
-            'height' => 60,
+            'height' => 95,
         ],
     ],
 
@@ -112,7 +112,7 @@ return [
             'path' => 'img/logo.png',
             'alt' => 'Academia de Ingles Mandela',
             'width' => 60,
-            'height' => 95,
+            'height' => 60,
         ],
     ],
 
