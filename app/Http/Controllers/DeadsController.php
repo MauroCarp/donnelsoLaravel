@@ -11,7 +11,7 @@ class DeadsController extends Controller
      */
     public function index()
     {
-        //
+        return view('deads');
     }
 
     /**

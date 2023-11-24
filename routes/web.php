@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +18,15 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'inicio'])->name('i
 
 Auth::routes();
 
-Route::get('/inicio', 'HomeController@index')->name('inicio')->middleware('auth');
-Route::get('/purchases', 'PurchasesController@index')->name('compras')->middleware('auth');
-Route::get('/inseminations', 'InseminationsController@index')->name('inseminaciones')->middleware('auth');
-Route::get('/births', 'BirthsController@index')->name('partos')->middleware('auth');
-Route::get('/services', 'ServicesController@index')->name('servicios')->middleware('auth');
-Route::get('/health', 'HealthController@index')->name('sanidad')->middleware('auth');
-Route::get('/deads', 'DeadsController@index')->name('muertes')->middleware('auth');
-Route::get('/preSales', 'SalesController@preSale')->name('pre-ventas')->middleware('auth');
-Route::get('/sales', 'SalesController@sale')->name('ventas')->middleware('auth');
-Route::get('/costs', 'SalesController@costs')->name('costos')->middleware('auth');
+Route::get('/costs', [App\Http\Controllers\SalesController::class, 'costs'])->name('costos')->middleware('auth');
+Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio')->middleware('auth');
+Route::get('/deads', [App\Http\Controllers\DeadsController::class, 'index'])->name('muertes')->middleware('auth');
+Route::get('/births', [App\Http\Controllers\BirthsController::class, 'index'])->name('partos')->middleware('auth');
+Route::get('/health', [App\Http\Controllers\HealthController::class, 'index'])->name('sanidad')->middleware('auth');
+
+Route::get('/sales', [App\Http\Controllers\SalesController::class, 'sales'])->name('ventas')->middleware('auth');
+Route::get('/preSales', [App\Http\Controllers\SalesController::class, 'preSales'])->name('preVentas')->middleware('auth');
+
+Route::get('/purchases', [App\Http\Controllers\PurchasesController::class, 'index'])->name('compras')->middleware('auth');
+Route::get('/services', [App\Http\Controllers\ServicesController::class, 'index'])->name('servicios')->middleware('auth');
+Route::get('/inseminations', [App\Http\Controllers\InseminationsController::class, 'index'])->name('inseminaciones')->middleware('auth');

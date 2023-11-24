@@ -9,9 +9,18 @@ class SalesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function sales()
     {
-        //
+        return view('sales/sales');
+
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    public function preSales()
+    {
+        return view('sales/preSales');
+
     }
 
     /**

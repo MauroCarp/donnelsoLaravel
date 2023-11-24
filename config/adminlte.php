@@ -309,22 +309,20 @@ return [
                 [
                 'text' => 'Compras',
                 'icon' => 'far fa fa-fw fa-plus-square',
-                'url'=>'#',
-                // 'route'  => 'distributions.index',
+                'route'  => 'compras',
                 'id' => 'btnCompras',
                 ],
                 [
                 'text' => 'Inseminaciones',
                 'icon' => 'icon-jeringa',
-                'url'=>'#',
-                // 'route'  => 'distributions.index',
+                'route'  => 'inseminaciones',
                 'id' => 'btnInseminacion',
                 ],
                 [
                 'text' => 'Partos',
                 'icon' => 'far fa fa-fw fa-edit',
                 'id' => 'btnPartos',
-                'url'=>'#',
+                'route'  => 'partos',
                 ],
             
             ]
@@ -333,20 +331,17 @@ return [
         [
             'text' => 'Servicios',
             'icon' => 'icon-servicios',
-            'url'=>'#'
-            // 'route'  => 'distributions.index'
+            'route'  => 'servicios'
         ],
         [
             'text' => 'Sanidad',
             'icon' => 'far fa fa-fw fa-plus-square',
-            'url'=>'#'
-            // 'route'  => 'aftosa.notVaccinated',
+            'route'  => 'sanidad',
         ],
         [
             'text' => 'Muertes',
             'icon' => 'icon-muertes',
-            'url'=>'#'
-            // 'route'  => 'aftosa.notVaccinated',
+            'route'  => 'muertes',
         ],
         [
             'text'    => 'Ventas',
@@ -357,22 +352,19 @@ return [
                     'text' => 'Pre-ventas',
                     'icon' => 'far fa fa-fw fa-list-alt',
                     'id' => 'btnPreVentas',
-                    'url'=>'#'
-                    // 'route'  => 'distributions.index',
+                    'route'  => 'preVentas',
                 ],
                 [
                     'text' => 'Ventas',
                     'icon' => 'far fa fa-fw fa-list-alt',
                     'id' => 'btnVentas',
-                    'url'=>'#'
-                    // 'route'  => 'distributions.index',
+                    'route'  => 'ventas',
                 ],
                 [
                     'text' => 'Costos',
                     'icon' => 'far fa fa-fw fa-dollar-sign',
                     'id' => 'btnCostos',
                     'url'=>'#',
-                    // 'route'  => 'distributions.index',
                     'data' => [
                         'toggle' => 'modal',
                         'target' => '#modalCostos',
