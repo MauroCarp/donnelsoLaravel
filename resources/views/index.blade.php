@@ -22,7 +22,7 @@
 
     <style>
         .content{
-            background-image: url('img/mandela.png');
+            background-image: url('img/back.png');
             background-size: cover;
         }
     </style>

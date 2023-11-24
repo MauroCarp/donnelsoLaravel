@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'Academia de Inglés Mandela',
+    'title' => 'Establecimiento Don Nelso',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -63,12 +63,12 @@ return [
     |
     */
 
-    'logo' => 'Academia <b>Mandela</b>',
-    'logo_img' => 'img/logo.png',
+    'logo' => 'Don <b>Nelso</b>',
+    'logo_img' => 'img/logo-inicio.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'Mandela Logo',
+    'logo_img_alt' => 'Don Nelso Logo',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,11 +86,11 @@ return [
     'auth_logo' => [
         'enabled' => true,
         'img' => [
-            'path' => 'img/logo.png',
-            'alt' => 'Mandela Logo',
+            'path' => 'img/logo-blanco-bloque.png',
+            'alt' => 'Don Nelso Logo',
             'class' => '',
-            'width' => 60,
-            'height' => 95,
+            'width' => 200,
+            'height' => 60,
         ],
     ],
 
@@ -109,8 +109,8 @@ return [
     'preloader' => [
         'enabled' => true,
         'img' => [
-            'path' => 'img/logo.png',
-            'alt' => 'Academia de Ingles Mandela',
+            'path' => 'img/logo-inicio.png',
+            'alt' => 'Establecimiento Don Nelso',
             'width' => 60,
             'height' => 60,
         ],
@@ -191,9 +191,9 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-light-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-green navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -301,6 +301,86 @@ return [
             'url'         => '/',
             'icon'        => 'fa fa-home',
         ],
+        [
+            'text' => 'Ingresos',
+            'icon' => 'far fa fa-fw fa-upload',
+            'submenu' => [
+
+                [
+                'text' => 'Compras',
+                'icon' => 'far fa fa-fw fa-plus-square',
+                'url'=>'#',
+                // 'route'  => 'distributions.index',
+                'id' => 'btnCompras',
+                ],
+                [
+                'text' => 'Inseminaciones',
+                'icon' => 'icon-jeringa',
+                'url'=>'#',
+                // 'route'  => 'distributions.index',
+                'id' => 'btnInseminacion',
+                ],
+                [
+                'text' => 'Partos',
+                'icon' => 'far fa fa-fw fa-edit',
+                'id' => 'btnPartos',
+                'url'=>'#',
+                ],
+            
+            ]
+
+        ],
+        [
+            'text' => 'Servicios',
+            'icon' => 'icon-servicios',
+            'url'=>'#'
+            // 'route'  => 'distributions.index'
+        ],
+        [
+            'text' => 'Sanidad',
+            'icon' => 'far fa fa-fw fa-plus-square',
+            'url'=>'#'
+            // 'route'  => 'aftosa.notVaccinated',
+        ],
+        [
+            'text' => 'Muertes',
+            'icon' => 'icon-muertes',
+            'url'=>'#'
+            // 'route'  => 'aftosa.notVaccinated',
+        ],
+        [
+            'text'    => 'Ventas',
+            'icon'    => 'fa fa-dollar-sign',
+            'id'      => 'btnVentas',
+            'submenu' =>  [
+                [
+                    'text' => 'Pre-ventas',
+                    'icon' => 'far fa fa-fw fa-list-alt',
+                    'id' => 'btnPreVentas',
+                    'url'=>'#'
+                    // 'route'  => 'distributions.index',
+                ],
+                [
+                    'text' => 'Ventas',
+                    'icon' => 'far fa fa-fw fa-list-alt',
+                    'id' => 'btnVentas',
+                    'url'=>'#'
+                    // 'route'  => 'distributions.index',
+                ],
+                [
+                    'text' => 'Costos',
+                    'icon' => 'far fa fa-fw fa-dollar-sign',
+                    'id' => 'btnCostos',
+                    'url'=>'#',
+                    // 'route'  => 'distributions.index',
+                    'data' => [
+                        'toggle' => 'modal',
+                        'target' => '#modalCostos',
+                    ],
+                ],
+            ]
+        ],
+
     ],
 
     /*
@@ -406,6 +486,56 @@ return [
                     'asset' => false,
                     'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
                 ],
+            ],
+        ],
+        'Icomoon' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/icomoon/css/icomoon.css',
+                ],
+                [
+                    'type' => 'svg',
+                    'asset' => true,
+                    'location' => 'vendor/icomoon/fonts/icomoon.svg',
+                ],
+                [
+                    'type' => 'ttf',
+                    'asset' => true,
+                    'location' => 'vendor/icomoon/fonts/icomoon.ttf',
+                ],
+                [
+                    'type' => 'woff',
+                    'asset' => true,
+                    'location' => 'vendor/icomoon/fonts/icomoon.woff',
+                ],
+            ],
+        ],   
+        'Moment' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/moment/moment.min.js',
+                ]
+            ],
+        ],
+        'DateRangePicker' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.css',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.js',
+                ]
             ],
         ],
     ],

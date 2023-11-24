@@ -106,7 +106,7 @@
 @section('css')
 <style>
     body{
-        background-image:url('img/bg1.png');
+        background-image:url('img/back.png');
         background-color:bisque!important;
         background-size: cover;
 

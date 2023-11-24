@@ -24,9 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $students = Student::with('payments')->orderby('students.course','asc')->get();
-
-        return view('home',['students'=>$students]);
+        return view('home');
     }
 
     public function inicio()
