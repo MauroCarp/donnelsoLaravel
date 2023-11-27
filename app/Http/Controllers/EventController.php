@@ -2,25 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
-class SalesController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function sales()
+    public function index()
     {
-        return view('sales/sales');
-
-    }
-    /**
-     * Display a listing of the resource.
-     */
-    public function preSales()
-    {
-        return view('sales/preSales');
-
+        //
     }
 
     /**
@@ -36,15 +28,17 @@ class SalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+   
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $events = Event::all();
+
+        return response()->json($events);
     }
 
     /**

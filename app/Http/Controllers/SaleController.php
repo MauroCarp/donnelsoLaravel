@@ -4,14 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PurchasesController extends Controller
+class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function sales()
     {
-        return view('purchases');
+        return view('sales/sales');
+
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    public function preSales()
+    {
+        return view('sales/preSales');
+
     }
 
     /**
