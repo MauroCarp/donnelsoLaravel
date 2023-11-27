@@ -19,7 +19,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'inicio'])->name('i
 Auth::routes();
 
 Route::get('/costs', [App\Http\Controllers\SalesController::class, 'costs'])->name('costos')->middleware('auth');
-Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio')->middleware('auth');
+Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio')->middleware('auth');
 Route::get('/deads', [App\Http\Controllers\DeadsController::class, 'index'])->name('muertes')->middleware('auth');
 Route::get('/births', [App\Http\Controllers\BirthsController::class, 'index'])->name('partos')->middleware('auth');
 Route::get('/health', [App\Http\Controllers\HealthController::class, 'index'])->name('sanidad')->middleware('auth');
