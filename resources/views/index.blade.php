@@ -24,46 +24,74 @@
 
 @section('js')
 
-<script>
-    
-    document.addEventListener('DOMContentLoaded',function(){
+    <script>
 
-        var calendarEl = document.getElementById('calendar');
+        document.addEventListener('DOMContentLoaded',function(){
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+            var calendarEl = document.getElementById('calendar');
 
-            initialView: 'dayGridMonth',
+            var calendar = new FullCalendar.Calendar(calendarEl, {
 
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,listWeek'
-            },
+                initialView: 'dayGridMonth',
+                displayEventTime: false,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,listWeek'
+                },
 
-            locale:'es',
+                locale:'es',
 
-            dateClick:function(info){
+                dateClick:function(info){
 
-                $('#modalCalendar').modal('show')
+                    $('#modalCalendar').modal('show')
 
-            },
+                },
 
-            events:'{{ route("eventos.mostrar") }}',
+                events:'{{ route("eventos.mostrar") }}',
 
-        });
-        
-        calendar.render();
+            });
+            
+            calendar.render();
 
-    })
+        })
 
-    $('#btnNewEvent').on('click',function(){
+        $('#btnNewEvent').on('click',function(){
 
-        $('#modalCalendar').modal('hide')
+            $('#modalCalendar').modal('hide')
 
-        $('#modalEvent').modal('show')
+            $('#modalEvent').modal('show')
 
-    })
+        })
 
-</script>
+        $('#start').on('change',function(){
+
+            let startDate = $(this).val()
+            $('#end').val(startDate)
+            
+        })
+
+
+    </script>
+
 @endsection
 
+
+
+@if(session('create') == 'ok')
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded',function(){
+
+            Swal.fire(
+                'Evento Creado',
+                'Ha sido guadado correctamente',
+                'success'
+            )
+
+        })
+
+    </script>
+
+@endif

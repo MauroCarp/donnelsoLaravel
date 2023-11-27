@@ -12,23 +12,30 @@
 
             <div class="modal-body">
 
-                <form action="">
+                <form action="events" method="post" id="formNewEvent">
+
+                    @csrf
 
                     <div class="mb-3">
-                      <label for="event" class="form-label">Evento</label>
-                      <input type="text" class="form-control" name="event" id="event">
+                      <label for="title" class="form-label">Evento</label>
+                      <input type="text" class="form-control" name="title" id="title" value="Titulo Prueba" required>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="descripcion" class="form-label">Descripci&oacute;n</label>
+                      <input type="text" class="form-control" name="descripcion" value="descripcion" id="descripcion" required>
                     </div>
                 
                     <div class="mb-3">
 
-                        <label for="startDate" class="form-label">Fecha Inicio</label>
-                        <input type="date" class="form-control" name="startDate" id="startDate">
+                        <label for="start" class="form-label">Fecha Inicio</label>
+                        <input type="date" class="form-control" name="start" value="2023-11-29" id="start" required>
 
                     </div>
 
                     <div class="mb-3">
-                      <label for="endDate" class="form-label">Fecha Fin</label>
-                      <input type="date" class="form-control" name="endDate" id="endDate">
+                      <label for="end" class="form-label">Fecha Fin</label>
+                      <input type="date" class="form-control" name="end" id="end" value="2023-11-29" required>
                     </div>
                 
                 </form>
@@ -39,7 +46,7 @@
 
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
 
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                <button type="submit" class="btn btn-primary" form="formNewEvent" >Guardar</button>
                 
             </div>
 

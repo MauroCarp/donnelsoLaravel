@@ -28,7 +28,18 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-   
+
+        $valid = $request->validate([
+            'title'=>'required',
+            'descripcion'=>'required',
+            'start'=>'required',
+            'end'=>'required',
+        ]);
+
+
+        Event::create($valid);
+
+        return redirect("inicio")->with('create','ok'); 
     }
 
     /**
