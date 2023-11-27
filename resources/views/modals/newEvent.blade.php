@@ -18,24 +18,24 @@
 
                     <div class="mb-3">
                       <label for="title" class="form-label">Evento</label>
-                      <input type="text" class="form-control" name="title" id="title" value="Titulo Prueba" required>
+                      <input type="text" class="form-control" name="title" id="title" required>
                     </div>
 
                     <div class="mb-3">
                       <label for="descripcion" class="form-label">Descripci&oacute;n</label>
-                      <input type="text" class="form-control" name="descripcion" value="descripcion" id="descripcion" required>
+                      <input type="text" class="form-control" name="descripcion" id="descripcion" required>
                     </div>
                 
                     <div class="mb-3">
 
                         <label for="start" class="form-label">Fecha Inicio</label>
-                        <input type="date" class="form-control" name="start" value="2023-11-29" id="start" required>
+                        <input type="date" class="form-control" name="start" id="start" required>
 
                     </div>
 
                     <div class="mb-3">
                       <label for="end" class="form-label">Fecha Fin</label>
-                      <input type="date" class="form-control" name="end" id="end" value="2023-11-29" required>
+                      <input type="date" class="form-control" name="end" id="end" required>
                     </div>
                 
                 </form>

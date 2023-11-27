@@ -31,7 +31,7 @@ Route::get('/purchases', [App\Http\Controllers\PurchaseController::class, 'index
 Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('servicios')->middleware('auth');
 Route::get('/inseminations', [App\Http\Controllers\InseminationController::class, 'index'])->name('inseminaciones')->middleware('auth');
 
-Route::get('/events/show', [App\Http\Controllers\EventController::class, 'show'])->name('eventos.mostrar')->middleware('auth');
+// Route::get('/events/show', [App\Http\Controllers\EventController::class, 'show'])->name('eventos.mostrar')->middleware('auth');
 
 Route::resource('/events', 'App\Http\Controllers\EventController');
 

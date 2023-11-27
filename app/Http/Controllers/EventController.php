@@ -12,7 +12,10 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event::all();
+
+        return response()->json($events);    
+    
     }
 
     /**
@@ -45,11 +48,9 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show(string $id)
     {
-        $events = Event::all();
 
-        return response()->json($events);
     }
 
     /**
@@ -75,4 +76,5 @@ class EventController extends Controller
     {
         //
     }
+
 }
