@@ -18,9 +18,9 @@
 
 @stop
 
-@include('modals/newEvent')
+@include('modals/index/newEvent')
 
-@include('modals/calendar')
+@include('modals/index/calendar')
 
 @section('js')
 

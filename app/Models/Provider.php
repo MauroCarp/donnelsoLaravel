@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Purchase extends Model
+class Provider extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function provider(){
-
-        return $this->belongsTo(Provider::class,'idProvider','id');
+    public function purchase()
+    {
         
+        return $this->hasOne(Purchase::class,'id','idProvider');
+        
+
     }
 
 }

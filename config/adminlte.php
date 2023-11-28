@@ -309,7 +309,7 @@ return [
                 [
                 'text' => 'Compras',
                 'icon' => 'far fa fa-fw fa-plus-square',
-                'route'  => 'compras',
+                'url'  => 'purchases',
                 'id' => 'btnCompras',
                 ],
                 [
