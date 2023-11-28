@@ -331,7 +331,7 @@ return [
         [
             'text' => 'Servicios',
             'icon' => 'icon-servicios',
-            'route'  => 'servicios'
+            'url'  => 'services'
         ],
         [
             'text' => 'Sanidad',

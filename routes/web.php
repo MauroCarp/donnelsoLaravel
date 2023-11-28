@@ -27,13 +27,13 @@ Route::get('/health', [App\Http\Controllers\HealthController::class, 'index'])->
 Route::get('/sales', [App\Http\Controllers\SaleController::class, 'sales'])->name('ventas')->middleware('auth');
 Route::get('/preSales', [App\Http\Controllers\SaleController::class, 'preSales'])->name('preVentas')->middleware('auth');
 
-// Route::get('/purchases', [App\Http\Controllers\PurchaseController::class, 'index'])->name('compras')->middleware('auth');
 
-Route::get('/services', [App\Http\Controllers\ServiceController::class, 'index'])->name('servicios')->middleware('auth');
 Route::get('/inseminations', [App\Http\Controllers\InseminationController::class, 'index'])->name('inseminaciones')->middleware('auth');
 
-// Route::get('/events/show', [App\Http\Controllers\EventController::class, 'show'])->name('eventos.mostrar')->middleware('auth');
 
+Route::post('/services/reproductiveMales', [App\Http\Controllers\ServiceController::class, 'reproductiveMales'])->name('servicios.machosReproductores')->middleware('auth');
+
+Route::resource('/services', 'App\Http\Controllers\ServiceController');
 Route::resource('/events', 'App\Http\Controllers\EventController');
 Route::resource('/purchases', 'App\Http\Controllers\PurchaseController');
 

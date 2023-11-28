@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -11,7 +12,13 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('services');
+
+        $cerdosReproductores = Animal::where(['type'=>'cerdo','active'=>1,'destination'=>'reproductor'])
+        ->orderby('caravan','asc')
+        ->get(['id','caravan']);
+
+        return view('services',['cerdosReproductores'=>$cerdosReproductores]);
+
     }
 
     /**
@@ -60,5 +67,16 @@ class ServiceController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function reproductiveMales(Request $request)
+    {
+        
+        $reproductores = Animal::where(['type'=>$request->type,'active'=>1,'destination'=>'reproductor'])
+        ->orderby('caravan','asc')
+        ->get(['id','caravan']);
+
+        return response()->json($reproductores);    
+
     }
 }
