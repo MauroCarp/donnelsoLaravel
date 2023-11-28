@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Animal;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -34,7 +35,20 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validateData = $request->validate([
+            'type'=>'required',
+            'startDate'=>'required',
+            'endDate'=>'required',
+            'idMales'=>'required'
+        ]);
+        
+        $validateData['idMales'] = json_encode($validateData['idMales']);
+        
+        Service::create($validateData);
+
+        return redirect('services')->with(['created'=>'ok','type'=>$validateData['type']]);
+
     }
 
     /**
@@ -71,7 +85,7 @@ class ServiceController extends Controller
 
     public function reproductiveMales(Request $request)
     {
-        
+
         $reproductores = Animal::where(['type'=>$request->type,'active'=>1,'destination'=>'reproductor'])
         ->orderby('caravan','asc')
         ->get(['id','caravan']);

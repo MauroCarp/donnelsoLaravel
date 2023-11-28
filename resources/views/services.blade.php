@@ -8,7 +8,7 @@
 
 @section('content')
 
-<button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalService" id="btnNewService">Nuevo Servicio</button>
+<button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalService" id="btnNewServiceMain">Nuevo Servicio</button>
 
 <div class="row">
 
@@ -110,76 +110,107 @@
 
     };
 
-    $('#idMales').select2({
-        multiple:true,
-        placeholder:'',
-        closeOnSelect: false,
-        width: '100%',
-    }) 
+    $(document).ready(function(){
 
-    $('#btnNewService').on('click',function(){
-
-        let type = $('input[name="type"]').val()
-
-        getReproductiveMales(type)
-        .then(data => {
-
-            let options = []
-
-            data.forEach(male => {
-                options.push({'id':`${male.id}`,'text':`${male.caravan}`})
+        $('#btnNewServiceMain').on('click',function(){
+    
+            console.log('hola')
+            let type = $('input[name="type"]').val()
+            getReproductiveMales(type)
+            .then(data => {
+    
+                let options = []
+    
+                data.forEach(male => {
+                    options.push({'id':`${male.id}`,'text':`${male.caravan}`})
+                });
+               
+                $('#idMales').html('')
+    
+                console.log(options)
+                $('#idMales').select2({
+                    multiple:true,
+                    placeholder:'',
+                    closeOnSelect: false,
+                    width: '100%',
+                    data:options
+                }) 
+    
+            })
+            .catch(error => {
+                // Manejar errores aquí
+                console.error(error);
             });
-           
-            $('#idMales').html('')
-
-            $('#idMales').select2({
-                multiple:true,
-                placeholder:'',
-                closeOnSelect: false,
-                width: '100%',
-                data:options
-            }) 
-
+    
         })
-        .catch(error => {
-            // Manejar errores aquí
-            console.error(error);
-        });
-
-    })
-  
-    $('input[name="type"]').on('change',function(){
-
-        let type = $(this).val()
-
-        getReproductiveMales(type)
-        .then(data => {
-
-            let options = []
-
-            data.forEach(male => {
-                options.push({'id':`${male.id}`,'text':`${male.caravan}`})
+      
+        $('input[name="type"]').on('change',function(){
+    
+            let type = $(this).val()
+    
+            getReproductiveMales(type)
+            .then(data => {
+    
+                let options = []
+    
+                data.forEach(male => {
+                    options.push({'id':`${male.id}`,'text':`${male.caravan}`})
+                });
+    
+                $('#idMales').html('')
+    
+                $('#idMales').select2({
+                    multiple:true,
+                    placeholder:'',
+                    closeOnSelect: false,
+                    width: '100%',
+                    data:options
+                }) 
+    
+            })
+            .catch(error => {
+                // Manejar errores aquí
+                console.error(error);
             });
-
-            $('#idMales').html('')
-
-            $('#idMales').select2({
-                multiple:true,
-                placeholder:'',
-                closeOnSelect: false,
-                width: '100%',
-                data:options
-            }) 
-
+    
         })
-        .catch(error => {
-            // Manejar errores aquí
-            console.error(error);
-        });
-
+        
     })
 
 </script>
+
+@if(session('created') == 'ok')
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded',function(){
+
+
+            Swal.fire({
+                toast:true,
+                type: 'success',
+                title: 'Servicio cargado',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            $('.nav-link').removeClass('active') 
+            let type = '{{ session("type") }}' 
+
+            $(`#${type}-tab`).addClass('active')
+
+        })
+
+
+
+    </script>
+
+@endif
 
 @endsection
 

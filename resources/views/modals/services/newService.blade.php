@@ -70,13 +70,7 @@
             
                 <label for="males">Machos: <i class="fa fa-sync-alt rotating d-none" id="loaderMales"></i></label><br>
             
-                <select name="idMales" id="idMales">
-
-                    {{-- @foreach ($cerdosReproductores as $cerdoReproductor)
-                    
-                        <option value="{{$cerdoReproductor['id']}}">{{$cerdoReproductor['caravan']}}</option>
-
-                    @endforeach --}}
+                <select name="idMales[]" id="idMales">
 
                 </select>
             
@@ -93,6 +87,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-primary btn-block" type="submit" form="newPurchaseForm" id="btnNewPurchase" name="btnNewPurchase">Cargar Compra</button>
+    <button class="btn btn-primary btn-block" type="submit" form="newServiceForm" id="btnNewService" name="btnNewService">Cargar Compra</button>
 
 @endsection
