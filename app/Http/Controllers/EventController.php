@@ -34,7 +34,6 @@ class EventController extends Controller
 
         $valid = $request->validate([
             'title'=>'required',
-            'descripcion'=>'required',
             'start'=>'required',
             'end'=>'required',
         ]);

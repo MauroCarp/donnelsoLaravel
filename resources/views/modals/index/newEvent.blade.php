@@ -20,11 +20,6 @@
                       <label for="title" class="form-label">Evento</label>
                       <input type="text" class="form-control" name="title" id="title" required>
                     </div>
-
-                    <div class="mb-3">
-                      <label for="descripcion" class="form-label">Descripci&oacute;n</label>
-                      <input type="text" class="form-control" name="descripcion" id="descripcion" required>
-                    </div>
                 
                     <div class="mb-3">
 
