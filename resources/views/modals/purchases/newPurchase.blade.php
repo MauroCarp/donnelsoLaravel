@@ -141,6 +141,11 @@
                     <input class="custom-control-input" type="radio" id="radioEngorde" value="engorde" name="destination">
                     <label for="radioEngorde" class="custom-control-label">Engorde</label>
                 </div>
+               
+                <div class="custom-control custom-radio">
+                    <input class="custom-control-input" type="radio" id="radioEngorde" value="reproductor" name="destination">
+                    <label for="radioEngorde" class="custom-control-label">Reproductor</label>
+                </div>
                 
             
             </div>
