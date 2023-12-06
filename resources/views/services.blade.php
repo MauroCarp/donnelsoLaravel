@@ -201,6 +201,7 @@
         $('.serviceTable').on('click','.btnDeleteService',function(e){
 
             e.preventDefault()
+            
             Swal.fire({
             title: "Estas seguro?",
             text: "Si no lo estas, puedes cancelar!",

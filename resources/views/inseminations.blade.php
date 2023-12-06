@@ -129,6 +129,31 @@ $(document).ready(function(){
 
     $('input[name="type"]').on('change',getFemales)
 
+    $('.inseminationsTable').on('click','.btnDeleteInsemination',function(event){
+        event.preventDefault()
+
+        Swal.fire({
+            title: "Estas seguro?",
+            text: "Si no lo estas, puedes cancelar!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar!",
+            cancelButtonText: "Cancelar"
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    event.currentTarget.form.submit()
+
+                }
+
+            });
+
+    })
+
+
 })
 
 </script>
@@ -158,6 +183,29 @@ $(document).ready(function(){
             $('.tab-pane').removeClass('active') 
             $(`#tabs-${type}`).addClass('active')
             $(`#tabs-${type}`).addClass('show')
+
+        })
+
+
+
+    </script>
+
+@endif
+
+@if(session('delete') == 'ok')
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded',function(){
+
+            Swal.fire({
+                toast:true,
+                icon:'error',
+                title: 'Inseminación eliminada',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+            })
 
         })
 

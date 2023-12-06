@@ -22,7 +22,7 @@ class InseminationController extends Controller
             $caravans = Animal::whereIn('id',json_decode($value['idMothers']))->get('caravan');
 
             $inseminations[$key]['caravans'] = array_column($caravans->toArray(), 'caravan');
-            
+
         }
 
         return view('inseminations',['inseminations'=>$inseminations]);
@@ -97,7 +97,18 @@ class InseminationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $insemination = Insemination::find($id);
+
+        $event = Event::where('title','like','Parto Chanchas%')
+        ->where('referenceId',$insemination->id)
+        ->get('id');
+
+        $eventToDelete = Event::find($event->toArray()[0]['id']);
+        $eventToDelete->delete();
+
+        $insemination->delete();
+
+        return redirect('inseminations')->with('delete','ok');
     }
     
     public function getFemales(Request $request)

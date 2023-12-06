@@ -2,7 +2,7 @@
 
 @section('modalContent')
 
-<form action="{{ route('inseminaciones.store') }}" method="POST" id="newInseminationForm">
+<form action="inseminations" method="POST" id="newInseminationForm">
     @csrf           
     <div class='row'>
         

@@ -315,7 +315,8 @@ return [
                 [
                 'text' => 'Inseminaciones',
                 'icon' => 'icon-jeringa',
-                'route'  => 'inseminaciones.index',
+                // 'route'  => 'inseminaciones.index',
+                'url'  => 'inseminations',
                 'id' => 'btnInseminacion',
                 ],
                 [
