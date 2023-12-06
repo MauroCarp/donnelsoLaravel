@@ -207,6 +207,15 @@ $(document).ready(function(){
                 timer: 3000,
             })
 
+            let type = '{{ session("type") }}' 
+            
+            $('.nav-link').removeClass('active') 
+            $(`#${type}-tab`).addClass('active')
+
+            $('.tab-pane').removeClass('active') 
+            $(`#tabs-${type}`).addClass('active')
+            $(`#tabs-${type}`).addClass('show')
+
         })
 
 

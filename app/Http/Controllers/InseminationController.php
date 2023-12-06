@@ -55,14 +55,17 @@ class InseminationController extends Controller
 
         $validate['idMothers'] = json_encode($validate['idMothers']);
 
-        Insemination::create($validate);
+        $newInsemination = Insemination::create($validate);
 
         $days = ($request->type == 'cerdo') ? 20 : 25;
 
         $birthDate = new Carbon($request->date);
         $birthDate->addDays($days);
 
-        Event::create(['title'=>'Parto Chanchas ' . $caravans,'start'=>$birthDate,'end'=>$birthDate]);
+        Event::create(['title'=> 'Parto ' . ucfirst($request->type) . ' ' . $caravans,
+                       'start'=> $birthDate,
+                       'end'=> $birthDate,
+                       'referenceId'=> $newInsemination->id]);
 
         return redirect('inseminations')->with(['created'=>'ok','type'=>$request->type]);
 
@@ -99,16 +102,22 @@ class InseminationController extends Controller
     {
         $insemination = Insemination::find($id);
 
-        $event = Event::where('title','like','Parto Chanchas%')
+        $event = Event::where('title','like','Parto ' . ucfirst($insemination->type) . '%')
         ->where('referenceId',$insemination->id)
-        ->get('id');
+        ->first('id');
+        
+        if(isset($event->id) && !is_null($event->id)){
 
-        $eventToDelete = Event::find($event->toArray()[0]['id']);
-        $eventToDelete->delete();
+            $eventToDelete = Event::find($event->id);
+            $eventToDelete->delete();
+
+        }
+
+        $type = $insemination->type;
 
         $insemination->delete();
 
-        return redirect('inseminations')->with('delete','ok');
+        return redirect('inseminations')->with(['delete'=>'ok','type'=>$type]);
     }
     
     public function getFemales(Request $request)

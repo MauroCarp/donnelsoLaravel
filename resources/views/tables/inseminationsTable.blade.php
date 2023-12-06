@@ -23,7 +23,7 @@
                     $days = ($type == 'cerdo') ? 20 : 25;
 
                     $birthDate = new DateTime($insemination->date);
-                    $birthDate->add(new DateInterval('P20D'));
+                    $birthDate->add(new DateInterval('P' . $days . 'D'));
                     
                 @endphp
 
