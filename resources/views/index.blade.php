@@ -78,10 +78,14 @@
                                             </div>
                                             
                                             <div class="col-lg-2" style="text-align: right">
-            
-                                                <button class="btn btn-danger btn-md btnDeleteEvent" idEvent='${event.id}'>
-                                                    <i class="fa fa-times"></i>
-                                                </button>
+                                                
+                                                <form action="events/${event.id}ah peh" method="POST" id="deleteEventForm${event.id}">
+
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger btn-md" onclick="deleteEvent(event)" type="submit" form="deleteEventForm${event.id}"><i class="fa fa-times"></i></button>
+
+                                                </form>
                                                 
                                             </div>
             
@@ -125,10 +129,57 @@
             
         })
 
+        const deleteEvent = (event) => {
 
+            event.preventDefault();
+
+            Swal.fire({
+            title: "Estas seguro?",
+            text: "Si no lo estas, puedes cancelar!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar!",
+            cancelButtonText: "Cancelar"
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    
+                    $(`#${event.target.attributes.form.value}`).submit()
+
+                }
+
+            });
+
+        }
     </script>
 
 @endsection
+
+
+@if(session('delete') == 'ok')
+
+    <script>
+        document.addEventListener('DOMContentLoaded',function(){
+
+            Swal.fire({
+                toast:true,
+                icon:'error',
+                title: 'Evento eliminado',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+            })
+
+        })
+
+    </script>
+
+@endif
+
+
 
 
 
