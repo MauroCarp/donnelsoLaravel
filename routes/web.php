@@ -28,7 +28,8 @@ Route::get('/sales', [App\Http\Controllers\SaleController::class, 'sales'])->nam
 Route::get('/preSales', [App\Http\Controllers\SaleController::class, 'preSales'])->name('preVentas')->middleware('auth');
 
 
-Route::get('/inseminations', [App\Http\Controllers\InseminationController::class, 'index'])->name('inseminaciones')->middleware('auth');
+Route::get('/inseminations', [App\Http\Controllers\InseminationController::class, 'index'])->name('inseminaciones.index')->middleware('auth');
+Route::post('/inseminations', [App\Http\Controllers\InseminationController::class, 'store'])->name('inseminaciones.store')->middleware('auth');
 
 
 Route::post('/services/changeState', [App\Http\Controllers\ServiceController::class, 'changeState'])->name('servicios.cambiarEstado')->middleware('auth');

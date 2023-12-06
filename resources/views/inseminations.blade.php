@@ -8,13 +8,15 @@
 
 @section('content')
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInsemination" id="btnNewInsemination">Nueva Inseminaci&oacute;n</button>
-<br>
-<br>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInsemination" id="btnNewInsemination">Nueva Inseminaci&oacute;n</button>
+    <br>
+    <br>
 
-@include('tables/inseminationsTable')
+    @include('tables/inseminationsTable')
 
 @stop
+
+@include('modals/inseminations/newInsemination')
 
 @section('js')
 
