@@ -143,7 +143,7 @@ class PurchaseController extends Controller
 
         $purchase->delete();
 
-        return redirect('purchases')->with('eliminar','ok');
+        return redirect('purchases')->with('delete','ok');
 
     }
 }

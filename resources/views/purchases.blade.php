@@ -107,17 +107,56 @@
 
             })
 
-            $('.btnDeletePurchase').on('click','.purchaseTable',function(e){
+            $('.purchaseTable').on('click','.btnDeletePurchase',function(e){
+
                 e.preventDefault()
-                
-                console.log('mostrarSwal');
+                Swal.fire({
+                title: "Estas seguro?",
+                text: "Si no lo estas, puedes cancelar!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Si, eliminar!",
+                cancelButtonText: "Cancelar",
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
+                        
+                        e.currentTarget.form.submit()
+
+                    }
+
+                });
+
             })
 
         })
 
-
-
     </script>
+
+    @if(session('delete') == 'ok')
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded',function(){
+
+                Swal.fire({
+                    toast:true,
+                    icon:'error',
+                    title: 'Compra eliminada',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                })
+
+            })
+
+
+
+        </script>
+
+    @endif
 
 @endsection
 
