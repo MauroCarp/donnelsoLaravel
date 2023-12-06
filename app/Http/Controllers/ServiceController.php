@@ -64,13 +64,14 @@ class ServiceController extends Controller
         $caravans = array_column($caravans->toArray(), 'caravan');
         $caravans = implode(' - ' , $caravans);
 
-        Service::create($validateData);
+        $newService = Service::create($validateData);
 
         Event::create(['title'=>'Servicio ' . $validateData['type'] . ' - Caravanas Machos: ' . $caravans,
+                       'referenceId'=>$newService->id,
                        'start'=>$validateData['startDate'],
                        'end'=>$validateData['endDate']
                     ]);
-
+        
         return redirect('services')->with(['created'=>'ok','type'=>$validateData['type']]);
 
     }
@@ -106,11 +107,22 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        $service = service::find($id);
+        $service = Service::find($id);
+
+        $eventToDelete = Event::where('referenceId',$service->id)->first('id');
+
+        if(!is_null($eventToDelete)){
+            
+            $eventToDelete = Event::find($eventToDelete->id);
+            $eventToDelete->delete();
+            
+        }
 
         $service->delete();
         
-        return redirect('services')->with('delete','ok');    }
+        return redirect('services')->with('delete','ok'); 
+    
+    }
 
     public function reproductiveMales(Request $request)
     {
