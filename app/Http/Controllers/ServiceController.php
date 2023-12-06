@@ -106,8 +106,11 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-    }
+        $service = service::find($id);
+
+        $service->delete();
+        
+        return redirect('services')->with('delete','ok');    }
 
     public function reproductiveMales(Request $request)
     {

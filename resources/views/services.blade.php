@@ -197,6 +197,30 @@
 
             })
         })
+
+        $('.serviceTable').on('click','.btnDeleteService',function(e){
+
+            e.preventDefault()
+            Swal.fire({
+            title: "Estas seguro?",
+            text: "Si no lo estas, puedes cancelar!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar!"
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    
+                    e.currentTarget.form.submit()
+
+                }
+
+            });
+
+        })
+
     })
 
 
@@ -223,12 +247,32 @@
             $('.nav-link').removeClass('active') 
             $(`#${type}-tab`).addClass('active')
 
-            setTimeout(() => {
-                $('.tab-pane').removeClass('active') 
-                $(`#tabs-${type}`).addClass('active')
-                $(`#tabs-${type}`).addClass('show')
-                
-            }, 500);
+            $('.tab-pane').removeClass('active') 
+            $(`#tabs-${type}`).addClass('active')
+            $(`#tabs-${type}`).addClass('show')
+
+        })
+
+
+
+    </script>
+
+@endif
+
+@if(session('delete') == 'ok')
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded',function(){
+
+            Swal.fire({
+                toast:true,
+                icon:'error',
+                title: 'Servicio eliminado',
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+            })
 
         })
 
