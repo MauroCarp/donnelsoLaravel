@@ -52,7 +52,7 @@ class ServiceController extends Controller
             'endDate'=>'required',
             'idMales'=>'required'
         ]);
-        
+
         $validateData['idMales'] = json_encode($validateData['idMales']);
 
         $ids = json_decode($validateData['idMales']);
@@ -115,12 +115,14 @@ class ServiceController extends Controller
             
             $eventToDelete = Event::find($eventToDelete->id);
             $eventToDelete->delete();
-            
+
         }
 
+        $type = $service->type;
+        
         $service->delete();
         
-        return redirect('services')->with('delete','ok'); 
+        return redirect('services')->with(['delete'=>'ok','type'=>$type]); 
     
     }
 

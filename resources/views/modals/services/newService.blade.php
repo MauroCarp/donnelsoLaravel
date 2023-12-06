@@ -70,7 +70,7 @@
             
                 <label for="males">Machos: <i class="fa fa-sync-alt rotating d-none" id="loaderMales"></i></label><br>
             
-                <select name="idMales[]" id="idMales">
+                <select name="idMales[]" id="idMales" required>
 
                 </select>
             
