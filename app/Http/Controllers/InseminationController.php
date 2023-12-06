@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Animal;
+use App\Models\Event;
 use App\Models\Insemination;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class InseminationController extends Controller
@@ -14,6 +16,14 @@ class InseminationController extends Controller
     public function index()
     {
         $inseminations = Insemination::all();
+
+        foreach ($inseminations as $key => $value) {
+
+            $caravans = Animal::whereIn('id',json_decode($value['idMothers']))->get('caravan');
+
+            $inseminations[$key]['caravans'] = array_column($caravans->toArray(), 'caravan');
+            
+        }
 
         return view('inseminations',['inseminations'=>$inseminations]);
     }
@@ -31,7 +41,31 @@ class InseminationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $validate = $request->validate([
+            'type'=>'required',
+            'date'=>'required',
+            'idMothers'=>'required',
+        ]);
+
+        $chanchasCaravan = Animal::whereIn('id',$validate['idMothers'])->get(['id','caravan']);
+
+        $caravans = array_column($chanchasCaravan->toArray(), 'caravan');
+        $caravans = implode(' - ' , $caravans);
+
+        $validate['idMothers'] = json_encode($validate['idMothers']);
+
+        Insemination::create($validate);
+
+        $days = ($request->type == 'cerdo') ? 20 : 25;
+
+        $birthDate = new Carbon($request->date);
+        $birthDate->addDays($days);
+
+        Event::create(['title'=>'Parto Chanchas ' . $caravans,'start'=>$birthDate,'end'=>$birthDate]);
+
+        return redirect('inseminations')->with(['created'=>'ok','type'=>$request->type]);
+
     }
 
     /**

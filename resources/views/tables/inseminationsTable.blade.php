@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped dt-responsive serviceTable" width="100%">
+<table class="table table-bordered table-striped dt-responsive inseminationsTable" width="100%">
          
     <thead>
      
@@ -22,11 +22,15 @@
                 
                     $days = ($type == 'cerdo') ? 20 : 25;
 
+                    $birthDate = new DateTime($insemination->date);
+                    $birthDate->add(new DateInterval('P20D'));
+                    
                 @endphp
+
                 <tr>
                     <td>{{ implode(' - ',$insemination->caravans) }}</td>
                     <td>{{ date('d-m-Y',strtotime($insemination->date)) }}</td>
-                    <td>{{ date('d-m-Y',strtotime($insemination->date->addDays($days))) }}</td>
+                    <td>{{ $birthDate->format('d-m-Y') }}</td>
                     <td>
 
                         <form action="inseminations/{{ $insemination->id }}" method="POST" id="deleteInseminationForm{{$insemination->id}}">

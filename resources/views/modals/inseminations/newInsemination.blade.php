@@ -2,7 +2,7 @@
 
 @section('modalContent')
 
-<form action="insemination" method="POST" id="newInseminationForm">
+<form action="{{ route('inseminaciones.store') }}" method="POST" id="newInseminationForm">
     @csrf           
     <div class='row'>
         
@@ -65,6 +65,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-primary btn-block" type="submit" form="newInsemintaionForm" id="btnNewInsemintaion" name="btnNewInsemintaion">Cargar Inseminaci&oacute;n</button>
+    <button class="btn btn-primary btn-block" type="submit" form="newInseminationForm" id="btnNewInsemintaion" name="btnNewInsemintaion">Cargar Inseminaci&oacute;n</button>
 
 @endsection
