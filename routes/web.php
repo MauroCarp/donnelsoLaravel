@@ -31,6 +31,7 @@ Route::get('/preSales', [App\Http\Controllers\SaleController::class, 'preSales']
 Route::get('/inseminations', [App\Http\Controllers\InseminationController::class, 'index'])->name('inseminaciones')->middleware('auth');
 
 
+Route::post('/services/changeState', [App\Http\Controllers\ServiceController::class, 'changeState'])->name('servicios.cambiarEstado')->middleware('auth');
 Route::post('/services/reproductiveMales', [App\Http\Controllers\ServiceController::class, 'reproductiveMales'])->name('servicios.machosReproductores')->middleware('auth');
 
 Route::resource('/services', 'App\Http\Controllers\ServiceController');

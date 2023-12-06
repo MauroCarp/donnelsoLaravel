@@ -28,13 +28,13 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link" id="ovino-tab" data-toggle="pill" href="#tabs-ovino" role="tab" aria-controls="tabs-ovino" aria-selected="false">Ovinos</a>
+                        <a class="nav-link" id="chivo-tab" data-toggle="pill" href="#tabs-chivo" role="tab" aria-controls="tabs-chivo" aria-selected="false">Chivos</a>
 
                     </li>
 
                     <li class="nav-item">
 
-                        <a class="nav-link" id="chivo-tab" data-toggle="pill" href="#tabs-chivo" role="tab" aria-controls="tabs-chivo" aria-selected="false">Chivos</a>
+                        <a class="nav-link" id="ovino-tab" data-toggle="pill" href="#tabs-ovino" role="tab" aria-controls="tabs-ovino" aria-selected="false">Ovinos</a>
 
                     </li>
 
@@ -52,16 +52,44 @@
 
                 <div class="tab-content" id="services-tabs-tabContent">
                     
-                    <div class="tab-pane fade" id="tabs-cerdo" role="tabpanel" aria-labelledby="tabs-cerdo-tab">
+                    <div class="tab-pane fade active show" id="tabs-cerdo" role="tabpanel" aria-labelledby="tabs-cerdo-tab">
+
+                        @php
+                            $type = 'cerdo';   
+                        @endphp
+
+                        @include('tables/servicesTable')
+
                     </div>
 
                     <div class="tab-pane fade" id="tabs-ovino" role="tabpanel" aria-labelledby="tabs-ovino-tab">
+
+                        @php
+                            $type = 'ovino';   
+                        @endphp
+
+                        @include('tables/servicesTable')
+
                     </div>
 
                     <div class="tab-pane fade" id="tabs-chivo" role="tabpanel" aria-labelledby="tabs-chivo-tab">
+
+                        @php
+                            $type = 'chivo';   
+                        @endphp
+
+                        @include('tables/servicesTable')
+
                     </div>
 
-                    <div class="tab-pane fade active show" id="tabs-vaca" role="tabpanel" aria-labelledby="tabs-vaca-tab">
+                    <div class="tab-pane fade" id="tabs-vaca" role="tabpanel" aria-labelledby="tabs-vaca-tab">
+
+                        @php
+                            $type = 'vaca';   
+                        @endphp
+
+                        @include('tables/servicesTable')
+
                     </div>
 
                 </div>
@@ -82,100 +110,95 @@
 
 <script>
 
-    const getReproductiveMales = (type) => {
+    const getReproductiveMales = () => {
 
-        return new Promise((resolve, reject) => {
+        let type = $('input[name="type"]:checked').val()
 
-            let token = $('input[name="_token"]').val();
+        let token = $('input[name="_token"]').val();
 
-            $.ajax({
-                url: '{{ route("servicios.machosReproductores") }}',
-                method: 'POST',
-                data: {
-                    'type': type,
-                    '_token': token
-                },
-                beforeSend: function () {
-                    $('#loaderMales').show();
-                }
-            }).done(resp => {
-                $('#loaderMales').hide();
-                resolve(resp);
-            }).fail((jqXHR, textStatus, errorThrown) => {
-                $('#loaderMales').hide();
-                reject(errorThrown);
+        $.ajax({
+            url: '{{ route("servicios.machosReproductores") }}',
+            method: 'POST',
+            data: {
+                'type': type,
+                '_token': token
+            },
+            beforeSend: function () {
+                $('#loaderMales').show();
+            }
+        }).done(resp => {
+
+            $('#loaderMales').hide();
+
+            let options = []
+
+            resp.forEach(male => {
+                options.push({'id':`${male.id}`,'text':`${male.caravan}`})
             });
+            
+            $('#idMales').html('')
 
+            $('#idMales').select2({
+                multiple:true,
+                placeholder:'',
+                closeOnSelect: false,
+                width: '100%',
+                data:options
+            }) 
+
+        }).fail((jqXHR, textStatus, errorThrown) => {
+            $('#loaderMales').hide();
         });
 
     };
 
+
     $(document).ready(function(){
 
-        $('#btnNewServiceMain').on('click',function(){
-    
-            console.log('hola')
-            let type = $('input[name="type"]').val()
-            getReproductiveMales(type)
-            .then(data => {
-    
-                let options = []
-    
-                data.forEach(male => {
-                    options.push({'id':`${male.id}`,'text':`${male.caravan}`})
-                });
-               
-                $('#idMales').html('')
-    
-                console.log(options)
-                $('#idMales').select2({
-                    multiple:true,
-                    placeholder:'',
-                    closeOnSelect: false,
-                    width: '100%',
-                    data:options
-                }) 
-    
-            })
-            .catch(error => {
-                // Manejar errores aquí
-                console.error(error);
-            });
-    
-        })
+        $('#btnNewServiceMain').on('click',getReproductiveMales)
       
-        $('input[name="type"]').on('change',function(){
+        $('input[name="type"]').on('change',getReproductiveMales)
+
+        $('.serviceTable').on('click','.btnStateService',function(){
+
+            let id = $(this).attr('idService')
+
+            let token = $('input[name="_token"]').val();
+
+            let button = $(this)
+
+            $.ajax({
+                method:'POST',
+                url:`services/changeState`,
+                data:{
+                    'id':id,
+                    '_token':token,
+                }
+            }).done(resp=>{
+
+                Swal.fire({
+                    toast:true,
+                    icon:'success',
+                    title: 'Estado cambiado con exito',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 2000,
+                })
     
-            let type = $(this).val()
-    
-            getReproductiveMales(type)
-            .then(data => {
-    
-                let options = []
-    
-                data.forEach(male => {
-                    options.push({'id':`${male.id}`,'text':`${male.caravan}`})
-                });
-    
-                $('#idMales').html('')
-    
-                $('#idMales').select2({
-                    multiple:true,
-                    placeholder:'',
-                    closeOnSelect: false,
-                    width: '100%',
-                    data:options
-                }) 
-    
+                if(resp){
+                    button.html('Activo')
+                    button.removeClass('bg-danger')
+                    button.addClass('bg-success')
+                } else {
+                    button.html('Inactivo')
+                    button.removeClass('bg-success')
+                    button.addClass('bg-danger')
+                }
+
             })
-            .catch(error => {
-                // Manejar errores aquí
-                console.error(error);
-            });
-    
         })
-        
     })
+
 
 </script>
 
@@ -188,21 +211,24 @@
 
             Swal.fire({
                 toast:true,
-                type: 'success',
+                icon:'success',
                 title: 'Servicio cargado',
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 3000,
-                onOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
             })
 
-            $('.nav-link').removeClass('active') 
             let type = '{{ session("type") }}' 
-
+            
+            $('.nav-link').removeClass('active') 
             $(`#${type}-tab`).addClass('active')
+
+            setTimeout(() => {
+                $('.tab-pane').removeClass('active') 
+                $(`#tabs-${type}`).addClass('active')
+                $(`#tabs-${type}`).addClass('show')
+                
+            }, 500);
 
         })
 
