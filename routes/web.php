@@ -30,6 +30,7 @@ Route::get('/preSales', [App\Http\Controllers\SaleController::class, 'preSales']
 
 Route::get('/inseminations', [App\Http\Controllers\InseminationController::class, 'index'])->name('inseminaciones.index')->middleware('auth');
 Route::post('/inseminations', [App\Http\Controllers\InseminationController::class, 'store'])->name('inseminaciones.store')->middleware('auth');
+Route::post('/inseminations/getFemales', [App\Http\Controllers\InseminationController::class, 'getFemales'])->name('inseminaciones.hembras')->middleware('auth');
 
 
 Route::post('/services/changeState', [App\Http\Controllers\ServiceController::class, 'changeState'])->name('servicios.cambiarEstado')->middleware('auth');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
 use App\Models\Insemination;
 use Illuminate\Http\Request;
 
@@ -64,4 +65,13 @@ class InseminationController extends Controller
     {
         //
     }
+    
+    public function getFemales(Request $request)
+    {        
+        $females = Animal::where(['type'=>$request->type,'sex'=>'female'])->get(['id','caravan']);
+
+        return response()->json($females);
+    }
+
+
 }

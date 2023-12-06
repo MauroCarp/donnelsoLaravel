@@ -115,11 +115,11 @@ class ServiceController extends Controller
     public function reproductiveMales(Request $request)
     {
 
-        $reproductores = Animal::where(['type'=>$request->type,'active'=>1,'destination'=>'reproductor'])
+        $reproductives = Animal::where(['type'=>$request->type,'active'=>1,'destination'=>'reproductor'])
         ->orderby('caravan','asc')
         ->get(['id','caravan']);
 
-        return response()->json($reproductores);    
+        return response()->json($reproductives);    
 
     }
 
