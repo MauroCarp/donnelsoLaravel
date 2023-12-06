@@ -3,10 +3,16 @@
 @section('title', 'Don Nelso')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">INSEMINACIONES</h1>
+    <h1 class="m-0 text-dark">Inseminaciones</h1>
 @stop
 
 @section('content')
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInsemination" id="btnNewInsemination">Nueva Inseminaci&oacute;n</button>
+<br>
+<br>
+
+@include('tables/inseminationsTable')
 
 @stop
 
@@ -21,9 +27,6 @@
 @section('css')
 
     <style>
-        .content{
-            background-image: url('img/back.png');
-            background-size: cover;
-        }
+     
     </style>
 @endsection

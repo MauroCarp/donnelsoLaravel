@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Insemination;
 use Illuminate\Http\Request;
 
 class InseminationController extends Controller
@@ -11,7 +12,9 @@ class InseminationController extends Controller
      */
     public function index()
     {
-        return view('inseminations');
+        $inseminations = Insemination::all();
+
+        return view('inseminations',['inseminations'=>$inseminations]);
     }
 
     /**
