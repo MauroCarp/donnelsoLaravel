@@ -3,12 +3,20 @@
 @section('title', 'Don Nelso')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">PARTOS</h1>
+    <h1 class="m-0 text-dark">Nacimientos</h1>
 @stop
 
 @section('content')
 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalBirth" id="btnNewBirthMain">Nueva Parto</button>
+    <br>
+    <br>
+
+    @include('tables/births')
+
 @stop
+
+@include('modals/births/newBirth')
 
 @section('js')
 
@@ -21,9 +29,6 @@
 @section('css')
 
     <style>
-        .content{
-            background-image: url('img/back.png');
-            background-size: cover;
-        }
+
     </style>
 @endsection

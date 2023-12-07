@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Birth;
 use Illuminate\Http\Request;
 
 class BirthController extends Controller
@@ -11,7 +12,10 @@ class BirthController extends Controller
      */
     public function index()
     {
-        return view('births');
+
+        $births = Birth::all();
+
+        return view('births',['births'=>$births]);
     }
 
     /**
