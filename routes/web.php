@@ -20,7 +20,7 @@ Auth::routes();
 
 Route::get('/costs', [App\Http\Controllers\SaleController::class, 'costs'])->name('costos')->middleware('auth');
 Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio')->middleware('auth');
-Route::get('/deads', [App\Http\Controllers\DeadController::class, 'index'])->name('muertes')->middleware('auth');
+Route::get('/deaths', [App\Http\Controllers\DeadController::class, 'index'])->name('muertes')->middleware('auth');
 Route::get('/health', [App\Http\Controllers\HealthController::class, 'index'])->name('sanidad')->middleware('auth');
 
 Route::get('/sales', [App\Http\Controllers\SaleController::class, 'sales'])->name('ventas')->middleware('auth');

@@ -121,7 +121,7 @@ class BirthController extends Controller
 
         Animal::insert($newAnimals);
 
-        return redirect('births')->with(['created'=>'ok']);
+        return redirect('births')->with(['created'=>'ok','type'=>$request->type]);
     }
 
     /**

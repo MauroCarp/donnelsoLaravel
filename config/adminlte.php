@@ -341,7 +341,7 @@ return [
         [
             'text' => 'Muertes',
             'icon' => 'icon-muertes',
-            'route'  => 'muertes',
+            'url'  => 'deaths',
         ],
         [
             'text'    => 'Ventas',
