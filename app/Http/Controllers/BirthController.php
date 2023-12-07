@@ -27,7 +27,9 @@ class BirthController extends Controller
             $births[$key]['childrenCaravans'] = implode(' , ',array_column($childrenCaravans->toArray(),'caravan'));
 
             if($birth->idReproductive){
+                
                 $caravanReproductive = Animal::find($birth->idReproductive);
+                
                 $births[$key]['maleCaravan'] = $caravanReproductive['caravan'];
             }
             
@@ -116,6 +118,16 @@ class BirthController extends Controller
                                 );
 
             $numberChildren++;
+
+        }
+
+        if($request->deaths > 0){
+
+            for ($i=0; $i < $request->deaths ; $i++) { 
+
+                $newAnimals[$i]['destination'] = 'dead';
+
+            }
 
         }
 
