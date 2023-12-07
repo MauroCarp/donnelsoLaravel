@@ -315,7 +315,6 @@ return [
                 [
                 'text' => 'Inseminaciones',
                 'icon' => 'icon-jeringa',
-                // 'route'  => 'inseminaciones.index',
                 'url'  => 'inseminations',
                 'id' => 'btnInseminacion',
                 ],
@@ -323,7 +322,7 @@ return [
                 'text' => 'Partos',
                 'icon' => 'far fa fa-fw fa-edit',
                 'id' => 'btnPartos',
-                'route'  => 'partos',
+                'url'  => 'births',
                 ],
             
             ]

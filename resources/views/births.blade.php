@@ -22,6 +22,10 @@
 
 <script>
 
+    $('#btnNewBirthMain').on('click',getFemales)
+
+    $('input[name="type"]').on('change',getFemales)
+
 </script>
 
 @endsection

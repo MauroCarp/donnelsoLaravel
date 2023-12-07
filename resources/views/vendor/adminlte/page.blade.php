@@ -108,6 +108,57 @@
     
     <script>
         
+        const getFemales = () => {
+
+            let type = $('input[name="type"]:checked').val()
+            let token = $('input[name="_token"]').val();
+
+            $.ajax({
+                url: '{{ route("inseminaciones.hembras") }}',
+                method: 'POST',
+                data: {
+                    'type': type,
+                    '_token': token
+                },
+                beforeSend: function () {
+                    $('#loaderMothers').show();
+                }
+            }).done(resp => {
+
+                $('#loaderMothers').hide();
+
+                let options = []
+
+                resp.forEach(female => {
+                    options.push({'id':`${female.id}`,'text':`${female.caravan}`})
+                });
+                
+
+                $('#idMothers').html('')
+
+                let urlParts = window.location.href.split('/')
+                let section = urlParts[urlParts.length - 1]
+
+                let config = {                    
+                    placeholder:'',
+                    width: '100%',
+                    data:options
+                }
+
+                if(section != 'births'){
+                    config.multiple = true
+                    config.closeOnSelect = false
+                }
+                    
+                $('#idMothers').select2(config) 
+
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                $('#loaderMothers').hide();
+            });
+
+        };
+
+        
         $(".table").DataTable({
 
             "language": {

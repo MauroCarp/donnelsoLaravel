@@ -82,49 +82,6 @@
 
 $(document).ready(function(){
 
-    const getFemales = () => {
-
-        let type = $('input[name="type"]:checked').val()
-        console.log(type)
-        let token = $('input[name="_token"]').val();
-
-        $.ajax({
-            url: '{{ route("inseminaciones.hembras") }}',
-            method: 'POST',
-            data: {
-                'type': type,
-                '_token': token
-            },
-            beforeSend: function () {
-                $('#loaderMothers').show();
-            }
-        }).done(resp => {
-
-            $('#loaderMothers').hide();
-
-            let options = []
-
-            resp.forEach(female => {
-                options.push({'id':`${female.id}`,'text':`${female.caravan}`})
-            });
-            
-
-            $('#idMothers').html('')
-
-            $('#idMothers').select2({
-                multiple:true,
-                placeholder:'',
-                closeOnSelect: false,
-                width: '100%',
-                data:options
-            }) 
-            console.log('jol')
-        }).fail((jqXHR, textStatus, errorThrown) => {
-            $('#loaderMothers').hide();
-        });
-
-    };
-
     $('#btnNewInseminationMain').on('click',getFemales)
 
     $('input[name="type"]').on('change',getFemales)
