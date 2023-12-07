@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
+use App\Models\Dead;
 use Illuminate\Http\Request;
 
 class DeadController extends Controller
@@ -11,7 +13,11 @@ class DeadController extends Controller
      */
     public function index()
     {
-        return view('deaths');
+
+        $deaths = Dead::orderby('date','desc')->get();
+
+        return view('deaths',['deaths'=>$deaths]);
+
     }
 
     /**

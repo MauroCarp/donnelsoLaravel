@@ -1,17 +1,12 @@
-<table class="table table-bordered table-striped dt-responsive birthTable" width="100%">
+<table class="table table-bordered table-striped dt-responsive deathTable" width="100%">
          
     <thead>
      
         <tr>
                 
-            <th>Caravana Madre</th>
-            <th>Caravana Macho reproductor</th>
-            <th>Caravana Hijos</th>
-            <th>Fecha Parto</th>
-            <th>Sexo</th> 
-            <th>Mellizos</th> 
-            <th>Cant.</th> 
-            <th>Muertos</th> 
+            <th>Caravana</th>
+            <th>Fecha Muerte</th>
+            <th>Motivo</th>
             <th></th> 
 
         </tr> 
@@ -20,27 +15,27 @@
 
     <tbody>
 
-        {{-- @foreach ($births as $birth)
+        @foreach ($deaths as $dead)
 
-            @if($birth->mother->type == $type)    
+            @if($dead->type == $type)    
 
                 <tr>
-                    <td>{{ $birth->motherCaravan }}</td>
-                    <td>{{ $birth->maleCaravan }}</td>
-                    <td>{{ $birth->childrenCaravans }}</td>
-                    <td>{{ $birth->date }}</td>
-                    <td>{{ ($birth->sex == 'm') ? 'Macho' : (($birth->sex == 'f') ? 'Hembra' : 'Macho / Hembra') }}</td>
-                    <td>@if($birth->twins) <i class="fa fa-check text-success"></i>@else <i class="fa fa-times text-danger"></i>@endif</td>
-                    <td>{{ $birth->amount }}</td>
-                    <td>{{ $birth->deaths }}</td>
+                    <td>{{ $dead->caravan }}</td>
+                    <td>{{ $dead->date }}</td>
+                    <td>{{ $dead->motivo }}</td>
+                    <td>{{ $dead->date }}</td>
+                    <td>{{ ($dead->sex == 'm') ? 'Macho' : (($dead->sex == 'f') ? 'Hembra' : 'Macho / Hembra') }}</td>
+                    <td>@if($dead->twins) <i class="fa fa-check text-success"></i>@else <i class="fa fa-times text-danger"></i>@endif</td>
+                    <td>{{ $dead->amount }}</td>
+                    <td>{{ $dead->deads }}</td>
 
                     <td>
 
-                        <form action="births/{{ $birth->id }}" method="POST" id="deleteBirthForm{{$birth->id}}">
+                        <form action="deads/{{ $dead->id }}" method="POST" id="deletedeadForm{{$dead->id}}">
 
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btnDeleteBirth" type="submit" form="deleteBirthForm{{$birth->id}}"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger btnDeletedead" type="submit" form="deletedeadForm{{$dead->id}}"><i class="fa fa-times"></i></button>
 
                         </form>
 
@@ -49,7 +44,7 @@
 
             @endif
 
-        @endforeach --}}
+        @endforeach
 
     </tbody>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Animal;
 use App\Models\Birth;
+use App\Models\Dead;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -121,12 +122,19 @@ class BirthController extends Controller
 
         }
 
+        // SI NACE MUERTO, PASARLO A MUERTO Y DESACTIVARLO
+
         if($request->deaths > 0){
 
             for ($i=0; $i < $request->deaths ; $i++) { 
 
                 $newAnimals[$i]['destination'] = 'dead';
+                $newAnimals[$i]['active'] = false;
 
+                $dead = Dead::create(['date'=>$request->date,'motive'=>'Nacimiento']);
+
+                $newAnimals[$i]['idDead'] = $dead->id;
+                
             }
 
         }
