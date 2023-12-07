@@ -153,6 +153,14 @@ class BirthController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $birth = Birth::find($id);
+
+        Animal::where('idBirth',$birth->id)->delete();
+
+        $birth->delete();
+
+        return redirect('births')->with(['delete'=>'ok','type'=>'cerdo']);
+
     }
 }

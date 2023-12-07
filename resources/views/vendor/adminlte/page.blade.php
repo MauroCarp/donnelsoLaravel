@@ -159,6 +159,26 @@
         };
 
         
+        const fireSwal = (typeAnimal,typeSwal,title)=>{
+
+            Swal.fire({
+                toast:true,
+                icon:typeSwal,
+                title: title,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+            })
+            
+            $('.nav-link').removeClass('active') 
+            $(`#${typeAnimal}-tab`).addClass('active')
+
+            $('.tab-pane').removeClass('active') 
+            $(`#tabs-${typeAnimal}`).addClass('active')
+            $(`#tabs-${typeAnimal}`).addClass('show')
+
+        }
+
         $(".table").DataTable({
 
             "language": {
@@ -186,6 +206,7 @@
             }
 
         });
+
 
     </script>
 

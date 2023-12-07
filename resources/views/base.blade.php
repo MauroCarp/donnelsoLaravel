@@ -108,33 +108,3 @@
 @stop
 
 @include('modals/' . $section . 's/new' . ucfirst($section))
-
-@if(session('created') == 'ok')
-
-    <script>
-
-        document.addEventListener('DOMContentLoaded',function(){
-
-            Swal.fire({
-                toast:true,
-                icon:'success',
-                title: '{{ $textCreated }} cargado',
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 3000,
-            })
-
-            let type = '{{ session("type") }}' 
-            
-            $('.nav-link').removeClass('active') 
-            $(`#${type}-tab`).addClass('active')
-
-            $('.tab-pane').removeClass('active') 
-            $(`#tabs-${type}`).addClass('active')
-            $(`#tabs-${type}`).addClass('show')
-
-        })
-
-    </script>
-
-@endif
