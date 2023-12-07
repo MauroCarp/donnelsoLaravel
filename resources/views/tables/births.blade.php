@@ -6,6 +6,7 @@
                 
             <th>Caravana Madre</th>
             <th>Caravana Macho reproductor</th>
+            <th>Caravana Hijos</th>
             <th>Fecha Parto</th>
             <th>Sexo</th> 
             <th>Mellizos</th> 
@@ -26,9 +27,10 @@
                 <tr>
                     <td>{{ $birth->motherCaravan }}</td>
                     <td>{{ $birth->maleCaravan }}</td>
+                    <td>{{ $birth->childrenCaravans }}</td>
                     <td>{{ $birth->date }}</td>
                     <td>{{ ($birth->sex == 'm') ? 'Macho' : (($birth->sex == 'f') ? 'Hembra' : 'Macho / Hembra') }}</td>
-                    <td>{{ $birth->twins }}</td>
+                    <td>@if($birth->twins) <i class="fa fa-check text-success"></i>@else <i class="fa fa-times text-danger"></i>@endif</td>
                     <td>{{ $birth->amount }}</td>
                     <td>{{ $birth->deaths }}</td>
 

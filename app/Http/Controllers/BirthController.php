@@ -21,7 +21,11 @@ class BirthController extends Controller
             
             $caravanMother = Animal::find($birth->idMother);
             $births[$key]['motherCaravan'] = $caravanMother['caravan'];
-            
+
+            $childrenCaravans = Animal::where('idBirth',$birth->id)->get();
+
+            $births[$key]['childrenCaravans'] = implode(' , ',array_column($childrenCaravans->toArray(),'caravan'));
+
             if($birth->idReproductive){
                 $caravanReproductive = Animal::find($birth->idReproductive);
                 $births[$key]['maleCaravan'] = $caravanReproductive['caravan'];
@@ -66,14 +70,15 @@ class BirthController extends Controller
         $mother = Animal::find($request->idMother);
 
         //BUSCO LOS HIJOS DE ESTA MADRE Y SELECCIONO EL NUMERO LUEGO DE LA BARRA /
-        $children = Animal::where('caravan','like',$mother->caravan . '/')
+        $children = Animal::where('caravan','like',$mother->caravan . '/%')
         ->where('type',$request->type)
-        ->last('caravan');
+        ->orderby('id','DESC')
+        ->first('caravan');
 
         if(!is_null($children)){
 
             $numberChildren = explode('/',$children->caravan);
-            $numberChildren = $numberChildren[count($numberChildren) - 1];
+            $numberChildren = $numberChildren[count($numberChildren) - 1] + 1;
 
         } else {
             
@@ -105,6 +110,7 @@ class BirthController extends Controller
             $newAnimals[] = array('type'=>$request->type,
                                     'caravan'=>$newCaravan,
                                     'age'=>'RN',
+                                    'destination'=>'RN',
                                     'sex'=>$sex,
                                     'idBirth'=>$newBirth->id,
                                 );
@@ -113,7 +119,7 @@ class BirthController extends Controller
 
         }
 
-        dd($newAnimals);
+        Animal::insert($newAnimals);
 
         return redirect('births')->with(['created'=>'ok']);
     }
