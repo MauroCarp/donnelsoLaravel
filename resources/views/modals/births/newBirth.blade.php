@@ -41,9 +41,9 @@
 
             <div class="form-group">
             
-                <label for="idMothers">Caravana: <i class="fa fa-sync-alt rotating d-none" id="loaderMothers"></i></label><br>
+                <label for="idMother">Caravana: <i class="fa fa-sync-alt rotating d-none" id="loaderMothers"></i></label><br>
             
-                <select name="idMothers[]" id="idMothers" required>
+                <select name="idMother" id="idMothers" required>
 
                 </select>
             
@@ -85,17 +85,23 @@
 
                 <div class="col-12">
 
-                    <div class="form-group">
+                    <div class="form-group" style="display:flex">
 
                         <label for="sexRadio">Sexo:</label> 
                         
-                        <div id="sexRadio">
+                        <div id="sexRadio" style="margin-left:10px">
 
-                            <b>M</b>&nbsp;<input type="radio" name="sex" value="m" style="height: 20px; width: 20px;"  checked="checked">  
+                            <label for="m">M</label>
 
-                            <b>H</b>&nbsp;<input type="radio" name="sex" value="f" style="height: 20px; width: 20px;"> 
+                            <input type="radio" name="sex" value="m" id="m" style="height: 20px; width: 20px;"  checked="checked">  
 
-                            <b>M/H</b>&nbsp;<input type="radio" name="sex" value="mf" style="height: 20px; width: 20px;">
+                            <label for="f">&nbsp;&nbsp;H</label>
+
+                            <input type="radio" name="sex" value="f" id="f" style="height: 20px; width: 20px;"> 
+
+                            <label for="mf">&nbsp;&nbsp;M/H</label>
+
+                            <input type="radio" name="sex" value="mf" id="mf" style="height: 20px; width: 20px;">
 
                         </div>
 
@@ -121,12 +127,32 @@
 
         <div class="col-xs-12 col-lg-6">
             
-            <div class="form-group">
-            
-                <label for="complications">Complicaciones:</label><br>
+            <div class="row">
 
-                <textarea cols="30" rows="4" class="form-control" name="complications" id="complications"></textarea>
-            
+                <div class="col-12">
+
+                    <div class="form-group">
+                    
+                        <label for="complications">Complicaciones:</label><br>
+        
+                        <textarea cols="30" rows="1" class="form-control" name="complications" id="complications"></textarea>
+                    
+                    </div>
+
+                </div>
+
+                <div class="col-12">
+
+                    <div class="form-group">
+                    
+                        <label for="deaths">Muertes:</label><br>
+        
+                        <input type="number" class="form-control" name="deaths" id="deaths" value="0"/>
+                    
+                    </div>
+
+                </div>
+
             </div>
 
         </div>

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Animal extends Model
 {
     use HasFactory;
+
+    public function mother()
+    {
+        
+        return $this->hasOne(Birth::class,'id','idMother');
+        
+
+    }
 }

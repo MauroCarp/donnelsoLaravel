@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Animal;
 use App\Models\Birth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BirthController extends Controller
@@ -13,7 +15,23 @@ class BirthController extends Controller
     public function index()
     {
 
-        $births = Birth::all();
+        $births = Birth::with('mother')->get();
+
+        foreach ($births as $key => $birth) {
+            
+            $caravanMother = Animal::find($birth->idMother);
+            $births[$key]['motherCaravan'] = $caravanMother['caravan'];
+            
+            if($birth->idReproductive){
+                $caravanReproductive = Animal::find($birth->idReproductive);
+                $births[$key]['maleCaravan'] = $caravanReproductive['caravan'];
+            }
+            
+            $date = new Carbon($birth->date);
+
+            $birth->date = $date->format('d-m-Y');
+
+        }
 
         return view('births',['births'=>$births]);
     }
@@ -23,7 +41,7 @@ class BirthController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -31,7 +49,73 @@ class BirthController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->toArray());
+
+        $validate = $request->validate([
+            'idMother'=>'required',
+            'date'=>'required',
+            'amount'=>'required',
+            'sex'=>'required',
+        ]);
+
+        $validate['complications'] = $request->complications;
+        $validate['deaths'] = $request->deaths;
+        $validate['twins'] = isset($request->twins) ? 1 : 0;
+
+        $newBirth = Birth::create($validate);
+
+        $mother = Animal::find($request->idMother);
+
+        //BUSCO LOS HIJOS DE ESTA MADRE Y SELECCIONO EL NUMERO LUEGO DE LA BARRA /
+        $children = Animal::where('caravan','like',$mother->caravan . '/')
+        ->where('type',$request->type)
+        ->last('caravan');
+
+        if(!is_null($children)){
+
+            $numberChildren = explode('/',$children->caravan);
+            $numberChildren = $numberChildren[count($numberChildren) - 1];
+
+        } else {
+            
+            $numberChildren = 0;
+
+        }
+
+        $newAnimals = array();
+
+        $sex = 'm';
+        
+        for ($i=0; $i < $validate['amount']; $i++) { 
+            
+            $newCaravan = $mother->caravan . '/' . $numberChildren;
+            
+            if($validate['sex'] == 'mf'){
+                
+                if($sex == 'm'){
+                    $sex = 'f';
+                } else {
+                    $sex = 'm';
+                } 
+
+
+            } else {
+                $sex = $validate['sex'];
+            }
+
+            $newAnimals[] = array('type'=>$request->type,
+                                    'caravan'=>$newCaravan,
+                                    'age'=>'RN',
+                                    'sex'=>$sex,
+                                    'idBirth'=>$newBirth->id,
+                                );
+
+            $numberChildren++;
+
+        }
+
+        dd($newAnimals);
+
+        return redirect('births')->with(['created'=>'ok']);
     }
 
     /**

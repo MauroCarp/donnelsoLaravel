@@ -109,7 +109,7 @@
     <script>
         
         const getFemales = () => {
-
+            
             let type = $('input[name="type"]:checked').val()
             let token = $('input[name="_token"]').val();
 

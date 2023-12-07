@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Birth extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function mother(){
+
+        return $this->belongsTo(Animal::class,'idMother','id');
+        
+    }
 }
