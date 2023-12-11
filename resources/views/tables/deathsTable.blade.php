@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped dt-responsive deathTable" width="100%">
+<table class="table table-bordered table-striped dt-responsive deadTable" width="100%">
          
     <thead>
      
@@ -16,26 +16,18 @@
     <tbody>
 
         @foreach ($deaths as $dead)
-
             @if($dead->type == $type)    
-
                 <tr>
                     <td>{{ $dead->caravan }}</td>
-                    <td>{{ $dead->date }}</td>
-                    <td>{{ $dead->motivo }}</td>
-                    <td>{{ $dead->date }}</td>
-                    <td>{{ ($dead->sex == 'm') ? 'Macho' : (($dead->sex == 'f') ? 'Hembra' : 'Macho / Hembra') }}</td>
-                    <td>@if($dead->twins) <i class="fa fa-check text-success"></i>@else <i class="fa fa-times text-danger"></i>@endif</td>
-                    <td>{{ $dead->amount }}</td>
-                    <td>{{ $dead->deads }}</td>
-
+                    <td>{{ date('d-m-Y',strtotime($dead->date)) }}</td>
+                    <td>{{ $dead->motive }}</td>
                     <td>
 
-                        <form action="deads/{{ $dead->id }}" method="POST" id="deletedeadForm{{$dead->id}}">
+                        <form action="deaths/{{ $dead->id }}" method="POST" id="deleteDeadForm{{$dead->id}}">
 
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btnDeletedead" type="submit" form="deletedeadForm{{$dead->id}}"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger btnDeleteDead" type="submit" form="deleteDeadForm{{$dead->id}}"><i class="fa fa-times"></i></button>
 
                         </form>
 

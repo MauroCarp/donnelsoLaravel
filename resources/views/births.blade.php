@@ -44,7 +44,7 @@
 
         document.addEventListener('DOMContentLoaded',function(){
 
-            fireCreatedSwal('{{session("type")}}','success','Nacimiento Cargado')
+            fireSwal('{{session("type")}}','success','Nacimiento Cargado')
 
         })
         

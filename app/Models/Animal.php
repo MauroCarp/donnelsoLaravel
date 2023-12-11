@@ -16,4 +16,12 @@ class Animal extends Model
         
 
     }
+
+    public function dead()
+    {
+        
+        return $this->hasOne(Dead::class,'id','idDead');
+        
+
+    }
 }

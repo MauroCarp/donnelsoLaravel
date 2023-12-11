@@ -158,6 +158,42 @@
 
         };
 
+        const getAnimals = () => {
+            
+            let type = $('input[name="type"]:checked').val()
+            let token = $('input[name="_token"]').val();
+
+            $.ajax({
+                url: '{{ route("getAnimals") }}',
+                method: 'POST',
+                data: {
+                    'type': type,
+                    '_token': token
+                },
+            }).done(resp => {
+
+                let options = []
+           
+                resp.forEach(animal => {
+                    options.push({'id':`${animal.id}`,'text':`${animal.caravan}`})
+                });
+                
+                $('#caravans').html('')
+
+                let config = {                    
+                    placeholder:'',
+                    width: '100%',
+                    data:options
+                }
+                    
+                $('#caravans').select2(config) 
+
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                $('#loaderMothers').hide();
+            });
+
+        };
+
         
         const fireSwal = (typeAnimal,typeSwal,title)=>{
 
