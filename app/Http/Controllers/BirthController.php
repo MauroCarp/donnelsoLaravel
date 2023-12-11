@@ -40,7 +40,15 @@ class BirthController extends Controller
 
         }
 
-        return view('births',['births'=>$births]);
+        $males = Animal::where(['sex'=>'m','active'=>1])->get();
+
+        $malesByType = array();
+
+        foreach ($males as $key => $male) {
+            $malesByType[$male['type']][] = array('id'=>$male['id'],'caravan'=>$male['caravan']);    
+        }
+
+        return view('births',['births'=>$births,'malesByType'=>$malesByType]);
     }
 
     /**
@@ -166,6 +174,7 @@ class BirthController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        return response('update');
     }
 
     /**
@@ -183,4 +192,11 @@ class BirthController extends Controller
         return redirect('births')->with(['delete'=>'ok','type'=>'cerdo']);
 
     }
+
+    public function updateBirth(Request $request){
+        dd('hola');
+        return response()->json($request);
+
+    }
+    
 }

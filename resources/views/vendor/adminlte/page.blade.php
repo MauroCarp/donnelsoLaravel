@@ -183,6 +183,7 @@
                 let config = {                    
                     placeholder:'',
                     width: '100%',
+                    dropdownAutoWidth:true,
                     data:options
                 }
                     
@@ -193,8 +194,7 @@
             });
 
         };
-
-        
+  
         const fireSwal = (typeAnimal,typeSwal,title)=>{
 
             Swal.fire({
@@ -214,6 +214,12 @@
             $(`#tabs-${typeAnimal}`).addClass('show')
 
         }
+
+        $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
+
+            $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
+
+        });
 
         $(".table").DataTable({
 
@@ -239,7 +245,8 @@
                 },
                 "ordering":"false",
 
-            }
+            },
+            'responsive':true
 
         });
 

@@ -38,6 +38,7 @@ Route::post('/services/reproductiveMales', [App\Http\Controllers\ServiceControll
 Route::resource('/services', 'App\Http\Controllers\ServiceController')->middleware('auth');
 Route::resource('/events', 'App\Http\Controllers\EventController')->middleware('auth');
 Route::resource('/purchases', 'App\Http\Controllers\PurchaseController')->middleware('auth');
+Route::post('/births/updateBirth', [App\Http\Controllers\BirthController::class, 'updateBirth'])->middleware('auth');
 Route::resource('/births', 'App\Http\Controllers\BirthController')->middleware('auth');
 
 

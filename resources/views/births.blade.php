@@ -34,6 +34,28 @@
 
     })    
 
+    $('.reproductiveCaravans').each(function(){
+
+        $(this).select2()
+
+    })
+
+    $('.birthTable').on('click','.btnUpdateMaleCaravan',function(e){
+
+        let selectValue = $(`#${$(this).attr('idSelect')}`).val()
+
+        $.ajax({
+            metho:'POST',
+            url:'births/updateBirth',
+            data:{
+                _token:$('input[name="_token"]').val(),
+                id:selectValue
+            }
+        }).done(resp=>{
+            console.log(resp)
+        })
+    })
+
 </script>
 
 @endsection

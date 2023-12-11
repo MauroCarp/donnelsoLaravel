@@ -122,7 +122,7 @@ class InseminationController extends Controller
     
     public function getFemales(Request $request)
     {        
-        $females = Animal::where(['type'=>$request->type,'sex'=>'female'])->get(['id','caravan']);
+        $females = Animal::where(['type'=>$request->type,'sex'=>'f'])->get(['id','caravan']);
 
         return response()->json($females);
     }
