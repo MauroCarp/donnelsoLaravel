@@ -11,10 +11,9 @@ class Health extends Model
 
     protected $guarded = [];
 
-    public function animal(){
-
-        return $this->belongsTo(Animal::class,'id','idHealth');
-        
+    public function animal()
+    {
+        return $this->belongsTo(Animal::class, 'idAnimal', 'id');
     }
 
 }

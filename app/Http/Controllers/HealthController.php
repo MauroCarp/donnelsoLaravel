@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Animal;
+use App\Models\Event;
 use App\Models\Health;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,8 @@ class HealthController extends Controller
      */
     public function index()
     {
-        $health = Health::with('animal')->get();
+
+        $healths = Health::with('animal')->get();
 
         $animals = Animal::where('active',1)->get();
 
@@ -23,7 +25,7 @@ class HealthController extends Controller
             $animalsByType[$animal['type']][] = array('id'=>$animal['id'],'caravan'=>$animal['caravan']);    
         }
 
-        return view('health',['health'=>$health,'animalsByType'=>$animalsByType]);
+        return view('health',['health'=>$healths,'animalsByType'=>$animalsByType]);
     }
 
     /**
@@ -39,7 +41,36 @@ class HealthController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validate = $request->validate([
+            'type'=>'required',
+            'date'=>'required',
+            'motive'=>'required',
+            'aplication'=>'required',
+        ]);
+
+        $validate['comments'] = $request->comments;
+        $validate['vetCost'] = $request->vetCost;
+
+        $caravan = '';
+
+        if($validate['aplication'] == 'Individual'){
+
+            $animal = Animal::find($request->caravans);
+
+            $caravan = 'Caravana: ' . $animal->caravan;
+
+            $validate['idAnimal'] = $request->caravans;
+
+        }
+
+        $health = Health::create($validate);
+
+        $title = 'Sanidad ' . $validate['type'] . '. ' . $validate['motive'] . ' ' . $validate['aplication'] . ' ' . $caravan;
+
+        Event::create(['start'=>$validate['date'],'end'=>$validate['date'],'title'=>$title,'referenceId'=>$health->id]);
+
+        return redirect('health')->with(['created'=>'ok','type'=>$request->type]);
     }
 
     /**
@@ -71,6 +102,21 @@ class HealthController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $health = Health::find($id);
+
+        $type = $health->type;
+
+        $health->delete();
+
+        $event = Event::where('referenceId',$id)
+        ->where('title','like','Sanidad%')
+        ->first('id');
+
+        $eventToDelete = Event::find($event->id);
+        $eventToDelete->delete();
+
+        return redirect('health')->with(['delete'=>'ok','type'=>$type]);
+
     }
 }

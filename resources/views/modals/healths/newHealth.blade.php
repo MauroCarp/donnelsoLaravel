@@ -2,7 +2,7 @@
 
 @section('modalContent')
 
-<form action="deaths" method="POST" id="newHealthForm" style="margin-bottom:0">
+<form action="health" method="POST" id="newHealthForm" style="margin-bottom:0">
     @csrf        
 
     <div class='row'>
@@ -57,7 +57,7 @@
                 
                 <select name="motive" id="motive" class="form-control" required>
 
-                    <option value="">Seleccionar Motivo</option>
+                    <option value="" disabled selected>Seleccionar Motivo</option>
                     <option value="Desparacitacion">Desparacitaci&oacute;n</option>
                     <option value="Vacunacion">Vacunaci&oacute;n</option>
                     <option value="Tratamiento">Tratamiento</option>
@@ -89,13 +89,13 @@
 
         </div>
 
-        <div class="col-xs-12 col-lg-6  d-none">
+        <div class="col-xs-12 col-lg-6 d-none" id="inputCaravan">
 
             <div class="form-group">
             
-                <label for="caravan">Caravana:</label><br>
-            
-                <select name="caravan" id="caravan">
+                <label for="caravans">Caravana:</label><br>
+                
+                <select name="caravans" id="caravans">
 
                 </select>
             
@@ -127,7 +127,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
 
-                <input type="number" step="0.10" id="vetCost" name="vetCost" class="form-control">
+                <input type="number" step="0.10" id="vetCost" name="vetCost" value="0" class="form-control">
 
             </div>
 

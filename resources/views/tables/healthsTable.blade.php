@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped dt-responsive deadTable" width="100%">
+<table class="table table-bordered table-striped dt-responsive healthTable" width="100%">
          
     <thead>
      
@@ -18,15 +18,16 @@
     <tbody>
 
         @foreach ($health as $reg)
+
             @if($reg->type == $type)    
+
                 <tr>
                     <td>{{ date('d-m-Y',strtotime($reg->date)) }}</td>
-                    <td><td>
-                    <td><td>
-                    <td><td>
-                    <td><td>
-                    <td><td>
-                    <td><td>
+                    <td>{{ $reg->motive }}</td>
+                    <td>{{ $reg->aplication }}</td>
+                    <td>{{ $reg->animal->caravan ?? '-'}}</td>
+                    <td>{{ $reg->comments}}</td>
+                    <td>{{ number_format($reg->vetCost,2,',','.') }}</td>
                     <td>
 
                         <form action="health/{{ $reg->id }}" method="POST" id="deleteHealthForm{{$reg->id}}">
@@ -38,6 +39,7 @@
                         </form>
 
                     </td>
+
                 </tr>
 
             @endif

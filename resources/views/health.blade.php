@@ -4,35 +4,49 @@
 
 <script>
 
-    // $('#btnNewBirthMain').on('click',getFemales)
+    $('#btnNewHealthMain').on('click',getAnimals)
 
-    // $('input[name="type"]').on('change',getFemales)
+    $('input[name="type"]').on('change',getAnimals)
 
-    // $('.birthTable').on('click','.btnDeleteBirth',function(e){
+    $('#aplication').on('change',function(){
 
-    //     e.preventDefault()
+        let val = $(this).val()
 
-    //     Swal.fire({
-    //     title: "Estas seguro?",
-    //     text: "Si no lo estas, puedes cancelar!",
-    //     icon: "warning",
-    //     showCancelButton: true,
-    //     confirmButtonColor: "#3085d6",
-    //     cancelButtonColor: "#d33",
-    //     confirmButtonText: "Si, eliminar!",
-    //     cancelButtonText: "Cancelar"
+        if(val == 'Individual')
+            $('#inputCaravan').removeClass('d-none')
+        else
+            $('#inputCaravan').addClass('d-none')
+        
+    })
 
-    //     }).then((result) => {
+    if($('#aplication').val() == 'Individual')
+        $('#inputCaravan').removeClass('d-none')
 
-    //         if (result.isConfirmed) {
+    $('.healthTable').on('click','.btnDeleteHealth',function(e){
+
+        e.preventDefault()
+
+        Swal.fire({
+        title: "Estas seguro?",
+        text: "Si no lo estas, puedes cancelar!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "Cancelar"
+
+        }).then((result) => {
+
+            if (result.isConfirmed) {
                 
-    //             e.currentTarget.form.submit()
+                e.currentTarget.form.submit()
 
-    //         }
+            }
 
-    //     });
+        });
 
-    // })    
+    })    
 
     // $('.reproductiveCaravans').each(function(){
 

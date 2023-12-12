@@ -28,7 +28,7 @@ class Animal extends Model
     public function health()
     {
         
-        return $this->hasOne(Health::class,'id','idHealth');
+        return $this->belongsTo(Health::class,'id','idAnimal');
         
 
     }
