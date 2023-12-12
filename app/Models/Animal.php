@@ -24,4 +24,12 @@ class Animal extends Model
         
 
     }
+
+    public function health()
+    {
+        
+        return $this->hasOne(Health::class,'id','idHealth');
+        
+
+    }
 }

@@ -336,7 +336,7 @@ return [
         [
             'text' => 'Sanidad',
             'icon' => 'far fa fa-fw fa-plus-square',
-            'route'  => 'sanidad',
+            'url'  => 'health',
         ],
         [
             'text' => 'Muertes',
