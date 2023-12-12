@@ -7,6 +7,7 @@ use App\Models\Birth;
 use App\Models\Dead;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Math\BrickMathCalculator;
 
 class BirthController extends Controller
 {
@@ -173,8 +174,6 @@ class BirthController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        return response('update');
     }
 
     /**
@@ -194,9 +193,14 @@ class BirthController extends Controller
     }
 
     public function updateBirth(Request $request){
-        dd('hola');
-        return response()->json($request);
 
+        $birth = Birth::find($request->idBirth);
+
+        $birth->idReproductive = $request->idMale;
+
+        $birth->save();
+        
+        return response('ok',200);
     }
     
 }

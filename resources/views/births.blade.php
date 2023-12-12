@@ -40,19 +40,50 @@
 
     })
 
-    $('.birthTable').on('click','.btnUpdateMaleCaravan',function(e){
+    $('.birthTable').on('click','.btnUpdateMaleCaravan',function(){
 
-        let selectValue = $(`#${$(this).attr('idSelect')}`).val()
+        let idSelect = $(this).attr('idSelect')
+
+        let selectValue = $(`#${idSelect}`).val()
+
+        let selectOptText = $(`#${idSelect} option[value="${selectValue}"]`).text();
+
+        let cell = $(`#${idSelect}`).parent().parent()
+
+        let idBirth = idSelect.replace('maleCaravan','')
 
         $.ajax({
-            metho:'POST',
-            url:'births/updateBirth',
+            method:'POST',
+            url:`births/updateBirth`,
             data:{
-                _token:$('input[name="_token"]').val(),
-                id:selectValue
-            }
+                'idMale': selectValue,
+                'idBirth': idBirth,
+                '_token': $('input[name="_token"]').val(),
+            },
+            beforeSend:function(){
+
+                $(`#${idSelect}`).parent().remove() 
+
+                cell.html(`<i class="fa rotating fa-sync-alt"></i>`)
+
+            },
         }).done(resp=>{
-            console.log(resp)
+
+            cell.html(selectOptText)
+
+            if(resp == 'ok'){
+
+                Swal.fire({
+                    toast:true,
+                    icon:'success',
+                    title: 'Macho asignado',
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                })
+
+            }
+
         })
     })
 
