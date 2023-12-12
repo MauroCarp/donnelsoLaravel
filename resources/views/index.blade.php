@@ -74,7 +74,7 @@
                                         <div class="row">
             
                                             <div class="col-lg-10">
-                                                <span class="info-box-text">${event.title}</span>
+                                                <span class="info-box-text" style="white-space:normal">${event.title}</span>
                                             </div>
                                             
                                             <div class="col-lg-2" style="text-align: right">
