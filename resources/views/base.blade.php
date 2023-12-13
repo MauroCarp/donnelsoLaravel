@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal{{ ucfirst($section) }}" id="btnNew{{ ucfirst($section) }}Main">{{ $btnText }}</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal{{ ucfirst($section) }}" id="btnNew{{ ucfirst($section) }}Main">{{ $btnText }}</button>
     <br>
     <br>
 

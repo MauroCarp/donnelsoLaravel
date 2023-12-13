@@ -104,6 +104,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-primary btn-block" type="submit" form="newDeadForm" id="btnNewDead" name="btnNewDead">Cargar Muerte</button>
+    <button class="btn btn-success btn-block" type="submit" form="newDeadForm" id="btnNewDead" name="btnNewDead">Cargar Muerte</button>
 
 @endsection

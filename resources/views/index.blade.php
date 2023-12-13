@@ -8,7 +8,7 @@
 
         <div class="col-lg-8 col-sm-12 col-md-12">
 
-            <button type="button" class="btn btn-primary mt-2 ml-3" data-toggle="modal" data-target="#modalEvent" id="btnNewEventIndex">Agregar Nuevo Evento</button>
+            <button type="button" class="btn btn-success mt-2 ml-3" data-toggle="modal" data-target="#modalEvent" id="btnNewEventIndex">Agregar Nuevo Evento</button>
 
             <div id='calendar'></div>
 

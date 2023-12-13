@@ -39,9 +39,7 @@
 
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
-                <button type="submit" class="btn btn-primary" form="formNewEvent" >Guardar</button>
+                <button type="submit" class="btn btn-success" form="formNewEvent" >Guardar</button>
                 
             </div>
 

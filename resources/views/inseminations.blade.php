@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInsemination" id="btnNewInseminationMain">Nueva Inseminaci&oacute;n</button>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalInsemination" id="btnNewInseminationMain">Nueva Inseminaci&oacute;n</button>
     <br>
     <br>
 

@@ -8,7 +8,7 @@
 
 @section('content')
 
-<button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#modalService" id="btnNewServiceMain">Nuevo Servicio</button>
+<button type="button" class="btn btn-success mb-2" data-toggle="modal" data-target="#modalService" id="btnNewServiceMain">Nuevo Servicio</button>
 
 <div class="row">
 

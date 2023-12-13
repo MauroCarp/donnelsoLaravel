@@ -166,6 +166,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-primary btn-block" type="submit" form="newBirthForm" id="btnNewBirth" name="btnNewBirth">Cargar Nacimiento</button>
+    <button class="btn btn-success btn-block" type="submit" form="newBirthForm" id="btnNewBirth" name="btnNewBirth">Cargar Nacimiento</button>
 
 @endsection
