@@ -12,35 +12,35 @@
 
         /* Unchecked */
         input[type="radio"] + .icon-cerdo:before,
-        input[type="radio"] + label > .icon-cerdo:before { content: "\e903";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-cerdo:before { content: "\e906";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-chivo:before,
-        input[type="radio"] + label > .icon-chivo:before { content: "\e904";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-chivo:before { content: "\e907";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-cordero:before,
-        input[type="radio"] + label > .icon-cordero:before { content: "\e905";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-cordero:before { content: "\e908";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-pollo:before,
-        input[type="radio"] + label > .icon-pollo:before { content: "\e908";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-pollo:before { content: "\e90b";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-vaca:before,
-        input[type="radio"] + label > .icon-vaca:before { content: "\e90a";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-vaca:before { content: "\e90d";color:black; border-right-color: black;} 
 
         /* CHECKED */
         input[type="radio"]:checked + .icon-cerdo:before,
-        input[type="radio"]:checked + label > .icon-cerdo:before { content: "\e903";color:green; }
+        input[type="radio"]:checked + label > .icon-cerdo:before { content: "\e906";color:green; }
 
         input[type="radio"]:checked + .icon-chivo:before,
-        input[type="radio"]:checked + label > .icon-chivo:before { content: "\e904";color:green; }
+        input[type="radio"]:checked + label > .icon-chivo:before { content: "\e907";color:green; }
 
         input[type="radio"]:checked + .icon-cordero:before,
-        input[type="radio"]:checked + label > .icon-cordero:before { content: "\e905";color:green; }
+        input[type="radio"]:checked + label > .icon-cordero:before { content: "\e908";color:green; }
 
         input[type="radio"]:checked + .icon-pollo:before,
-        input[type="radio"]:checked + label > .icon-pollo:before { content: "\e908";color:green; }
+        input[type="radio"]:checked + label > .icon-pollo:before { content: "\e90b";color:green; }
 
         input[type="radio"]:checked + .icon-vaca:before,
-        input[type="radio"]:checked + label > .icon-vaca:before { content: "\e90a";color:green; }
+        input[type="radio"]:checked + label > .icon-vaca:before { content: "\e90d";color:green; }
 
 
         .select2-container .select2-selection--single {
@@ -101,7 +101,10 @@
         @endif
 
     </div>
+    
 @stop
+
+@include('modals/sales/newPreSale')
 
 @section('adminlte_js')
     @stack('js')
