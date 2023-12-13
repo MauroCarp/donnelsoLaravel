@@ -351,14 +351,18 @@ return [
                 [
                     'text' => 'Pre-ventas',
                     'icon' => 'far fa fa-fw fa-list-alt',
-                    'id' => 'btnPreVentas',
-                    'route'  => 'preVentas',
+                    'id' => 'btnPreSales',
+                    'url'=>'#',
+                    'data' => [
+                        'toggle' => 'modal',
+                        'target' => '#modalPreSale',
+                    ],
                 ],
                 [
                     'text' => 'Ventas',
                     'icon' => 'far fa fa-fw fa-list-alt',
                     'id' => 'btnVentas',
-                    'route'  => 'ventas',
+                    'url'  => 'sales',
                 ],
                 [
                     'text' => 'Costos',

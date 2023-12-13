@@ -24,8 +24,8 @@ Route::post('/deaths/getAnimals', [App\Http\Controllers\DeadController::class, '
 Route::resource('/deaths', 'App\Http\Controllers\DeadController')->middleware('auth');
 // Route::get('/health', [App\Http\Controllers\HealthController::class, 'index'])->name('sanidad')->middleware('auth');
 
-Route::get('/sales', [App\Http\Controllers\SaleController::class, 'sales'])->name('ventas')->middleware('auth');
-Route::get('/preSales', [App\Http\Controllers\SaleController::class, 'preSales'])->name('preVentas')->middleware('auth');
+// Route::get('/sales', [App\Http\Controllers\SaleController::class, 'sales'])->name('ventas')->middleware('auth');
+// Route::get('/preSales', [App\Http\Controllers\SaleController::class, 'preSales'])->name('preVentas')->middleware('auth');
 
 
 Route::post('/inseminations/getFemales', [App\Http\Controllers\InseminationController::class, 'getFemales'])->name('inseminaciones.hembras')->middleware('auth');
@@ -41,5 +41,9 @@ Route::resource('/purchases', 'App\Http\Controllers\PurchaseController')->middle
 Route::post('/births/updateBirth', [App\Http\Controllers\BirthController::class, 'updateBirth'])->middleware('auth');
 Route::resource('/births', 'App\Http\Controllers\BirthController')->middleware('auth');
 Route::resource('/health', 'App\Http\Controllers\HealthController')->middleware('auth');
+
+Route::post('/sales/getDetails', [App\Http\Controllers\SaleController::class, 'getDetails'])->middleware('auth');
+Route::post('/sales/finalize', [App\Http\Controllers\SaleController::class, 'finalize'])->middleware('auth');
+Route::resource('/sales', 'App\Http\Controllers\SaleController')->middleware('auth');
 
 
