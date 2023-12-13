@@ -26,13 +26,13 @@
 }
 
 .icon-cuartoTra:before {
-  content: "\e900";
+  content: "\e902";
 }
 .icon-entero:before {
-  content: "\e901";
+  content: "\e900";
 }
 .icon-medio:before {
-  content: "\e902";
+  content: "\e901";
 }
 .icon-cuartoDel:before {
   content: "\e903";
