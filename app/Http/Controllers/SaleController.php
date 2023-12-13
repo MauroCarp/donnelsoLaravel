@@ -13,7 +13,8 @@ class SaleController extends Controller
     public function index()
     {
 
-        $sales = Sale::all();
+        $sales = Sale::orderBy('preSale','desc')
+        ->orderBy('deliveryDate','desc')->get();
 
         foreach ($sales as $key => $sale) {
 

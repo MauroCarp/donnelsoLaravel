@@ -246,9 +246,8 @@
                 "sNext":     "Siguiente",
                 "sPrevious": "Anterior"
                 },
-                "ordering":"false",
-
             },
+            "ordering":false,
             'responsive':true
 
         });
