@@ -371,7 +371,7 @@ return [
                     'url'=>'#',
                     'data' => [
                         'toggle' => 'modal',
-                        'target' => '#modalCostos',
+                        'target' => '#modalCosts',
                     ],
                 ],
             ]

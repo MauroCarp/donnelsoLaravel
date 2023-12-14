@@ -105,6 +105,7 @@
 @stop
 
 @include('modals/sales/newPreSale')
+@include('modals/costs/costs')
 
 @section('adminlte_js')
     @stack('js')
