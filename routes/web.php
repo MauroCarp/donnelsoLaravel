@@ -45,5 +45,6 @@ Route::resource('/health', 'App\Http\Controllers\HealthController')->middleware(
 Route::post('/sales/getDetails', [App\Http\Controllers\SaleController::class, 'getDetails'])->middleware('auth');
 Route::post('/sales/finalize', [App\Http\Controllers\SaleController::class, 'finalize'])->middleware('auth');
 Route::resource('/sales', 'App\Http\Controllers\SaleController')->middleware('auth');
+Route::resource('/costs', 'App\Http\Controllers\CostController')->middleware('auth');
 
 

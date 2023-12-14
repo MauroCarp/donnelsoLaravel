@@ -6,13 +6,13 @@
 
             <div class="modal-header">
 
-                <h5 class="modal-title">Nueva Pre-Venta</h5>
+                <h5 class="modal-title">Tabla de Costos</h5>
 
             </div>
 
             <div class="modal-body">
 
-                <form action="sales" method="POST" id="newPreSaleForm">
+                <form action="costs" method="POST" id="costForm">
                     @csrf           
                     <div class='row'>
                         
@@ -46,118 +46,185 @@
                                 </label>
                         
                         </div>
+                        
+                        <div class="row border-bottom border-success border-top pb-1 mt-1">
+
+                            <div class="col-xs-6 col-lg-4 border-right border-success">
+    
+                                <label for="costEntire">Entero:</label>
+                                
+                                <div class="input-group">                    
+                                                    
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costEntire" id="costEntire" class="form-control" value="0"> 
+
+                                </div>
+                                 
+                            </div>
+        
+                            <div class="col-xs-6 col-lg-4 border-right border-success">
+        
+                                <label for="costHalf">Medio:</label>
+                                
+                                <div class="input-group">                    
+                                                        
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costHalf" id="costHalf" class="form-control" value="0"> 
+
+                                </div>
+    
+                            </div>
+        
+                            <div class="col-xs-6 col-lg-4">
+    
+                                <label for="costRibs">Costillar:</label>
+                                
+                                <div class="input-group">                    
+                                                            
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costRibs" id="costRibs" class="form-control" value="0"> 
+
+                                </div> 
+                                
+                            </div>
+        
+                        
+                        </div>
+        
+                        <div class="row py-1 border-bottom border-success">
+        
+                            <div class="col-xs-6 col-lg-4 border-right border-success">
+
+                                <label for="costShoulder">Paleta:</label>
+                                
+                                <div class="input-group">                    
+                                                                
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costShoulder" id="costShoulder" class="form-control" value="0"> 
+
+                                </div>                                    
+
+                            </div>
+        
+                            <div class="col-xs-6 col-lg-4 border-right border-success">
+                        
+                                <label for="costRearQuarter">1/4 Trasero:</label>
+                                
+                                <div class="input-group">                    
+                                                                    
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costRearQuarter" id="costRearQuarter" class="form-control" value="0"> 
+
+                                </div>
+                                    
+                            </div>
+        
+                            <div class="col-xs-6 col-lg-4">
+    
+                                <label for="costHead">Cabeza:</label>
+
+                                <div class="input-group">                    
+                                                                        
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costHead" id="costHead" class="form-control" value="0"> 
+
+                                </div>
+    
+                            </div>
+        
+                        
+                        </div>
+
+                        <div class="row pt-1">
+        
+                            <div class="col-xs-6 col-lg-4 border-right border-success">
+
+                                <label for="costMatadero">Matadero:</label>
+                                
+                                <div class="input-group">                    
+                                                                
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costMatadero" id="costMatadero" class="form-control" value="0"> 
+
+                                </div>                                    
+
+                            </div>
+        
+                            <div class="col-xs-6 col-lg-4 border-right border-success">
+                        
+                                <label for="costAdmin">Admin:</label>
+                                
+                                <div class="input-group">                    
+                                                                    
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="costAdmin" id="costAdmin" class="form-control" value="0"> 
+
+                                </div>
+                                    
+                            </div>
+        
+                            <div class="col-xs-6 col-lg-4">
+    
+                                <label for="percentageEmployed">% Empleado:</label>
+
+                                <div class="input-group">                    
+                                                                        
+                                    <div class="input-group-prepend">
+
+                                        <span class="input-group-text"><b>%</b></span>
+
+                                    </div>
+
+                                    <input type="number" step="0.01" name="percentageEmployed" id="percentageEmployed" class="form-control" value="0"> 
+
+                                </div>
+    
+                            </div>
+        
+                        
+                        </div>
 
                     </div> 
-
-                    <div class="row">
-
-                        <div class="col-xs-12 col-lg-6">
-
-                            <div class="form-group">
-                            
-                                <label for="deliveryDate">Fecha Entrega:</label>
-                                
-                                <input type="date" name="deliveryDate" id="deliveryDate" class="form-control" required> 
-                                
-                            </div>
-                            
-                        </div>
-
-                        <div class="col-xs-12 col-lg-6">
-                            
-                            <div class="form-group">
-                            
-                                <label for="client">Cliente:</label>
-                            
-                                <input type="text" id="client" name="client" class="form-control" required>
-                            
-                            </div>
-
-                        </div>
-                    
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-xs-6 col-lg-4">
-
-                            <div class="form-group">
-                            
-                                <label for="amountEntire">Entero:</label>
-                                
-                                <input type="number" name="amountEntire" id="amountEntire" class="form-control" value="0"> 
-                                
-                            </div>
-                            
-                        </div>
-
-                        <div class="col-xs-6 col-lg-4">
-
-                            <div class="form-group">
-                            
-                                <label for="amountHalf">Medio:</label>
-                                
-                                <input type="number" name="amountHalf" id="amountHalf" class="form-control" value="0"> 
-                                
-                            </div>
-                            
-                        </div>
-
-                        <div class="col-xs-6 col-lg-4">
-
-                            <div class="form-group">
-                            
-                                <label for="amountRibs">Costillar:</label>
-                                
-                                <input type="number" name="amountRibs" id="amountRibs" class="form-control" value="0"> 
-                                
-                            </div>
-                            
-                        </div>
-
-                    
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-xs-6 col-lg-4">
-
-                            <div class="form-group">
-                            
-                                <label for="amountShoulder">Paleta:</label>
-                                
-                                <input type="number" name="amountShoulder" id="amountShoulder" class="form-control" value="0"> 
-                                
-                            </div>
-                            
-                        </div>
-
-                        <div class="col-xs-6 col-lg-4">
-
-                            <div class="form-group">
-                            
-                                <label for="amountRearQuarter">1/4 Trasero:</label>
-                                
-                                <input type="number" name="amountRearQuarter" id="amountRearQuarter" class="form-control" value="0"> 
-                                
-                            </div>
-                            
-                        </div>
-
-                        <div class="col-xs-6 col-lg-4">
-
-                            <div class="form-group">
-                            
-                                <label for="amountHead">Cabeza:</label>
-                                
-                                <input type="number" name="amountHead" id="amountHead" class="form-control" value="0"> 
-                                
-                            </div>
-                            
-                        </div>
-
-                    
-                    </div>
 
                 </form>
 
@@ -165,7 +232,7 @@
 
             <div class="modal-footer">
 
-                <button class="btn btn-success btn-block" type="submit" form="newPreSaleForm" id="btnNewSale" name="btnNewSale">Cargar Pre-Venta</button>
+                <button class="btn btn-success btn-block" type="submit" form="costForm" id="btnCosts" name="btnCosts">Actualizar Costos</button>
                 
             </div>
 
