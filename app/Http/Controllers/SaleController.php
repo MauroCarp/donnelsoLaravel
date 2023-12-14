@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
@@ -65,7 +66,21 @@ class SaleController extends Controller
 
         $validate['preSale'] = 1;
 
-        Sale::create($validate);
+        $sale = Sale::create($validate);
+
+        if ($request->type == 'cerdo'){
+           $type = 'Lechón';
+        } else if ($request->type == 'ovino'){
+            $type = 'Cordero';
+        } else {
+            $type = $request->type; 
+        }
+
+        Event::create(['title'=>'Venta: ' . $type . ' para ' . $request->client . '. Sin Confirmar',
+                       'start'=>$request->deliveryDate,
+                       'end'=>$request->deliveryDate,
+                       'referenceId'=>$sale->id
+        ]);
 
         return redirect('sales')->with('created','ok');
 
@@ -100,7 +115,19 @@ class SaleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $sale = Sale::find($id);
+
+        $event = Event::where('referenceId',$sale->id)
+        ->where('title','like','Venta:%')
+        ->first();
+
+        $event->delete();
+
+        $sale->delete();
+
+        return redirect('sales')->with('delete','ok');
+
     }
 
     public function finalize(Request $request){
@@ -117,6 +144,33 @@ class SaleController extends Controller
         $sale->preSale = 0;
 
         $sale->save();
+
+        
+        if ($sale->type == 'cerdo'){
+            $type = 'Lechón';
+         } else if ($sale->type == 'ovino'){
+             $type = 'Cordero';
+         } else {
+             $type = $sale->type; 
+         }
+ 
+         $event = Event::where('referenceId',$sale->id)
+         ->where('title','like','Venta:%')
+         ->first();
+
+         if(!is_null($event)){
+
+             $event->title = 'Venta: ' . $type . ' para ' . $sale->client . '. Confirmado';
+             $event->save();
+             
+        } else {
+
+            Event::create(['title'=>'Venta: ' . $type . ' para ' . $sale->client . '. Confirmado',
+                           'start'=>$sale->deliveryDate,
+                           'end'=>$sale->deliveryDate,
+                           'referenceId'=>$sale->id]);
+             
+         }
 
         return redirect('sales')->with('finalize','ok');
 
