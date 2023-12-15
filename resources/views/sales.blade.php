@@ -35,7 +35,7 @@
                 <td>{{ $sale->client }}</td>
                 <td>{{ date('d-m-Y',strtotime($sale->deliveryDate)) }}</td>
                 <td>{{ ucfirst($sale->type) }}</td>
-                <td><button type="button" class="btn btn-primary btnDetails" idSale="{{ $sale->id }}"><i class="fa fa-list-alt"></i> Detalles</button></td>
+                <td><button type="button" class="btn btn-primary btnDetails" idSale="{{ $sale->id }}" animalType="{{ $sale->type }}"><i class="fa fa-list-alt"></i> Detalles</button></td>
                 <td>
 
                     @if($sale->preSale)
@@ -76,7 +76,7 @@
         const getDetails = (idSale,finalize = '')=>{
 
             let token = $('input[name="_token"]').val()
-            console.log(token)
+
             $.ajax({
                 method:'POST',
                 url:'sales/getDetails',
@@ -86,24 +86,30 @@
                 }
                 
             }).done(function(resp){
-                console.log(resp)
+             
                 $(`#amountEntire${finalize}`).html(resp.amountEntire)
                 $(`#kgEntire${finalize}`).html(resp.kgEntire)
+                $(`#costEntire${finalize}`).html(resp.costEntire)
 
                 $(`#amountHalf${finalize}`).html(resp.amountHalf)
                 $(`#kgHalf${finalize}`).html(resp.kgHalf)
+                $(`#costHalf${finalize}`).html(resp.costHalf)
 
                 $(`#amountRibs${finalize}`).html(resp.amountRibs)
                 $(`#kgRibs${finalize}`).html(resp.kgRibs)
+                $(`#costRibs${finalize}`).html(resp.costRibs)
 
                 $(`#amountShoulder${finalize}`).html(resp.amountShoulder)
                 $(`#kgShoulder${finalize}`).html(resp.kgShoulder)
+                $(`#costShoulder${finalize}`).html(resp.costShoulder)
 
                 $(`#amountRearQuarter${finalize}`).html(resp.amountRearQuarter)
                 $(`#kgRearQuarter${finalize}`).html(resp.kgRearQuarter)
+                $(`#costRearQuarter${finalize}`).html(resp.costRearQuarter)
 
                 $(`#amountHead${finalize}`).html(resp.amountHead)
                 $(`#kgHead${finalize}`).html(resp.kgHead)
+                $(`#costHead${finalize}`).html(resp.costHead)
 
 
                 if(resp.amountEntire > 0)
@@ -201,7 +207,53 @@
 
             let idSale = $(this).attr('idSale')
 
+            let type = $(this).attr('animalType')
+
+            let button = $(this)
+
+            if(type == 'Cordero'){
+                type = 'ovino'
+            }else if(type == 'Lechón'){
+                type = 'cerdo'
+            }
+
+            let token = $('input[name="_token"]').val()
+
             getDetails(idSale)
+            
+            // $.ajax({
+            //     method:'POST',
+            //     url:'costs/getCosts',
+            //     data:{
+            //         _token:token,
+            //         type:type
+            //     }
+            // }).done(resp=>{
+
+            //     console.log(resp)
+
+            //     let saleDate = $(`button[idSale="${idSale}"]`).parent().prev().prev().html()
+                
+            //     let partesFecha = saleDate.split('-');
+            //     let fechaDate = new Date(partesFecha[2], partesFecha[1] - 1, partesFecha[0]);
+
+            //     for (const key in resp.historial) {
+
+            //         console.log(resp.historial[key],key)
+
+            //     }
+            //     // resp.historial.forEach((section,key) => {
+            //     //     console.log(section,key)
+            //     // });
+
+            //     // const objetoEncontrado = resp.historial[type].find(item => item.date === );
+
+            //     // if (objetoEncontrado) {
+            //     // console.log("Objeto encontrado:", objetoEncontrado);
+            //     // } else {
+            //     // console.log("No se encontró ningún objeto con la fecha especificada.");
+            //     // }
+            // })
 
             $('#modalDetails').modal('show')
 

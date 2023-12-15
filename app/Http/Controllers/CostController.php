@@ -97,7 +97,7 @@ class CostController extends Controller
 
         foreach ($historial as $key => $cost) {
 
-            $costs['historial'][$cost->section][] = array('date'=>$cost->created_at,'cost'=>$cost->cost);
+            $costs['historial'][$cost->section][] = array('date'=>$cost->created_at->format('Y-m-d'),'cost'=>$cost->cost);
 
         }     
         

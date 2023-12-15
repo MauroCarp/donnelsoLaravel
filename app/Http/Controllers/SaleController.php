@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cost;
 use App\Models\Event;
 use App\Models\Sale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SaleController extends Controller
 {
@@ -179,6 +181,48 @@ class SaleController extends Controller
     public function getDetails(Request $request){
 
         $saleDetail = Sale::find($request->id);
+
+        $sections = DB::select('SELECT DISTINCT(section) FROM costs');
+
+        $sections = array_column($sections,'section');
+
+        $costs = Cost::where('type',$saleDetail->type)->get();
+
+        $ar_cost = array();
+
+        foreach ($costs as $value) {
+            
+            $ar_cost[$value['section']][] = array('created_at'=>$value['created_at'],'cost'=>$value['cost']);
+
+        }
+
+        foreach ($sections as $section) {
+            
+            if($saleDetail['kg' . ucfirst($section)] > 0){
+
+                $saleDate = $saleDetail->deliveryDate;
+
+                $resultadoFiltrado = array_filter($ar_cost[$section], function($registro) use ($saleDate) {
+
+                    $fechaRegistro = substr($registro['created_at'], 0, 10); // Obtener la parte de la fecha (Y-m-d)
+
+                    return strtotime($saleDate) <= strtotime($fechaRegistro);
+
+                });
+
+                if (!empty($resultadoFiltrado)) {
+
+                    $primerRegistro = reset($resultadoFiltrado); // Obtener el primer registro del array filtrado
+
+                    $costEncontrado = $primerRegistro['cost'];
+
+                    $saleDetail['cost' . ucfirst($section)] = $costEncontrado * $saleDetail['kg' . ucfirst($section)];
+
+                } 
+
+            }
+
+        }
 
         return response()->json($saleDetail->toArray());
 
