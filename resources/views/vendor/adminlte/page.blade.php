@@ -106,6 +106,7 @@
 
 @include('modals/sales/newPreSale')
 @include('modals/costs/costs')
+@include('modals/costs/costsHistorial')
 
 @section('adminlte_js')
     @stack('js')
@@ -326,6 +327,16 @@
 
         $('input[name="typeCost"]').on('change',showCostByType)
 
+        $('.btnHistorial').each(function(){
+
+            $(this).on('click',function(){
+
+                $('#modalCosts').modal('hide')
+                $('#modalCostsHistorial').modal('show')
+
+            })
+
+        })
         
     </script>
 
