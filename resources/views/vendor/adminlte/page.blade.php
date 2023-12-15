@@ -219,6 +219,74 @@
 
         }
 
+        const getCosts = (type) => {
+
+            let token = $('input[name="_token"]').val();
+
+            $.ajax({
+                'method':'POST',
+                'url':'costs/getCosts',
+                'data':{
+                    'type':type,
+                    '_token':token
+                },
+                beforeSend:function(){
+                    $('#loaderCost').show()
+                }
+
+            }).done(resp=>{
+
+                $('#loaderCost').hide()
+
+                $(`#costEntire${type}`).val(resp.actual.entire.cost) 
+                $(`#costHalf${type}`).val(resp.actual.half?.cost)
+                $(`#costRibs${type}`).val(resp.actual.ribs?.cost)
+                $(`#costRearQuarter${type}`).val(resp.actual.rearQuarter?.cost)
+                $(`#costShoulder${type}`).val(resp.actual.shoulder?.cost)
+                $(`#costHead${type}`).val(resp.actual.head?.cost)
+                $(`#costMatadero${type}`).val(resp.actual.matadero?.cost)
+                $(`#costAdmin${type}`).val(resp.actual.admin?.cost)
+                $(`#percentageEmployed${type}`).val(resp.actual.employer?.cost)
+
+            })
+
+        }
+
+        const showCostByType = ()=>{
+
+            let type = $('input[name="typeCost"]:checked').val()
+
+            $('.costInputs').each(function(){
+
+                $(this).hide()
+
+            })
+
+            getCosts(type)
+
+            switch (type) {
+
+                case 'cerdo':
+                    $('#costsCerdo').show()
+                    break;
+                case 'chivo':
+                    $('#costsChivo').show()
+                    break;
+                case 'ovino':
+                    $('#costsOvino').show()
+                    break;
+                case 'vaca':
+                    $('#costsVaca').show()
+                    break;
+                case 'pollo':
+                    $('#costsPollo').show()
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
 
             $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
@@ -253,6 +321,9 @@
 
         });
 
+        $('#btnCostos').on('click',showCostByType)
+
+        $('input[name="typeCost"]').on('change',showCostByType)
 
     </script>
 
