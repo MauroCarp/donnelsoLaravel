@@ -21,7 +21,7 @@
                             <thead>
                                 
                                 <tr>
-                                    <th>Seccion</th>
+                                    <th>Costo</th>
                                     <th>Fecha</th>
                                 </tr>
 
@@ -30,7 +30,7 @@
                             <tbody>
                  
                             </tbody>
-                            
+
                         </table>
                     </div>
                     

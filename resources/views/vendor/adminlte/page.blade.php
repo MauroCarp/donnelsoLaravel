@@ -240,6 +240,8 @@
 
                 $('#loaderCost').hide()
 
+                localStorage.setItem('costs',JSON.stringify(resp))
+                
                 $(`#costEntire${type}`).val(resp.actual.entire) 
                 $(`#costHalf${type}`).val(resp.actual.half)
                 $(`#costRibs${type}`).val(resp.actual.ribs)
@@ -289,6 +291,60 @@
             }
         }
 
+        const capitalizeFirst = (string)=>{
+
+            return string.charAt(0).toUpperCase() + string.slice(1);
+
+        }
+
+        const translateSection = (section)=>{
+
+            switch (section) {
+                case 'entire':
+                    return 'entero'
+                    break;
+            
+                case 'half':
+                    return 'mitad'
+                    break;
+            
+                case 'ribs':
+                    return 'costillar'
+                    break;
+            
+                case 'rearQuarter':
+                    return '1/4 Trasero'
+                    break;
+            
+                case 'shoulder':
+                    return 'paleta'
+                    break;
+            
+                case 'head':
+                    return 'cabeza'
+                    break;
+            
+                case 'employer':
+                    return 'empleado'
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+
+        const dateFormat = (dateString)=>{
+
+            let date = new Date(dateString);
+
+            let day = date.getDate()
+            let month = date.getMonth() + 1 
+            let year = date.getFullYear()
+
+            return `${day}-${month}-${year}`
+
+        } 
+
         $('a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
 
             $($.fn.dataTable.tables(true)).DataTable().columns.adjust().responsive.recalc();
@@ -329,10 +385,41 @@
 
         $('.btnHistorial').each(function(){
 
+            let section = $(this).attr('section')
+
             $(this).on('click',function(){
+
+                let type = $('input[name="typeCost"]:checked').val()
 
                 $('#modalCosts').modal('hide')
                 $('#modalCostsHistorial').modal('show')
+
+                $('#titleHistorialCost').html(`${capitalizeFirst(type)} - ${capitalizeFirst(translateSection(section))}`)
+
+                $('.historialCostTable tbody').html('')
+
+                let costs = JSON.parse(localStorage.getItem('costs'))
+
+                let tbody = document.createDocumentFragment()
+
+                costs.historial[section].forEach(cost => {
+
+                    let tr = document.createElement('tr')
+                    let tdCost = document.createElement('td')
+                    let tdDate = tdCost.cloneNode(true)
+
+                    tdCost.innerText = `$ ${cost.cost}`
+                    tdDate.innerText = dateFormat(cost.date)
+
+                    tr.append(tdCost)
+                    tr.append(tdDate)
+
+                    tbody.append(tr)
+
+                });
+
+                $('.historialCostTable tbody').append(tbody)
+
 
             })
 
