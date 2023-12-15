@@ -425,6 +425,11 @@
 
         })
         
+        $('#modalCostsHistorial').on('hide.bs.modal', function (e) {
+            $('#modalCosts').modal('show')    
+        });
+
+        
     </script>
 
     @yield('js')
