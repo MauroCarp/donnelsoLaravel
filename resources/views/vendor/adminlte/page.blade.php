@@ -210,6 +210,7 @@
                 timer: 3000,
             })
             
+            if(typeAnimal != null)
             $('.nav-link').removeClass('active') 
             $(`#${typeAnimal}-tab`).addClass('active')
 
@@ -238,15 +239,15 @@
 
                 $('#loaderCost').hide()
 
-                $(`#costEntire${type}`).val(resp.actual.entire.cost) 
-                $(`#costHalf${type}`).val(resp.actual.half?.cost)
-                $(`#costRibs${type}`).val(resp.actual.ribs?.cost)
-                $(`#costRearQuarter${type}`).val(resp.actual.rearQuarter?.cost)
-                $(`#costShoulder${type}`).val(resp.actual.shoulder?.cost)
-                $(`#costHead${type}`).val(resp.actual.head?.cost)
-                $(`#costMatadero${type}`).val(resp.actual.matadero?.cost)
-                $(`#costAdmin${type}`).val(resp.actual.admin?.cost)
-                $(`#percentageEmployed${type}`).val(resp.actual.employer?.cost)
+                $(`#costEntire${type}`).val(resp.actual.entire) 
+                $(`#costHalf${type}`).val(resp.actual.half)
+                $(`#costRibs${type}`).val(resp.actual.ribs)
+                $(`#costRearQuarter${type}`).val(resp.actual.rearQuarter)
+                $(`#costShoulder${type}`).val(resp.actual.shoulder)
+                $(`#costHead${type}`).val(resp.actual.head)
+                $(`#costMatadero${type}`).val(resp.actual.matadero)
+                $(`#costAdmin${type}`).val(resp.actual.admin)
+                $(`#costEmployer${type}`).val(resp.actual.employer)
 
             })
 
@@ -325,7 +326,24 @@
 
         $('input[name="typeCost"]').on('change',showCostByType)
 
+        
     </script>
 
     @yield('js')
+
+    @if(session('update') == 'ok')
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded',function(){
+
+                fireSwal(null,'success','Costo Actualizado')
+
+            })
+            
+
+        </script>
+
+    @endif
+
 @stop

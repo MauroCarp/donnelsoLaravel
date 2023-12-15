@@ -12,7 +12,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costEntire" id="costEntire{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costEntire{{ $type }}" id="costEntire{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -40,7 +40,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costHalf" id="costHalf{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costHalf{{ $type }}" id="costHalf{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -69,7 +69,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costRibs" id="costRibs{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costRibs{{ $type }}" id="costRibs{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -102,7 +102,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costShoulder" id="costShoulder{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costShoulder{{ $type }}" id="costShoulder{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -131,7 +131,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costRearQuarter" id="costRearQuarter{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costRearQuarter{{ $type }}" id="costRearQuarter{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -159,7 +159,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costHead" id="costHead{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costHead{{ $type }}" id="costHead{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -192,7 +192,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costMatadero" id="costMatadero{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costMatadero{{ $type }}" id="costMatadero{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -220,7 +220,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costAdmin" id="costAdmin{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costAdmin{{ $type }}" id="costAdmin{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -238,7 +238,7 @@
 
     <div class="col-xs-6 col-lg-4">
 
-        <label for="percentageEmployed">% Empleado:</label>
+        <label for="costEmployer">% Empleado:</label>
 
         <div class="input-group">                    
                                                 
@@ -248,13 +248,13 @@
 
             </div>
 
-            <input type="number" step="0.01" name="percentageEmployed" id="percentageEmployed{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" name="costEmployer{{ $type }}" id="costEmployer{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
                 <div class="input-group-text">
 
-                    <button type="button" class="btn btn-primary btnHistorial" title="Historico Precio" section="employer" id="percentageEmployedHist{{ $type }}" style="padding:4px 10px"><i class="fa fa-list" style="font-size:.8em"></i></button>
+                    <button type="button" class="btn btn-primary btnHistorial" title="Historico Precio" section="employer" id="costEmployerHist{{ $type }}" style="padding:4px 10px"><i class="fa fa-list" style="font-size:.8em"></i></button>
 
                 </div>
 

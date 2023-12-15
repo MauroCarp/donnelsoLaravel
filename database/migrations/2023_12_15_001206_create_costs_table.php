@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('costs', function (Blueprint $table) {
             $table->id();
             $table->string('type');
+            $table->integer('section');
             $table->integer('cost');
-            $table->datetime('date');
             $table->timestamps();
         });
     }
