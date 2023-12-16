@@ -14,7 +14,7 @@
 
                 <div class="row border-bottom border-success pb-1">
 
-                    <div class="col-xs-6 col-lg-4 border-right border-success" id="inputEntire">
+                    <div class="col-xs-6 col-lg-4 border-right border-success inputsDetails" id="inputEntire">
 
                         <div class="small-box bg-teal">
 
@@ -36,7 +36,7 @@
                         
                     </div>
 
-                    <div class="col-xs-6 col-lg-4 border-right border-success" id="inputHalf">
+                    <div class="col-xs-6 col-lg-4 border-right border-success inputsDetails" id="inputHalf">
 
                         <div class="small-box bg-teal">
 
@@ -58,7 +58,7 @@
                         
                     </div>
 
-                    <div class="col-xs-6 col-lg-4" id="inputRibs">
+                    <div class="col-xs-6 col-lg-4 inputsDetails" id="inputRibs">
 
                         <div class="small-box bg-teal">
 
@@ -86,7 +86,7 @@
 
                 <div class="row pt-1">
 
-                    <div class="col-xs-6 col-lg-4 border-right border-success" id="inputShoulder">
+                    <div class="col-xs-6 col-lg-4 border-right border-success inputsDetails" id="inputShoulder">
 
                         <div class="small-box bg-teal">
 
@@ -108,7 +108,7 @@
                         
                     </div>
 
-                    <div class="col-xs-6 col-lg-4 border-right border-success" id="inputRearQuarter">
+                    <div class="col-xs-6 col-lg-4 border-right border-success inputsDetails" id="inputRearQuarter">
 
                         <div class="small-box bg-teal">
 
@@ -130,7 +130,7 @@
                         
                     </div>
 
-                    <div class="col-xs-6 col-lg-4" id="inputHead">
+                    <div class="col-xs-6 col-lg-4 inputsDetails" id="inputHead">
 
                         <div class="small-box bg-teal">
 

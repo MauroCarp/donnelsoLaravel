@@ -83,64 +83,104 @@
                 data:{
                     '_token':token,
                     'id':idSale
+                },
+                beforeSend:function(){
+                    $('.inputsDetails').each(function(){$(this).hide()})
                 }
                 
             }).done(function(resp){
-             
+
                 $(`#amountEntire${finalize}`).html(resp.amountEntire)
                 $(`#kgEntire${finalize}`).html(resp.kgEntire)
-                $(`#costEntire${finalize}`).html(resp.costEntire)
 
                 $(`#amountHalf${finalize}`).html(resp.amountHalf)
                 $(`#kgHalf${finalize}`).html(resp.kgHalf)
-                $(`#costHalf${finalize}`).html(resp.costHalf)
 
                 $(`#amountRibs${finalize}`).html(resp.amountRibs)
                 $(`#kgRibs${finalize}`).html(resp.kgRibs)
-                $(`#costRibs${finalize}`).html(resp.costRibs)
 
                 $(`#amountShoulder${finalize}`).html(resp.amountShoulder)
                 $(`#kgShoulder${finalize}`).html(resp.kgShoulder)
-                $(`#costShoulder${finalize}`).html(resp.costShoulder)
 
                 $(`#amountRearQuarter${finalize}`).html(resp.amountRearQuarter)
                 $(`#kgRearQuarter${finalize}`).html(resp.kgRearQuarter)
-                $(`#costRearQuarter${finalize}`).html(resp.costRearQuarter)
 
                 $(`#amountHead${finalize}`).html(resp.amountHead)
                 $(`#kgHead${finalize}`).html(resp.kgHead)
-                $(`#costHead${finalize}`).html(resp.costHead)
 
 
-                if(resp.amountEntire > 0)
+                if(resp.amountEntire > 0){
                     $(`#inputEntire${finalize}`).show()
-                else
+
+                    if(resp.kgEntire > 0) 
+                        $(`#costEntire${finalize}`).html(resp.costs.entire)
+                    else
+                        $(`#costEntire${finalize}`).html('-')
+
+                } else {
                     $(`#inputEntire${finalize}`).hide() 
+                }
 
-                if(resp.amountHalf > 0)
+                if(resp.amountHalf > 0){
                     $(`#inputHalf${finalize}`).show()
-                else
+
+                    if(resp.kgHalf > 0) 
+                        $(`#costHalf${finalize}`).html(resp.costs.half)
+                    else
+                        $(`#costHalf${finalize}`).html('-')
+
+                } else {
                     $(`#inputHalf${finalize}`).hide() 
+                }
 
-                if(resp.amountRibs > 0)
+
+                if(resp.amountRibs > 0){
                     $(`#inputRibs${finalize}`).show()
-                else
+
+                    if(resp.kgRibs > 0) 
+                        $(`#costRibs${finalize}`).html(resp.costs.ribs)
+                    else
+                        $(`#costRibs${finalize}`).html('-')
+
+                } else {
                     $(`#inputRibs${finalize}`).hide() 
-
-                if(resp.amountShoulder > 0)
+                }
+                
+                if(resp.amountShoulder > 0){
                     $(`#inputShoulder${finalize}`).show()
-                else
+
+                    if(resp.kgShoulder > 0) 
+                        $(`#costShoulder${finalize}`).html(resp.costs.shoulder)
+                    else
+                        $(`#costShoulder${finalize}`).html('-')
+
+                } else {
                     $(`#inputShoulder${finalize}`).hide() 
+                }
 
-                if(resp.amountRearQuarter > 0)
+                if(resp.amountRearQuarter > 0){
                     $(`#inputRearQuarter${finalize}`).show()
-                else
-                    $(`#inputRearQuarter${finalize}`).hide() 
 
-                if(resp.amountHead > 0)
+                    if(resp.kgRearQuarter > 0) 
+                        $(`#costRearQuarter${finalize}`).html(resp.costs.rearQuarter)
+                    else
+                        $(`#costRearQuarter${finalize}`).html('-')
+
+                } else {
+                    $(`#inputRearQuarter${finalize}`).hide() 
+                }
+
+                if(resp.amountHead > 0){
                     $(`#inputHead${finalize}`).show()
-                else
+
+                    if(resp.kgHead > 0) 
+                        $(`#costHead${finalize}`).html(resp.costs.head)
+                    else
+                        $(`#costHead${finalize}`).html('-')
+
+                } else {
                     $(`#inputHead${finalize}`).hide() 
+                }
 
 
                 if(finalize != ''){
@@ -221,40 +261,6 @@
 
             getDetails(idSale)
             
-            // $.ajax({
-            //     method:'POST',
-            //     url:'costs/getCosts',
-            //     data:{
-            //         _token:token,
-            //         type:type
-            //     }
-            // }).done(resp=>{
-
-            //     console.log(resp)
-
-            //     let saleDate = $(`button[idSale="${idSale}"]`).parent().prev().prev().html()
-                
-            //     let partesFecha = saleDate.split('-');
-            //     let fechaDate = new Date(partesFecha[2], partesFecha[1] - 1, partesFecha[0]);
-
-            //     for (const key in resp.historial) {
-
-            //         console.log(resp.historial[key],key)
-
-            //     }
-            //     // resp.historial.forEach((section,key) => {
-            //     //     console.log(section,key)
-            //     // });
-
-            //     // const objetoEncontrado = resp.historial[type].find(item => item.date === );
-
-            //     // if (objetoEncontrado) {
-            //     // console.log("Objeto encontrado:", objetoEncontrado);
-            //     // } else {
-            //     // console.log("No se encontró ningún objeto con la fecha especificada.");
-            //     // }
-            // })
-
             $('#modalDetails').modal('show')
 
         })

@@ -45,6 +45,7 @@
                         </div>
 
                     </div> 
+                    
                     <div class="row border-bottom border-success pb-1">
 
                         <div class="col-xs-6 col-lg-4 border-right border-success" style="display:none" id="inputEntireFinalize">

@@ -186,43 +186,22 @@ class SaleController extends Controller
 
         $sections = array_column($sections,'section');
 
-        $costs = Cost::where('type',$saleDetail->type)->get();
+        // $costs = Cost::where('type',$saleDetail->type)->get();
 
-        $ar_cost = array();
-
-        foreach ($costs as $value) {
-            
-            $ar_cost[$value['section']][] = array('created_at'=>$value['created_at'],'cost'=>$value['cost']);
-
-        }
+        $costs = array();
 
         foreach ($sections as $section) {
             
-            if($saleDetail['kg' . ucfirst($section)] > 0){
+            $cost = Cost::where(['type'=>$saleDetail->type,'section'=>$section])
+            ->where('created_at','<=',$saleDetail->deliveryDate)
+            ->orderby('created_at','desc')
+            ->first();
 
-                $saleDate = $saleDetail->deliveryDate;
-
-                $resultadoFiltrado = array_filter($ar_cost[$section], function($registro) use ($saleDate) {
-
-                    $fechaRegistro = substr($registro['created_at'], 0, 10); // Obtener la parte de la fecha (Y-m-d)
-
-                    return strtotime($saleDate) <= strtotime($fechaRegistro);
-
-                });
-
-                if (!empty($resultadoFiltrado)) {
-
-                    $primerRegistro = reset($resultadoFiltrado); // Obtener el primer registro del array filtrado
-
-                    $costEncontrado = $primerRegistro['cost'];
-
-                    $saleDetail['cost' . ucfirst($section)] = $costEncontrado * $saleDetail['kg' . ucfirst($section)];
-
-                } 
-
-            }
+            $costs[$section] = $cost->cost * $saleDetail['kg' . ucfirst($section)];
 
         }
+
+        $saleDetail['costs'] = $costs;
 
         return response()->json($saleDetail->toArray());
 
