@@ -429,6 +429,34 @@
             $('#modalCosts').modal('show')    
         });
 
+        if($('#newPreSaleForm input[name="type"]:checked').val() == 'pollo'){
+
+            $('.inputAmount').each(function(){
+                $(this).hide()
+            })
+
+        }
+            
+
+        $('#newPreSaleForm input[name="type"]').on('change',function(){
+
+            if($(this).val() == 'pollo'){
+
+                $('.inputAmount').each(function(){
+                    $(this).hide()
+                })
+                
+                
+            } else {
+
+                $('.inputAmount').each(function(){
+                    $(this).show()
+                })
+
+            }
+
+        })
+
         
     </script>
 

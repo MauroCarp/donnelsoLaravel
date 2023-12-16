@@ -91,7 +91,7 @@
                             
                         </div>
 
-                        <div class="col-xs-6 col-lg-4">
+                        <div class="col-xs-6 col-lg-4 inputAmount">
 
                             <div class="form-group">
                             
@@ -103,7 +103,7 @@
                             
                         </div>
 
-                        <div class="col-xs-6 col-lg-4">
+                        <div class="col-xs-6 col-lg-4 inputAmount">
 
                             <div class="form-group">
                             
@@ -120,7 +120,7 @@
 
                     <div class="row">
 
-                        <div class="col-xs-6 col-lg-4">
+                        <div class="col-xs-6 col-lg-4 inputAmount">
 
                             <div class="form-group">
                             
@@ -132,7 +132,7 @@
                             
                         </div>
 
-                        <div class="col-xs-6 col-lg-4">
+                        <div class="col-xs-6 col-lg-4 inputAmount">
 
                             <div class="form-group">
                             
@@ -144,7 +144,7 @@
                             
                         </div>
 
-                        <div class="col-xs-6 col-lg-4">
+                        <div class="col-xs-6 col-lg-4 inputAmount">
 
                             <div class="form-group">
                             
