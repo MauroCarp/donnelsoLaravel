@@ -57,7 +57,7 @@ class PurchaseController extends Controller
 
         }
 
-        $providerName = Provider::find($validate['idProvider'])->get('name');
+        $providerName = Provider::find($validate['idProvider'])->pluck('name');
 
         if($request->type != 'pollos'){
             
@@ -71,7 +71,7 @@ class PurchaseController extends Controller
 
             for ($i=0; $i < $validate['males']; $i++) { 
                 $dataAnimals[] = array('type'=>$request->type,
-                                       'caravan'=>$providerName->name . '-M-' . ($i + 1),
+                                       'caravan'=>$providerName[0] . '-M-' . ($i + 1),
                                        'weight'=>$averageWeight,
                                        'sex'=>'male',
                                        'destination'=>$request->destination,
@@ -80,7 +80,7 @@ class PurchaseController extends Controller
 
             for ($i=0; $i < $validate['females']; $i++) { 
                 $dataAnimals[] = array('type'=>$request->type,
-                                       'caravan'=>$providerName->name . '-H-' . ($i + 1),
+                                       'caravan'=>$providerName[0] . '-H-' . ($i + 1),
                                        'weight'=>$averageWeight,
                                        'sex'=>'female',
                                        'destination'=>$request->destination,

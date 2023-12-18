@@ -173,7 +173,7 @@
 
             Swal.fire({
                 toast:true,
-                type: 'success',
+                icon: 'success',
                 title: 'Compra cargada',
                 position: 'top-end',
                 showConfirmButton: false,
