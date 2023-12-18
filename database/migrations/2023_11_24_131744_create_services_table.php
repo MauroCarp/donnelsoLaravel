@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('idMales');
             $table->string('state');
-            $table->datetimes('startDate');
+            $table->datetime('startDate');
             $table->datetime('endDate');
             $table->timestamps();
         });
