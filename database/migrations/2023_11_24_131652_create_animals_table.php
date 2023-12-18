@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('sex');
             $table->string('destination');
             $table->integer('idBirth');
-            $table->integer('idBuy');
-            $table->integer('idSell');
+            $table->integer('idPurchase');
+            $table->integer('idSale');
+            $table->integer('idHealth');
+            $table->boolean('active');
             $table->timestamps();
         });
     }

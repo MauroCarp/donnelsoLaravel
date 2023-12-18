@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('twins');
             $table->string('complications');
             $table->integer('amount');
+            $table->integer('deaths');
             $table->timestamps();
         });
     }

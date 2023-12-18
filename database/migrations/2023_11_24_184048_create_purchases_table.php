@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('amount');
             $table->integer('males');
             $table->integer('females');
-            $table->string('provider');
+            $table->string('idProvider');
             $table->string('destination');
             $table->float('cost');
             $table->float('kg');

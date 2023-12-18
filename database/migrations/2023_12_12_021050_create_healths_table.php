@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('healths', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
             $table->datetime('date');
             $table->string('motive');
             $table->string('aplication');
