@@ -81,11 +81,6 @@
 
                     </div>
 
-                
-                </div>
-
-                <div class="row pt-1">
-
                     <div class="col-xs-6 col-lg-4 border-right border-success inputsDetails" id="inputShoulder">
 
                         <div class="small-box bg-teal">
@@ -152,7 +147,6 @@
                         
                     </div>
 
-                
                 </div>
 
             </div>
