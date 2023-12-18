@@ -22,11 +22,6 @@ Route::get('/costs', [App\Http\Controllers\SaleController::class, 'costs'])->nam
 Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio')->middleware('auth');
 Route::post('/deaths/getAnimals', [App\Http\Controllers\DeadController::class, 'getAnimals'])->name('getAnimals')->middleware('auth');
 Route::resource('/deaths', 'App\Http\Controllers\DeadController')->middleware('auth');
-// Route::get('/health', [App\Http\Controllers\HealthController::class, 'index'])->name('sanidad')->middleware('auth');
-
-// Route::get('/sales', [App\Http\Controllers\SaleController::class, 'sales'])->name('ventas')->middleware('auth');
-// Route::get('/preSales', [App\Http\Controllers\SaleController::class, 'preSales'])->name('preVentas')->middleware('auth');
-
 
 Route::post('/inseminations/getFemales', [App\Http\Controllers\InseminationController::class, 'getFemales'])->name('inseminaciones.hembras')->middleware('auth');
 Route::resource('/inseminations', 'App\Http\Controllers\InseminationController')->middleware('auth');

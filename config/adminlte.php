@@ -86,11 +86,11 @@ return [
     'auth_logo' => [
         'enabled' => true,
         'img' => [
-            'path' => 'img/logo-blanco-bloque.png',
+            'path' => 'img/logo-inicio.png',
             'alt' => 'Don Nelso Logo',
             'class' => '',
-            'width' => 200,
-            'height' => 60,
+            'width' => 100,
+            'height' => 100,
         ],
     ],
 
@@ -166,12 +166,12 @@ return [
     |
     */
 
-    'classes_auth_card' => 'card-outline card-primary',
+    'classes_auth_card' => 'card-outline card-success',
     'classes_auth_header' => '',
     'classes_auth_body' => '',
     'classes_auth_footer' => '',
     'classes_auth_icon' => '',
-    'classes_auth_btn' => 'btn-flat btn-primary',
+    'classes_auth_btn' => 'btn-flat btn-success',
 
     /*
     |--------------------------------------------------------------------------
@@ -255,7 +255,7 @@ return [
     'dashboard_url' => 'inicio',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
+    'register_url' => false,
     'password_reset_url' => 'password/reset',
     'password_email_url' => 'password/email',
     'profile_url' => false,
