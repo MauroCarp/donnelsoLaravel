@@ -71,7 +71,7 @@ class PurchaseController extends Controller
 
             for ($i=0; $i < $validate['males']; $i++) { 
                 $dataAnimals[] = array('type'=>$request->type,
-                                       'caravan'=>$providerName . '-M-' . ($i + 1),
+                                       'caravan'=>$providerName->name . '-M-' . ($i + 1),
                                        'weight'=>$averageWeight,
                                        'sex'=>'male',
                                        'destination'=>$request->destination,
@@ -80,7 +80,7 @@ class PurchaseController extends Controller
 
             for ($i=0; $i < $validate['females']; $i++) { 
                 $dataAnimals[] = array('type'=>$request->type,
-                                       'caravan'=>$providerName . '-H-' . ($i + 1),
+                                       'caravan'=>$providerName->name . '-H-' . ($i + 1),
                                        'weight'=>$averageWeight,
                                        'sex'=>'female',
                                        'destination'=>$request->destination,
