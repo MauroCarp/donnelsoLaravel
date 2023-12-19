@@ -58,7 +58,7 @@
                     </td>
                     <td>{{ $birth->childrenCaravans }}</td>
                     <td>{{ ($birth->sex == 'm') ? 'Macho' : (($birth->sex == 'f') ? 'Hembra' : 'Macho / Hembra') }}</td>
-                    <td>@if($birth->twins) <i class="fa fa-check text-success"></i>@else <i class="fa fa-times text-danger"></i>@endif</td>
+                    <td>@if($birth->twins) <i class="fa fa-check text-success"></i>@else <i class="fa fa-trash text-danger"></i>@endif</td>
                     <td>{{ $birth->amount }}</td>
                     <td>{{ $birth->deaths }}</td>
 
@@ -68,7 +68,7 @@
 
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btnDeleteBirth" type="submit" form="deleteBirthForm{{$birth->id}}"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger btnDeleteBirth" type="submit" form="deleteBirthForm{{$birth->id}}"><i class="fa fa-trash"></i></button>
 
                         </form>
 

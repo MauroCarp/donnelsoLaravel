@@ -83,7 +83,7 @@
 
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="btn btn-danger btn-md" onclick="deleteEvent(event)" type="submit" form="deleteEventForm${event.id}"><i class="fa fa-times"></i></button>
+                                                    <button class="btn btn-danger btn-md" onclick="deleteEvent(event)" type="submit" form="deleteEventForm${event.id}"><i class="fa fa-trash"></i></button>
 
                                                 </form>
                                                 

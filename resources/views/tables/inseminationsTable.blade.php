@@ -37,7 +37,7 @@
 
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btnDeleteInsemination" type="submit" form="deleteInseminationForm{{$insemination->id}}"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger btnDeleteInsemination" type="submit" form="deleteInseminationForm{{$insemination->id}}"><i class="fa fa-trash"></i></button>
 
                         </form>
 

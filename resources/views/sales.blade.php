@@ -47,7 +47,7 @@
 
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btnDeleteSale" style="height:100%;border-bottom-left-radius:0px;border-top-left-radius:0px;" type="submit"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger btnDeleteSale" style="height:100%;border-bottom-left-radius:0px;border-top-left-radius:0px;" type="submit"><i class="fa fa-trash"></i></button>
 
                         </form>
 

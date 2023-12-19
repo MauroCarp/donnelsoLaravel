@@ -34,7 +34,7 @@
 
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btnDeleteHealth" type="submit" form="deleteHealthForm{{$reg->id}}"><i class="fa fa-times"></i></button>
+                            <button class="btn btn-danger btnDeleteHealth" type="submit" form="deleteHealthForm{{$reg->id}}"><i class="fa fa-trash"></i></button>
 
                         </form>
 
