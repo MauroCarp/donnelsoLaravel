@@ -143,7 +143,7 @@
                 </div>
                
                 <div class="custom-control custom-radio">
-                    <input class="custom-control-input" type="radio" id="radioReproductor" value="reproductor" name="destination">
+                    <input class="custom-control-input" type="radio" id="radioReproductor" value="reproductive" name="destination">
                     <label for="radioReproductor" class="custom-control-label">Reproductor</label>
                 </div>
                 

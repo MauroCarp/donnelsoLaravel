@@ -73,7 +73,7 @@ class PurchaseController extends Controller
                 $dataAnimals[] = array('type'=>$request->type,
                                        'caravan'=>$providerName[0] . '-M-' . ($i + 1),
                                        'weight'=>$averageWeight,
-                                       'sex'=>'male',
+                                       'sex'=>'m',
                                        'destination'=>$request->destination,
                                        'idPurchase'=>$newPurchase->id);
             }
@@ -82,7 +82,7 @@ class PurchaseController extends Controller
                 $dataAnimals[] = array('type'=>$request->type,
                                        'caravan'=>$providerName[0] . '-H-' . ($i + 1),
                                        'weight'=>$averageWeight,
-                                       'sex'=>'female',
+                                       'sex'=>'f',
                                        'destination'=>$request->destination,
                                        'idPurchase'=>$newPurchase->id);            
             }
