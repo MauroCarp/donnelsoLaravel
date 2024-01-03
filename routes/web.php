@@ -43,4 +43,6 @@ Route::resource('/sales', 'App\Http\Controllers\SaleController')->middleware('au
 Route::post('/costs/getCosts', [App\Http\Controllers\CostController::class, 'getCosts'])->middleware('auth');
 Route::resource('/costs', 'App\Http\Controllers\CostController')->middleware('auth');
 
+Route::resource('/animals', 'App\Http\Controllers\AnimalController')->middleware('auth');
+
 
