@@ -56,7 +56,15 @@
 
                         @endif
                     </td>
-                    <td>{{ $birth->childrenCaravans }}</td>
+                    <td>
+                    
+                        @foreach ($birth->childrenCaravans as $caravan)
+
+                            <span class="badge badge-info p3">{{ $caravan }}</span>
+
+                        @endforeach                            
+                        
+                    </td>
                     <td>{{ ($birth->sex == 'm') ? 'Macho' : (($birth->sex == 'f') ? 'Hembra' : 'Macho / Hembra') }}</td>
                     <td>@if($birth->twins) <i class="fa fa-check text-success"></i>@else <i class="fa fa-times text-danger"></i>@endif</td>
                     <td>{{ $birth->amount }}</td>

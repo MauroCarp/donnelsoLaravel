@@ -26,7 +26,7 @@ class BirthController extends Controller
 
             $childrenCaravans = Animal::where('idBirth',$birth->id)->get();
 
-            $births[$key]['childrenCaravans'] = implode(' , ',array_column($childrenCaravans->toArray(),'caravan'));
+            $births[$key]['childrenCaravans'] = array_column($childrenCaravans->toArray(),'caravan');
 
             if($birth->idReproductive){
                 
