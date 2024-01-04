@@ -218,9 +218,9 @@
 
             <div class="modal-footer justify-content-between">
                 
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 
-                <button class="btn btn-success btn-block" type="submit" form="finalizeSaleForm" id="btnFinalizeSale" name="btnFinalizeSale">Finalizar Venta</button>
+                <button class="btn btn-success" type="submit" form="finalizeSaleForm" id="btnFinalizeSale" name="btnFinalizeSale">Finalizar Venta</button>
                 
             </div>
 

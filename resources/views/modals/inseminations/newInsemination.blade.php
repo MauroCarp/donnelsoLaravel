@@ -65,6 +65,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-success btn-block" type="submit" form="newInseminationForm" id="btnNewInsemintaion" name="btnNewInsemintaion">Cargar Inseminaci&oacute;n</button>
+    <button class="btn btn-success" type="submit" form="newInseminationForm" id="btnNewInsemintaion" name="btnNewInsemintaion">Cargar Inseminaci&oacute;n</button>
 
 @endsection

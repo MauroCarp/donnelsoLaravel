@@ -142,6 +142,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-success btn-block" type="submit" form="newHealthForm" id="btnNewHealth" name="btnNewHealth">Cargar Registro</button>
+    <button class="btn btn-success" type="submit" form="newHealthForm" id="btnNewHealth" name="btnNewHealth">Cargar Registro</button>
 
 @endsection

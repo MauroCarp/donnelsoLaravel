@@ -188,6 +188,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-success btn-block" type="submit" form="newPurchaseForm" id="btnNewPurchase" name="btnNewPurchase">Cargar Compra</button>
+    <button class="btn btn-success" type="submit" form="newPurchaseForm" id="btnNewPurchase" name="btnNewPurchase">Cargar Compra</button>
 
 @endsection

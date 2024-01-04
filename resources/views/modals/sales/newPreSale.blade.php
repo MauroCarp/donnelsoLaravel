@@ -165,7 +165,7 @@
 
             <div class="modal-footer">
 
-                <button class="btn btn-success btn-block" type="submit" form="newPreSaleForm" id="btnNewSale" name="btnNewSale">Cargar Pre-Venta</button>
+                <button class="btn btn-success" type="submit" form="newPreSaleForm" id="btnNewSale" name="btnNewSale">Cargar Pre-Venta</button>
                 
             </div>
 
