@@ -326,7 +326,6 @@ return [
                 ],
             
             ]
-
         ],
         [
             'text' => 'Servicios',
@@ -342,6 +341,11 @@ return [
             'text' => 'Muertes',
             'icon' => 'icon-muertes',
             'url'  => 'deaths',
+        ],
+        [
+            'text' => 'Animales',
+            'icon' => 'fa fa-circle',
+            'url'  => 'animals',
         ],
         [
             'text'    => 'Ventas',
