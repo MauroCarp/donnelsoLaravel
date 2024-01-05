@@ -27,8 +27,17 @@
 
                         </span>
 
-                        <input type="text" class="selectCaravan" id="caravan{{ $animal->id }}" style="display:none" value="{{ $animal->caravan }}">
+                        <div class="input-group input-group-sm" style="display:none">
 
+                            <input type="text" class="form-control selectCaravan" id="caravan{{ $animal->id }}" value="{{ $animal->caravan }}">
+
+                            <span class="input-group-append">
+
+                                <button type="button" class="btn btn-info btn-flat btnUpdateCaravan" idAnimal="{{ $animal->id }}"><i class="fa fa-edit"></i></button>
+                                
+                            </span>
+                        </div>
+                        
                     </td>
                     <td>@if($animal->sex == 'm') Macho @else Hembra @endif</td>
                     <td>
@@ -58,7 +67,18 @@
 
                         </span>
 
-                        <input type="text" class="selectAge" id="age{{ $animal->id }}" style="display:none" value="{{ $animal->age }}">
+
+                        <div class="input-group input-group-sm" style="display:none">
+
+                            <input type="text" class="form-control selectAge" id="age{{ $animal->id }}" value="{{ $animal->age }}">
+
+                            <span class="input-group-append">
+
+                                <button type="button" class="btn btn-info btn-flat btnUpdateAge" idAnimal="{{ $animal->id }}"><i class="fa fa-edit"></i></button>
+                                
+                            </span>
+
+                        </div>
 
                     </td>
                     <td>
@@ -68,7 +88,17 @@
 
                         </span>
 
-                        <input type="text" class="selectWeight" id="weight{{ $animal->id }}" style="display:none" value="{{ $animal->weight }}">
+                        <div class="input-group input-group-sm" style="display:none">
+
+                            <input type="text" class="form-control selectWeight" id="weight{{ $animal->id }}" value="{{ $animal->weight }}">
+
+                            <span class="input-group-append">
+
+                                <button type="button" class="btn btn-info btn-flat btnUpdateWeight" idAnimal="{{ $animal->id }}"><i class="fa fa-edit"></i></button>
+                                
+                            </span>
+                            
+                        </div>
 
                     </td>
                     <td>

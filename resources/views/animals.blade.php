@@ -117,10 +117,11 @@
                 $(this).hide()
 
                 let id = $(this).attr(`${field}Text`)
-                console.log(id)
-                console.log(`#${field}${id}`)
 
-                $(`#${field}${id}`).show()
+                if(field != 'destination')
+                    $(`#${field}${id}`).parent().show()
+                else 
+                    $(`#${field}${id}`).show()
     
             })
 
@@ -128,22 +129,38 @@
 
         const editField = (field,event) => {
 
-            $('.animalTable').on(event,`.select${field}`,function(){
+            let classField = (field == 'Destination') ? `select${field}` : `btnUpdate${field}`
 
-                let val = $(this).val()
+            $('.animalTable').on(event,`.${classField}`,function(){
+
 
                 let selectValid = false
 
-                if($(this)[0].nodeName == 'SELECT')
-                    selectValid = true
-
+                let button = $(this)
+                
                 let text
+                
+                let id
+                
+                let val
+
+                if($(this)[0].nodeName == 'SELECT'){
+
+                    selectValid = true
+                    val = $(this).val()
+                    id = $(this).attr('id').replace(field.toLowerCase(),'')
+
+                } else {
+
+                    id = $(this).attr('idAnimal')
+                    val = $(`#${field.toLowerCase()}${id}`).val()
+                     
+                }
 
                 if(selectValid){
                     text = $(this).find(':selected').text();
                 }                
 
-                let id = $(this).attr('id').replace(field.toLowerCase(),'')
 
                 let token = $('input[name="_token"]').val();
 
@@ -154,15 +171,27 @@
                         _token:token,
                         field:field.toLowerCase(),
                         value:val
+                    },
+
+                    beforeSend:function(){
+
+                        if(!selectValid){
+                            button.children().removeClass('fa-edit')
+                            button.children().addClass('fa-sync-alt')
+                        }
+
                     }
+
                 }).done(resp=>{
 
-                    $(`#${field.toLowerCase()}${id}`).hide()
-
-                    if(selectValid)
+                    
+                    if(selectValid){
                         $(`#${field.toLowerCase()}Text${id}`).html(text)
-                    else
+                        $(`#${field.toLowerCase()}${id}`).hide()
+                    } else {
+                        $(`#${field.toLowerCase()}${id}`).parent().hide()
                         $(`#${field.toLowerCase()}Text${id}`).html(val)
+                    }
 
                     $(`#${field.toLowerCase()}Text${id}`).show()
 
@@ -176,6 +205,9 @@
                             break;
                         case 'Weight':
                             fieldText = 'Peso'
+                            break;
+                        case 'Caravan':
+                            fieldText = 'Caravana'
                             break;
                     
                         default:
@@ -194,7 +226,7 @@
                         })   
 
                     }
-                    
+
                 })
 
             })
@@ -203,7 +235,7 @@
 
         allowEdit('caravanText','caravan')
 
-        editField('Caravan','blur')
+        editField('Caravan','click')
 
         allowEdit('destinationText','destination')
 
@@ -211,11 +243,11 @@
 
         allowEdit('ageText','age')
 
-        editField('Age','blur')
+        editField('Age','click')
 
         allowEdit('weightText','weight')
 
-        editField('Weight','blur')
+        editField('Weight','click')
 
     </script>
 
