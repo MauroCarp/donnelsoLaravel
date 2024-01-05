@@ -54,7 +54,7 @@
 
         $.ajax({
             method:'POST',
-            url:`births/updateBirth`,
+            url:`https://donnelso.com.ar/births/updateBirth`,
             data:{
                 'idMale': selectValue,
                 'idBirth': idBirth,

@@ -169,7 +169,7 @@
             let token = $('input[name="_token"]').val();
 
             $.ajax({
-                url: '{{ route("getAnimals") }}',
+                url: 'https://donnelso.com.ar/deaths/getAnimals',
                 method: 'POST',
                 data: {
                     'type': type,
@@ -227,7 +227,7 @@
 
             $.ajax({
                 'method':'POST',
-                'url':'costs/getCosts',
+                'url':'https://donnelso.com.ar/costs/getCosts',
                 'data':{
                     'type':type,
                     '_token':token

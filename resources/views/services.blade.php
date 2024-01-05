@@ -117,7 +117,7 @@
         let token = $('input[name="_token"]').val();
 
         $.ajax({
-            url: '{{ route("servicios.machosReproductores") }}',
+            url: 'https://donnelso.com.ar/services/reproductiveMales',
             method: 'POST',
             data: {
                 'type': type,
@@ -169,7 +169,7 @@
 
             $.ajax({
                 method:'POST',
-                url:`services/changeState`,
+                url:`https:donnelso.com.ar/services/changeState`,
                 data:{
                     'id':id,
                     '_token':token,

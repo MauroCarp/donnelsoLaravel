@@ -79,7 +79,7 @@
 
             $.ajax({
                 method:'POST',
-                url:'sales/getDetails',
+                url:'https://donnelso.com.ar/sales/getDetails',
                 data:{
                     '_token':token,
                     'id':idSale
