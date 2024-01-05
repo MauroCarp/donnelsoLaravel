@@ -87,6 +87,6 @@
 
 @section('modalFooter')
 
-    <button class="btn btn-success btn-block" type="submit" form="newServiceForm" id="btnNewService" name="btnNewService">Cargar Servicio</button>
+    <button class="btn btn-success" type="submit" form="newServiceForm" id="btnNewService" name="btnNewService">Cargar Servicio</button>
 
 @endsection

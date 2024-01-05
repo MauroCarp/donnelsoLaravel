@@ -103,7 +103,7 @@
 
 
 @section('modalFooter')
-
-    <button class="btn btn-success btn-block" type="submit" form="updateAnimalForm" id="btnUpdateAnimal" name="btnUpdateAnimal">Modificar Animal</button>
+    
+    <button class="btn btn-success" type="submit" form="updateAnimalForm" id="btnUpdateAnimal" name="btnUpdateAnimal">Modificar Animal</button>
 
 @endsection

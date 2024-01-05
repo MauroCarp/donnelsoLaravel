@@ -115,9 +115,11 @@
 
             </div>
 
-            <div class="modal-footer">
+            <div class="modal-footer justify-content-between">
 
-                <button class="btn btn-success btn-block" type="submit" form="costForm" id="btnCosts" name="btnCosts">Actualizar Costos</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                <button class="btn btn-success" type="submit" form="costForm" id="btnCosts" name="btnCosts">Actualizar Costos</button>
                 
             </div>
 
