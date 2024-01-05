@@ -4,6 +4,7 @@
 
 @section('content_header')
     <h1 class="m-0 text-dark">Animales</h1>
+    <small>*Hacer doble click en los campos Destino - Edad - Peso para poder modificarlos</small>
 @stop
 
 @section('content')
@@ -104,3 +105,118 @@
 @stop
 
 @include('modals/animals/updateAnimal')
+
+@section('js')
+
+    <script>
+
+        const allowEdit = (classInput,field) => {
+
+            $('.animalTable').on('dblclick',`.${classInput}`,function(){
+    
+                $(this).hide()
+
+                let id = $(this).attr(`${field}Text`)
+                console.log(id)
+                console.log(`#${field}${id}`)
+
+                $(`#${field}${id}`).show()
+    
+            })
+
+        }
+
+        const editField = (field,event) => {
+
+            $('.animalTable').on(event,`.select${field}`,function(){
+
+                let val = $(this).val()
+
+                let selectValid = false
+
+                if($(this)[0].nodeName == 'SELECT')
+                    selectValid = true
+
+                let text
+
+                if(selectValid){
+                    text = $(this).find(':selected').text();
+                }                
+
+                let id = $(this).attr('id').replace(field.toLowerCase(),'')
+
+                let token = $('input[name="_token"]').val();
+
+                $.ajax({
+                    method:'PATCH',
+                    url:`animals/${id}`,
+                    data:{
+                        _token:token,
+                        field:field.toLowerCase(),
+                        value:val
+                    }
+                }).done(resp=>{
+
+                    $(`#${field.toLowerCase()}${id}`).hide()
+
+                    if(selectValid)
+                        $(`#${field.toLowerCase()}Text${id}`).html(text)
+                    else
+                        $(`#${field.toLowerCase()}Text${id}`).html(val)
+
+                    $(`#${field.toLowerCase()}Text${id}`).show()
+
+                    let fieldText = field
+                    switch (field) {
+                        case 'Destination':
+                            fieldText = 'Destino'
+                            break;
+                        case 'Age':
+                            fieldText = 'Edad'
+                            break;
+                        case 'Weight':
+                            fieldText = 'Peso'
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
+                    if(resp == 'ok'){
+
+                        Swal.fire({
+                            toast:true,
+                            icon:'success',
+                            title: `${fieldText} modificado`,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                        })   
+
+                    }
+                    
+                })
+
+            })
+
+        }
+
+        allowEdit('caravanText','caravan')
+
+        editField('Caravan','blur')
+
+        allowEdit('destinationText','destination')
+
+        editField('Destination','change')
+
+        allowEdit('ageText','age')
+
+        editField('Age','blur')
+
+        allowEdit('weightText','weight')
+
+        editField('Weight','blur')
+
+    </script>
+
+@endsection

@@ -55,7 +55,14 @@ class AnimalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+
+        $animal = Animal::find($id);
+
+        $animal[$request->field] = $request->value;
+
+        $animal->save();
+
+        return response('ok',200);
     }
 
     /**

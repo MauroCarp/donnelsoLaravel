@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped dt-responsive animalTable" width="100%">
+<table class="table table-bordered table-striped dt-responsive animalTable" id="animalTable" width="100%">
          
     <thead>
      
@@ -10,8 +10,6 @@
             <th>Edad</th>
             <th>Peso</th> 
             <th></th> 
-            <th></th> 
-
         </tr> 
 
     </thead>
@@ -21,17 +19,58 @@
         @foreach ($animals as $animal)
             @if($animal->type == $type)    
                 <tr>
-                    <td>{{ $animal->caravan }}</td>
+                    <td>
+
+                        <span class="caravanText" id="caravanText{{ $animal->id }}" caravanText="{{ $animal->id }}" style="cursor:pointer">
+
+                            {{ $animal->caravan ?? '-' }}
+
+                        </span>
+
+                        <input type="text" class="selectCaravan" id="caravan{{ $animal->id }}" style="display:none" value="{{ $animal->caravan }}">
+
+                    </td>
                     <td>@if($animal->sex == 'm') Macho @else Hembra @endif</td>
                     <td>
-                        @if ($animal->destination == 'reproductive')
+
+                        <span class="destinationText" id="destinationText{{ $animal->id }}" destinationText="{{ $animal->id }}" style="cursor:pointer">
+
+                            @if ($animal->destination == 'reproductive')
                             Reproductor                            
-                        @else
+                            @else
                             {{ ucfirst($animal->destination) }}
-                        @endif
+                            @endif
+
+                        </span>
+
+                        <select class="selectDestination" id="destination{{ $animal->id }}" style="display:none">
+                            <option value="RN" @if($animal->destination == 'RN') selected @endif >RN</option>
+                            <option value="engorde" @if($animal->destination == 'engorde') selected @endif>Engorde</option>
+                            <option value="reproductive" @if($animal->destination == 'reproductive') selected @endif>Reproductor</option>
+                            <option value="faena" @if($animal->destination == 'faena') selected @endif>Faena</option>
+                        </select>
+
                     </td>
-                    <td>{{ $animal->age ?? '-' }}</td>
-                    <td>{{ $animal->weight }}</td>
+                    <td>
+                        <span class="ageText" id="ageText{{ $animal->id }}" ageText="{{ $animal->id }}" style="cursor:pointer">
+
+                            {{ $animal->age ?? '-' }}
+
+                        </span>
+
+                        <input type="text" class="selectAge" id="age{{ $animal->id }}" style="display:none" value="{{ $animal->age }}">
+
+                    </td>
+                    <td>
+                        <span class="weightText" id="weightText{{ $animal->id }}" weightText="{{ $animal->id }}" style="cursor:pointer">
+
+                            {{ $animal->weight ?? '-' }}
+
+                        </span>
+
+                        <input type="text" class="selectWeight" id="weight{{ $animal->id }}" style="display:none" value="{{ $animal->weight }}">
+
+                    </td>
                     <td>
 
                         @if($animal->idPurchase != null)
@@ -46,25 +85,12 @@
 
                         @if($animal->idHealth != null)
 
-                            <button class="btn btn-info">Nacimiento {{ $animal->idHealth }}</button>
+                            <button class="btn btn-info">Sanidad {{ $animal->idHealth }}</button>
 
                         @endif
 
                     </td>
 
-                    <td>
-
-                        <form action="animals/{{ $animal->id }}" method="POST" id="updateAnimalForm{{$animal->id}}">
-
-                            @csrf
-                            @method('PATCH')
-                            <button class="btn btn-warning btnUpdateAnimal" type="submit" form="updateAnimalForm{{$animal->id}}">
-                                <i class="fa fa-edit"></i>
-                            </button>
-
-                        </form>
-
-                    </td>
                 </tr>
 
             @endif
