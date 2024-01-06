@@ -289,8 +289,8 @@
 
                 spanAmount.innerText = data.amount
                 spanSex.innerText = (data.sex == 'm') ? 'Macho' : ((data.sex == 'h') ? 'Hembra' : 'Macho/Hembra')
-                spanMother.innerText = data.mother.caravan
-                spanFather.innerText = data.father.caravan
+                spanMother.innerText = `Caravana ${data.mother.caravan}`
+                spanFather.innerText = `Caravana ${data.father.caravan}`
 
                 let i = document.createElement('I')
                 i.setAttribute('class','fa fa-times')
