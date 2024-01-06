@@ -109,7 +109,8 @@
         background-image:url('img/back.png');
         background-color:bisque!important;
         background-size: cover;
-
+        background-position: center center;
     }
+
 </style>
 @endsection
