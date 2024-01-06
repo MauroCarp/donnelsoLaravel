@@ -158,7 +158,12 @@ class BirthController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $birth = Birth::find($id);
+        
+        $date = new Carbon($birth->date);
+        $birth->date = $date->format('d-m-Y');
+
+        return response()->json($birth->toArray());
     }
 
     /**

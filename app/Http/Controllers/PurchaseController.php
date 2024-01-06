@@ -115,8 +115,9 @@ class PurchaseController extends Controller
      */
     public function show(string $id)
     {
-        //
-    }
+        $purchase = Purchase::find($id);
+       
+        return response()->json($purchase->toArray());    }
 
     /**
      * Show the form for editing the specified resource.

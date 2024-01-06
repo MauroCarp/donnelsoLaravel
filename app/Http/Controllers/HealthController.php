@@ -78,7 +78,9 @@ class HealthController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $health = Health::find($id);
+
+        return response()->json($health->toArray());
     }
 
     /**
