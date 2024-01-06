@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h1 class="m-0 text-dark">Animales</h1>
-    <small>*Hacer doble click en los campos Destino - Edad - Peso para poder modificarlos</small>
+    <small>*Hacer doble click en los campos Caravana - Destino - Edad - Peso para poder modificarlos</small>
 @stop
 
 @section('content')
