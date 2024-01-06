@@ -17,6 +17,14 @@ class Animal extends Model
 
     }
 
+    public function father()
+    {
+        
+        return $this->hasOne(Birth::class,'id','idReproductive');
+        
+
+    }
+
     public function dead()
     {
         

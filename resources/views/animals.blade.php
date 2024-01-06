@@ -261,6 +261,7 @@
 
                 let liAmount = document.createElement('LI')
                 liAmount.setAttribute('class','nav-item nav-link')
+                liAmount.setAttribute('style','border-bottom:1px solid #dee2e6')
 
                 let liSex = liAmount.cloneNode(true)
                 let liMother = liAmount.cloneNode(true)
@@ -288,10 +289,17 @@
 
                 spanAmount.innerText = data.amount
                 spanSex.innerText = (data.sex == 'm') ? 'Macho' : ((data.sex == 'h') ? 'Hembra' : 'Macho/Hembra')
-                spanMother.innerText = data?.idMother
-                spanFather.innerText = data?.idReproductive
-                spanTwins.innerHtml = (data.twins) ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>' 
-                spanComplications.innerText = data.complications
+                spanMother.innerText = data.mother.caravan
+                spanFather.innerText = data.father.caravan
+
+                let i = document.createElement('I')
+                i.setAttribute('class','fa fa-times')
+                if(data.twins)
+                    i.setAttribute('class','fa fa-check')
+
+                spanTwins.append(i)
+
+                spanComplications.innerText = (data.complications == null) ? '-' : data.complications
                 spanDeaths.innerText = data.deaths
 
                 liAmount.append(spanAmount)
@@ -335,12 +343,30 @@
             divRow.setAttribute('class','row')
             divCol.setAttribute('class','col-lg-12')
             divCard.setAttribute('class','card card-widget widget-user-2 shadow-sm')
-            divUserHeader.setAttribute('class','widget-user-header bg-warning')
+            divUserHeader.setAttribute('class','widget-user-header bg-info')
             divUserImage.setAttribute('class','widget-user-image')
             divCardFooter.setAttribute('class','card-footer p-0')
 
             let icon = document.createElement('I')
-            icon.setAttribute('class','icon-cerdo img-circle elevation-2')
+            let iconClass
+            switch (data.mother.type) {
+                case 'cerdo':
+                    iconClass = 'icon-cerdo'
+                    break;
+                case 'ovino':
+                    iconClass = 'icon-cordero'
+                    break;
+                case 'vaca':
+                    iconClass = 'icon-vaca'
+                    break;
+                case 'chivo':
+                    iconClass = 'icon-chivo'
+                    break;
+            
+                default:
+                    break;
+            }
+            icon.setAttribute('class',`${iconClass} img-circle elevation-2`)
             icon.setAttribute('style','font-size:3em;padding:5px;position:absolute')
 
             let h3 = document.createElement('H3')

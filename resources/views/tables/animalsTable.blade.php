@@ -104,18 +104,18 @@
                     <td>
 
                         @if($animal->idPurchase != null)
-                            <button class="btn btn-info btnAnimalDetail"  detail="purchase" idDetail="{{ $animal->idPurchase }}" data-toggle="modal" data-target="#modalAnimal">Compra {{ $animal->idPuchase }}</button>
+                            <button class="btn btn-info btnAnimalDetail"  detail="purchase" idDetail="{{ $animal->idPurchase }}" data-toggle="modal" data-target="#modalAnimal">Compra</button>
                         @endif
 
                         @if($animal->idBirth != null)
 
-                            <button class="btn btn-info btnAnimalDetail"  detail="birth" idDetail="{{ $animal->idBirth }}" data-toggle="modal" data-target="#modalAnimal">Nacimiento {{ $animal->idBirth }}</button>
+                            <button class="btn btn-info btnAnimalDetail"  detail="birth" idDetail="{{ $animal->idBirth }}" data-toggle="modal" data-target="#modalAnimal">Nacimiento</button>
 
                         @endif
 
                         @if($animal->idHealth != null)
 
-                            <button class="btn btn-info btnAnimalDetail"  detail="health" idDetail="{{ $animal->idHealth }}" data-toggle="modal" data-target="#modalAnimal">Sanidad {{ $animal->idHealth }}</button>
+                            <button class="btn btn-info btnAnimalDetail"  detail="health" idDetail="{{ $animal->idHealth }}" data-toggle="modal" data-target="#modalAnimal">Sanidad</button>
 
                         @endif
 

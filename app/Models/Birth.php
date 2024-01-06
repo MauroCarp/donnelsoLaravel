@@ -16,4 +16,10 @@ class Birth extends Model
         return $this->belongsTo(Animal::class,'idMother','id');
         
     }
+
+    public function father(){
+
+        return $this->belongsTo(Animal::class,'idReproductive','id');
+        
+    }
 }
