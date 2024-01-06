@@ -183,14 +183,21 @@
                     }
 
                 }).done(resp=>{
+                    console.log(resp)
 
-                    
                     if(selectValid){
                         $(`#${field.toLowerCase()}Text${id}`).html(text)
                         $(`#${field.toLowerCase()}${id}`).hide()
                     } else {
+
                         $(`#${field.toLowerCase()}${id}`).parent().hide()
-                        $(`#${field.toLowerCase()}Text${id}`).html(val)
+
+                        if(resp == 'ok')
+                            $(`#${field.toLowerCase()}Text${id}`).html(val)
+                        
+                        button.children().addClass('fa-edit')
+                        button.children().removeClass('fa-sync-alt')
+                        
                     }
 
                     $(`#${field.toLowerCase()}Text${id}`).show()
@@ -225,6 +232,15 @@
                             timer: 3000,
                         })   
 
+                    }else{
+                        Swal.fire({
+                            toast:true,
+                            icon:'error',
+                            title: `${fieldText} ya existe para otro animal`,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                        })
                     }
 
                 })

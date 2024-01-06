@@ -55,8 +55,17 @@ class AnimalController extends Controller
      */
     public function update(Request $request, string $id)
     {
-
         $animal = Animal::find($id);
+
+        if($request->field == 'caravan'){
+
+            $validateCaravan = Animal::where(['caravan'=>$request->value,'type'=>$animal->type])->get('caravan');
+
+            if(!empty($validateCaravan->toArray())){
+                return response('error');
+            }
+            
+        }
 
         $animal[$request->field] = $request->value;
 
