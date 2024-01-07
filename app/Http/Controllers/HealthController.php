@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\Event;
 use App\Models\Health;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HealthController extends Controller
@@ -78,7 +79,10 @@ class HealthController extends Controller
      */
     public function show(string $id)
     {
-        $health = Health::find($id);
+        $health = Health::with('animal')->where('id',$id)->first();
+        
+        $date = new Carbon($health->date);
+        $health->date = $date->format('d-m-Y');
 
         return response()->json($health->toArray());
     }

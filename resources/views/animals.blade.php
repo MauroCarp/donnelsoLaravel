@@ -335,64 +335,47 @@
 
             let lis = document.createDocumentFragment() 
 
-            let liAmount = document.createElement('LI')
-            liAmount.setAttribute('class','nav-item nav-link')
-            liAmount.setAttribute('style','border-bottom:1px solid #dee2e6')
+            let liAplication = document.createElement('LI')
+            liAplication.setAttribute('class','nav-item nav-link')
+            liAplication.setAttribute('style','border-bottom:1px solid #dee2e6')
 
-            let liSex = liAmount.cloneNode(true)
-            let liMother = liAmount.cloneNode(true)
-            let liFather = liAmount.cloneNode(true)
-            let liTwins = liAmount.cloneNode(true)
-            let liComplications = liAmount.cloneNode(true)
-            let liDeaths = liAmount.cloneNode(true)
+            let liComments = liAplication.cloneNode(true)
+            let liMotive = liAplication.cloneNode(true)
+            let liVetCost = liAplication.cloneNode(true)
+            let liCaravan = liAplication.cloneNode(true)
 
-            liAmount.innerText = 'Cantidad'
-            liSex.innerText = 'Sexo'
-            liMother.innerText = 'Madre'
-            liFather.innerText = 'Padre'
-            liTwins.innerText = 'Mellizos'
-            liComplications.innerText = 'Complicaciones'
-            liDeaths.innerText = 'Muertes'
+            liAplication.innerText = 'Aplicación'
+            liComments.innerText = 'Comentarios'
+            liMotive.innerText = 'Motivo'
+            liVetCost.innerText = 'Costo Veterinario'
+            liCaravan.innerText = 'Caravana'
 
-            let spanAmount = document.createElement('SPAN')
-            spanAmount.setAttribute('class','float-right badge badge-success')
-            let spanSex = spanAmount.cloneNode(true)
-            let spanMother = spanAmount.cloneNode(true)
-            let spanFather = spanAmount.cloneNode(true)
-            let spanTwins = spanAmount.cloneNode(true)
-            let spanComplications = spanAmount.cloneNode(true)
-            let spanDeaths = spanAmount.cloneNode(true)
+            let spanAplication = document.createElement('SPAN')
+            spanAplication.setAttribute('class','float-right badge badge-success')
+            let spanComments = spanAplication.cloneNode(true)
+            let spanMotive = spanAplication.cloneNode(true)
+            let spanVetCost = spanAplication.cloneNode(true)
+            let spanCaravan = spanAplication.cloneNode(true)
+            let spanComplications = spanAplication.cloneNode(true)
+            let spanDeaths = spanAplication.cloneNode(true)
 
-            spanAmount.innerText = data.amount
-            spanSex.innerText = (data.sex == 'm') ? 'Macho' : ((data.sex == 'h') ? 'Hembra' : 'Macho/Hembra')
-            spanMother.innerText = `Caravana ${data.mother.caravan}`
-            spanFather.innerText = `Caravana ${data.father.caravan}`
+            spanAplication.innerText = data.aplication
+            spanComments.innerText = data.comments || '-'
+            spanMotive.innerText = data.motive
+            spanVetCost.innerText = `$ ${Number(data.vetCost).toLocaleString('de-DE')}`           
+            spanCaravan.innerText = data.animal.caravan || '-'
 
-            let i = document.createElement('I')
-            i.setAttribute('class','fa fa-times')
-            if(data.twins)
-                i.setAttribute('class','fa fa-check')
+            liAplication.append(spanAplication)
+            liComments.append(spanComments)
+            liMotive.append(spanMotive)
+            liVetCost.append(spanVetCost)
+            liCaravan.append(spanCaravan)
 
-            spanTwins.append(i)
-
-            spanComplications.innerText = (data.complications == null) ? '-' : data.complications
-            spanDeaths.innerText = data.deaths
-
-            liAmount.append(spanAmount)
-            liSex.append(spanSex)
-            liMother.append(spanMother)
-            liFather.append(spanFather)
-            liTwins.append(spanTwins)
-            liComplications.append(spanComplications)
-            liDeaths.append(spanDeaths)
-
-            lis.append(liAmount)
-            lis.append(liSex)
-            lis.append(liMother)
-            lis.append(liFather)
-            lis.append(liTwins)
-            lis.append(liComplications)
-            lis.append(liDeaths)
+            lis.append(liAplication)
+            lis.append(liComments)
+            lis.append(liMotive)
+            lis.append(liVetCost)
+            lis.append(liCaravan)
 
             return lis
         }
@@ -485,6 +468,7 @@
             }
 
             if(detail == 'health'){
+
                 title = 'Sanidad'
 
                 lis = generateHealthDetail(data)
@@ -579,14 +563,17 @@
 
             let token = $('input[name="_token"]').val();
 
+            let urlDetail = (detail != 'health') ? `${detail}s` : detail
+
             $.ajax({
                 method:'GET',
-                url:`${detail}s/${idDetail}`,
+                url:`${urlDetail}/${idDetail}`,
                 data:{
                     _token:token
                 }
             }).done(resp=>{
                 console.log(resp)
+              
                 generateDetail(resp,detail)
             })
 
