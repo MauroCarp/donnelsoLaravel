@@ -16,7 +16,7 @@ class HealthController extends Controller
     public function index()
     {
 
-        $healths = Health::with('animal')->get();
+        $healths = Health::with('animal')->orderby('date','desc')->get();
 
         $animals = Animal::where('active',1)->get();
 
@@ -55,6 +55,8 @@ class HealthController extends Controller
 
         $caravan = '';
 
+        $animal = null;
+
         if($validate['aplication'] == 'Individual'){
 
             $animal = Animal::find($request->caravans);
@@ -65,7 +67,14 @@ class HealthController extends Controller
 
         }
 
+
         $health = Health::create($validate);
+
+        if($validate['aplication'] == 'Individual'){
+
+            $animal->idHealth = $health->id;
+            $animal->save();
+        }
 
         $title = 'Sanidad ' . $validate['type'] . '. ' . $validate['motive'] . ' ' . $validate['aplication'] . ' ' . $caravan;
 
@@ -83,6 +92,10 @@ class HealthController extends Controller
         
         $date = new Carbon($health->date);
         $health->date = $date->format('d-m-Y');
+
+        $otherHealths = Health::with('animal')->where(['idAnimal'=>$health->idAnimal,'type'=>$health->animal->type])->get();
+
+        $health->others = $otherHealths;
 
         return response()->json($health->toArray());
     }
