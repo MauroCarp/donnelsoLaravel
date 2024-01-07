@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\Provider;
 use App\Models\Purchase;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -115,9 +116,13 @@ class PurchaseController extends Controller
      */
     public function show(string $id)
     {
-        $purchase = Purchase::find($id);
-       
-        return response()->json($purchase->toArray());    }
+        $purchase = Purchase::with('provider')->where('id',$id)->first();
+        
+        $date = new Carbon($purchase->date);
+        $purchase->date = $date->format('d-m-Y');
+
+        return response()->json($purchase->toArray());    
+    }
 
     /**
      * Show the form for editing the specified resource.

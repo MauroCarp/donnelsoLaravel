@@ -265,84 +265,236 @@
 
         editField('Weight','click')
 
+        const generateBirthDetail = (data)=>{
+
+            let lis = document.createDocumentFragment() 
+
+            let liAmount = document.createElement('LI')
+            liAmount.setAttribute('class','nav-item nav-link')
+            liAmount.setAttribute('style','border-bottom:1px solid #dee2e6')
+
+            let liSex = liAmount.cloneNode(true)
+            let liMother = liAmount.cloneNode(true)
+            let liFather = liAmount.cloneNode(true)
+            let liTwins = liAmount.cloneNode(true)
+            let liComplications = liAmount.cloneNode(true)
+            let liDeaths = liAmount.cloneNode(true)
+
+            liAmount.innerText = 'Cantidad'
+            liSex.innerText = 'Sexo'
+            liMother.innerText = 'Madre'
+            liFather.innerText = 'Padre'
+            liTwins.innerText = 'Mellizos'
+            liComplications.innerText = 'Complicaciones'
+            liDeaths.innerText = 'Muertes'
+
+            let spanAmount = document.createElement('SPAN')
+            spanAmount.setAttribute('class','float-right badge badge-success')
+            let spanSex = spanAmount.cloneNode(true)
+            let spanMother = spanAmount.cloneNode(true)
+            let spanFather = spanAmount.cloneNode(true)
+            let spanTwins = spanAmount.cloneNode(true)
+            let spanComplications = spanAmount.cloneNode(true)
+            let spanDeaths = spanAmount.cloneNode(true)
+
+            spanAmount.innerText = data.amount
+            spanSex.innerText = (data.sex == 'm') ? 'Macho' : ((data.sex == 'h') ? 'Hembra' : 'Macho/Hembra')
+            spanMother.innerText = `Caravana ${data.mother.caravan}`
+            spanFather.innerText = `Caravana ${data.father.caravan}`
+
+            let i = document.createElement('I')
+            i.setAttribute('class','fa fa-times')
+            if(data.twins)
+                i.setAttribute('class','fa fa-check')
+
+            spanTwins.append(i)
+
+            spanComplications.innerText = (data.complications == null) ? '-' : data.complications
+            spanDeaths.innerText = data.deaths
+
+            liAmount.append(spanAmount)
+            liSex.append(spanSex)
+            liMother.append(spanMother)
+            liFather.append(spanFather)
+            liTwins.append(spanTwins)
+            liComplications.append(spanComplications)
+            liDeaths.append(spanDeaths)
+
+            lis.append(liAmount)
+            lis.append(liSex)
+            lis.append(liMother)
+            lis.append(liFather)
+            lis.append(liTwins)
+            lis.append(liComplications)
+            lis.append(liDeaths)
+
+            return lis
+        }
+   
+        const generateHealthDetail = (data)=>{
+
+            let lis = document.createDocumentFragment() 
+
+            let liAmount = document.createElement('LI')
+            liAmount.setAttribute('class','nav-item nav-link')
+            liAmount.setAttribute('style','border-bottom:1px solid #dee2e6')
+
+            let liSex = liAmount.cloneNode(true)
+            let liMother = liAmount.cloneNode(true)
+            let liFather = liAmount.cloneNode(true)
+            let liTwins = liAmount.cloneNode(true)
+            let liComplications = liAmount.cloneNode(true)
+            let liDeaths = liAmount.cloneNode(true)
+
+            liAmount.innerText = 'Cantidad'
+            liSex.innerText = 'Sexo'
+            liMother.innerText = 'Madre'
+            liFather.innerText = 'Padre'
+            liTwins.innerText = 'Mellizos'
+            liComplications.innerText = 'Complicaciones'
+            liDeaths.innerText = 'Muertes'
+
+            let spanAmount = document.createElement('SPAN')
+            spanAmount.setAttribute('class','float-right badge badge-success')
+            let spanSex = spanAmount.cloneNode(true)
+            let spanMother = spanAmount.cloneNode(true)
+            let spanFather = spanAmount.cloneNode(true)
+            let spanTwins = spanAmount.cloneNode(true)
+            let spanComplications = spanAmount.cloneNode(true)
+            let spanDeaths = spanAmount.cloneNode(true)
+
+            spanAmount.innerText = data.amount
+            spanSex.innerText = (data.sex == 'm') ? 'Macho' : ((data.sex == 'h') ? 'Hembra' : 'Macho/Hembra')
+            spanMother.innerText = `Caravana ${data.mother.caravan}`
+            spanFather.innerText = `Caravana ${data.father.caravan}`
+
+            let i = document.createElement('I')
+            i.setAttribute('class','fa fa-times')
+            if(data.twins)
+                i.setAttribute('class','fa fa-check')
+
+            spanTwins.append(i)
+
+            spanComplications.innerText = (data.complications == null) ? '-' : data.complications
+            spanDeaths.innerText = data.deaths
+
+            liAmount.append(spanAmount)
+            liSex.append(spanSex)
+            liMother.append(spanMother)
+            liFather.append(spanFather)
+            liTwins.append(spanTwins)
+            liComplications.append(spanComplications)
+            liDeaths.append(spanDeaths)
+
+            lis.append(liAmount)
+            lis.append(liSex)
+            lis.append(liMother)
+            lis.append(liFather)
+            lis.append(liTwins)
+            lis.append(liComplications)
+            lis.append(liDeaths)
+
+            return lis
+        }
+
+        const generatePurchaseDetail = (data)=>{
+
+            let lis = document.createDocumentFragment() 
+
+            let liAmount = document.createElement('LI')
+            liAmount.setAttribute('class','nav-item nav-link')
+            liAmount.setAttribute('style','border-bottom:1px solid #dee2e6')
+
+            let liCost = liAmount.cloneNode(true)
+            let liMale = liAmount.cloneNode(true)
+            let liFemale = liAmount.cloneNode(true)
+            let liDestination = liAmount.cloneNode(true)
+            let liKg = liAmount.cloneNode(true)
+            let liProvider = liAmount.cloneNode(true)
+
+            liAmount.innerText = 'Cantidad'
+            liMale.innerText = 'Machos'
+            liFemale.innerText = 'Hembras'
+            liDestination.innerText = 'Destino'
+            liProvider.innerText = 'Proveedor'
+            liCost.innerText = 'Costo'
+            liKg.innerText = 'Kg'
+
+            let spanAmount = document.createElement('SPAN')
+            spanAmount.setAttribute('class','float-right badge badge-success')
+            let spanCost = spanAmount.cloneNode(true)
+            let spanMale = spanAmount.cloneNode(true)
+            let spanFemale = spanAmount.cloneNode(true)
+            let spanDestination = spanAmount.cloneNode(true)
+            let spanKg = spanAmount.cloneNode(true)
+            let spanProvider = spanAmount.cloneNode(true)
+
+            spanAmount.innerText = data.amount
+            spanCost.innerText = `$ ${data.cost.toLocaleString('de-DE')}`
+            spanMale.innerText = data.males
+            spanFemale.innerText = data.females
+
+            let destination
+
+            switch (data.destination) {
+                case 'reproductive':
+                    destination = 'REPRODUCTOR'
+                    break;
+            
+                default:
+                    destination = data.destination.toUpperCase()
+                    break;
+            }
+
+            spanDestination.innerText = destination
+
+            spanKg.innerText = `${data.kg} Kg`
+            spanProvider.innerText = data.provider.name
+
+            liAmount.append(spanAmount)
+            liCost.append(spanCost)
+            liMale.append(spanMale)
+            liFemale.append(spanFemale)
+            liDestination.append(spanDestination)
+            liKg.append(spanKg)
+            liProvider.append(spanProvider)
+
+            lis.append(liAmount)
+            lis.append(liCost)
+            lis.append(liMale)
+            lis.append(liFemale)
+            lis.append(liDestination)
+            lis.append(liKg)
+            lis.append(liProvider)
+
+            return lis
+        }
+        
         const generateDetail = (data,detail)=>{
 
             let title
 
-            let lis = document.createDocumentFragment() 
+            let lis
 
             if(detail == 'birth'){
 
                 title = 'Nacimiento'
 
-                let liAmount = document.createElement('LI')
-                liAmount.setAttribute('class','nav-item nav-link')
-                liAmount.setAttribute('style','border-bottom:1px solid #dee2e6')
-
-                let liSex = liAmount.cloneNode(true)
-                let liMother = liAmount.cloneNode(true)
-                let liFather = liAmount.cloneNode(true)
-                let liTwins = liAmount.cloneNode(true)
-                let liComplications = liAmount.cloneNode(true)
-                let liDeaths = liAmount.cloneNode(true)
-
-                liAmount.innerText = 'Cantidad'
-                liSex.innerText = 'Sexo'
-                liMother.innerText = 'Madre'
-                liFather.innerText = 'Padre'
-                liTwins.innerText = 'Mellizos'
-                liComplications.innerText = 'Complicaciones'
-                liDeaths.innerText = 'Muertes'
-
-                let spanAmount = document.createElement('SPAN')
-                spanAmount.setAttribute('class','float-right badge badge-success')
-                let spanSex = spanAmount.cloneNode(true)
-                let spanMother = spanAmount.cloneNode(true)
-                let spanFather = spanAmount.cloneNode(true)
-                let spanTwins = spanAmount.cloneNode(true)
-                let spanComplications = spanAmount.cloneNode(true)
-                let spanDeaths = spanAmount.cloneNode(true)
-
-                spanAmount.innerText = data.amount
-                spanSex.innerText = (data.sex == 'm') ? 'Macho' : ((data.sex == 'h') ? 'Hembra' : 'Macho/Hembra')
-                spanMother.innerText = `Caravana ${data.mother.caravan}`
-                spanFather.innerText = `Caravana ${data.father.caravan}`
-
-                let i = document.createElement('I')
-                i.setAttribute('class','fa fa-times')
-                if(data.twins)
-                    i.setAttribute('class','fa fa-check')
-
-                spanTwins.append(i)
-
-                spanComplications.innerText = (data.complications == null) ? '-' : data.complications
-                spanDeaths.innerText = data.deaths
-
-                liAmount.append(spanAmount)
-                liSex.append(spanSex)
-                liMother.append(spanMother)
-                liFather.append(spanFather)
-                liTwins.append(spanTwins)
-                liComplications.append(spanComplications)
-                liDeaths.append(spanDeaths)
-
-                lis.append(liAmount)
-                lis.append(liSex)
-                lis.append(liMother)
-                lis.append(liFather)
-                lis.append(liTwins)
-                lis.append(liComplications)
-                lis.append(liDeaths)
+                lis = generateBirthDetail(data)
 
             }
 
             if(detail == 'health'){
                 title = 'Sanidad'
 
+                lis = generateHealthDetail(data)
+
             }
 
             if(detail == 'purchase'){
                 title = 'Compra'
+
+                lis = generatePurchaseDetail(data)
 
             }
 
@@ -361,11 +513,15 @@
             divCard.setAttribute('class','card card-widget widget-user-2 shadow-sm')
             divUserHeader.setAttribute('class','widget-user-header bg-info')
             divUserImage.setAttribute('class','widget-user-image')
+            divUserImage.setAttribute('style','margin-right:5px;')
             divCardFooter.setAttribute('class','card-footer p-0')
 
             let icon = document.createElement('I')
             let iconClass
-            switch (data.mother.type) {
+
+            let type = (detail == 'birth') ? data.mother.type : data.type
+
+            switch (type) {
                 case 'cerdo':
                     iconClass = 'icon-cerdo'
                     break;
@@ -383,14 +539,17 @@
                     break;
             }
             icon.setAttribute('class',`${iconClass} img-circle elevation-2`)
-            icon.setAttribute('style','font-size:3em;padding:5px;position:absolute')
+            icon.setAttribute('style','font-size:3em;padding:15px;position:absolute')
 
             let h3 = document.createElement('H3')
             h3.setAttribute('class','widget-user-username')
+            h3.setAttribute('style','margin-left:105px;')
             h3.innerText = title
 
             let h5 = document.createElement('H5')
             h5.setAttribute('class','widget-user-desc')
+            h5.setAttribute('style','margin-left:105px;')
+
             h5.innerText = data.date
 
             divUserImage.append(icon)
