@@ -105,6 +105,7 @@
 @stop
 
 @include('modals/animals/detail')
+@include('modals/animals/healthHistorial')
 
 @section('js')
 
@@ -332,7 +333,7 @@
         }
    
         const generateHealthDetail = (data)=>{
-
+                
             let lis = document.createDocumentFragment() 
 
             let liAplication = document.createElement('LI')
@@ -522,6 +523,7 @@
                 default:
                     break;
             }
+
             icon.setAttribute('class',`${iconClass} img-circle elevation-2`)
             icon.setAttribute('style','font-size:3em;padding:15px;position:absolute')
 
@@ -540,6 +542,55 @@
             divUserHeader.append(divUserImage)
             divUserHeader.append(h3)
             divUserHeader.append(h5)
+
+            if(detail == 'health' && data.others.length > 1){
+
+                let historial = document.createElement('button')
+                historial.setAttribute('class','btn btn-success float-right')
+                historial.setAttribute('id','btnHealthHistorial')
+                historial.setAttribute('data-toggle','modal')
+                historial.setAttribute('data-target','#modalHealthHistorial')  
+
+                let icon = document.createElement('i')
+                icon.setAttribute('class','fa fa-list')
+
+                historial.append(icon)
+
+                divUserHeader.append(historial)
+
+                let body = data.others.map(health=>{
+
+                    let tr = document.createElement('TR')
+                    let tdDate = document.createElement('TD')
+                    let tdAplication = tdDate.cloneNode(true)
+                    let tdMotive = tdDate.cloneNode(true)
+                    let tdComments = tdDate.cloneNode(true)
+                    let tdVetCost = tdDate.cloneNode(true)
+
+                    let objectDate = moment(health.date, "YYYY-MM-DD HH:mm:ss").toDate();
+                    let formatedDate = moment(objectDate).format('D-M-YYYY');
+
+                    tdDate.innerText = formatedDate
+                    tdAplication.innerText = health.aplication
+                    tdMotive.innerText = health.motive
+                    tdComments.innerText = health.comments
+                    tdVetCost.innerText = Number(health.vetCost).toLocaleString('de-DE')
+                    
+                    tr.append(tdDate)
+                    tr.append(tdAplication)
+                    tr.append(tdMotive)
+                    tr.append(tdComments)
+                    tr.append(tdVetCost)
+
+                    return tr
+
+                })
+
+
+                $('#healthHistorialTable').html('')
+                $('#healthHistorialTable').append(body)
+
+            }
 
             divCard.append(divUserHeader)
 
@@ -571,14 +622,15 @@
                 data:{
                     _token:token
                 }
-            }).done(resp=>{
-                console.log(resp)
-              
+            }).done(resp=>{              
                 generateDetail(resp,detail)
             })
 
         })
 
+        $('#modalHealthHistorial').on('hidden.bs.modal', function () {
+            $('#modalAnimal').modal('show')
+        });
 
     </script>
 
