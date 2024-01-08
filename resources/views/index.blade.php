@@ -13,6 +13,40 @@
             <div id='calendar'></div>
 
         </div>
+        
+        <div class="col-lg-4 col-sm-12 col-md-12 py-5">
+            @foreach ($animals as $type => $animalType)
+
+                @if($loop->iteration == 1 || $loop->iteration % 2 !== 0)
+                <div class="row">
+                @endif
+
+                    <div class="col-lg-6 col-sm-6 col-md-6">
+
+                        <div class="small-box bg-info">
+
+                            <div class="inner">
+                                <h3>{{ $animalType['total'] }}</h3>
+                                <p>{{ ucfirst($type) }}</p>
+                            </div>
+
+                            <div class="icon">
+                                <i class="icon-@switch($type)@case('ovino')cordero @break @case('vacas')vaca @break @case('pollos')pollo @break @default{{$type}}@endswitch"></i>
+                            </div>
+
+                            <span class="small-box-footer">Listo para faena {{ $animalType['faena']}} <i class="fas fa-check"></i></a>
+
+                        </div>
+
+                    </div>
+
+                @if($loop->iteration % 2 === 0)
+                </div>
+                @endif
+        
+            @endforeach
+
+        </div>
 
     </div>
 
