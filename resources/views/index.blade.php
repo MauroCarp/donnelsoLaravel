@@ -30,7 +30,7 @@
                                 <p>{{ ucfirst($type) }}</p>
                             </div>
 
-                            <div class="icon">
+                            <div class="icon" style="display:block">
                                 <i class="icon-@switch($type)@case('ovino')cordero @break @case('vacas')vaca @break @case('pollos')pollo @break @default{{$type}}@endswitch"></i>
                             </div>
 
