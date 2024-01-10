@@ -7,10 +7,13 @@
 @stop
 
 @section('content')
+@role('master')
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPurchase" id="btnNewPurchase">Nueva Compra</button>
 <br>
 <br>
+
+@endrole
 <table class="table table-bordered table-striped dt-responsive purchaseTable" width="100%">
          
     <thead>
