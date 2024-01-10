@@ -1,4 +1,4 @@
-@isset($item['master'])
+@if($item['master'])
 
     @role('master')
 
@@ -66,4 +66,4 @@
 
     </li>
 
-@endisset
+@endif
