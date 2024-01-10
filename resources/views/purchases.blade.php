@@ -27,7 +27,9 @@
             <th>Machos</th>
             <th>Hembras</th>
             <th>Kg Total</th>
+            @role('master')
             <th>$ Total</th> 
+            @endrole
             <th></th> 
 
         </tr> 
@@ -46,7 +48,9 @@
                 <td>{{ $purchase->males }}</td>
                 <td>{{ $purchase->females }}</td>
                 <td>{{ $purchase->kg }}</td>
+                @role('master')
                 <td>{{ $purchase->cost }}</td>
+                @endrole
                 <td>
 
                     <form action="purchases/{{ $purchase->id }}" method="POST">
