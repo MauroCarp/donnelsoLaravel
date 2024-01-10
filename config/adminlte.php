@@ -304,6 +304,7 @@ return [
         [
             'text' => 'Ingresos',
             'icon' => 'far fa fa-fw fa-upload',
+            'master'  => false,
             'submenu' => [
 
                 [
@@ -351,6 +352,7 @@ return [
             'text'    => 'Ventas',
             'icon'    => 'fa fa-dollar-sign',
             'id'      => 'btnVentas',
+            'master'  => true,
             'submenu' =>  [
                 [
                     'text' => 'Pre-ventas',
