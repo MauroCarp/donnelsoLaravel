@@ -140,6 +140,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
             'Laravel\\Prompts\\' => 16,
+            'LaravelPWA\\' => 11,
         ),
         'J' => 
         array (
@@ -473,6 +474,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Laravel\\Prompts\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/prompts/src',
+        ),
+        'LaravelPWA\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/silviolleite/laravelpwa',
         ),
         'JeroenNoten\\LaravelAdminLte\\' => 
         array (
@@ -3181,6 +3186,11 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'JeroenNoten\\LaravelAdminLte\\View\\Components\\Widget\\ProfileWidget' => __DIR__ . '/..' . '/jeroennoten/laravel-adminlte/src/View/Components/Widget/ProfileWidget.php',
         'JeroenNoten\\LaravelAdminLte\\View\\Components\\Widget\\Progress' => __DIR__ . '/..' . '/jeroennoten/laravel-adminlte/src/View/Components/Widget/Progress.php',
         'JeroenNoten\\LaravelAdminLte\\View\\Components\\Widget\\SmallBox' => __DIR__ . '/..' . '/jeroennoten/laravel-adminlte/src/View/Components/Widget/SmallBox.php',
+        'LaravelPWA\\Http\\Controllers\\LaravelPWAController' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Http/Controllers/LaravelPWAController.php',
+        'LaravelPWA\\Providers\\LaravelPWAServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/LaravelPWAServiceProvider.php',
+        'LaravelPWA\\Providers\\RouteServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/RouteServiceProvider.php',
+        'LaravelPWA\\Services\\ManifestService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/ManifestService.php',
+        'LaravelPWA\\Services\\MetaService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/MetaService.php',
         'Laravel\\Prompts\\Concerns\\Colors' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Colors.php',
         'Laravel\\Prompts\\Concerns\\Cursor' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Cursor.php',
         'Laravel\\Prompts\\Concerns\\Erase' => __DIR__ . '/..' . '/laravel/prompts/src/Concerns/Erase.php',
