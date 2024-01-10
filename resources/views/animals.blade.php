@@ -167,7 +167,7 @@
 
                 $.ajax({
                     method:'PATCH',
-                    url:`animals/${id}`,
+                    url:`https://donnelso.com.ar/animals/${id}`,
                     data:{
                         _token:token,
                         field:field.toLowerCase(),
@@ -618,7 +618,7 @@
 
             $.ajax({
                 method:'GET',
-                url:`${urlDetail}/${idDetail}`,
+                url:`https://donnelso.com.ar/${urlDetail}/${idDetail}`,
                 data:{
                     _token:token
                 }
