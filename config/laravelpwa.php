@@ -8,7 +8,7 @@ return [
         'start_url' => '/',
         'background_color' => '#28a745',
         'theme_color' => '#343a40',
-        'display' => 'portrait',
+        'display' => 'fullscreen',
         'orientation'=> 'any',
         'status_bar'=> 'black',
         'icons' => [

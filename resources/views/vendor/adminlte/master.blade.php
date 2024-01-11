@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Custom Meta Tags --}}
@@ -73,37 +74,7 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
-
-
-  {{-- <link rel="manifest" href="{{ asset('manifest.json') }}">
-
-  <!-- Android -->
-  <meta name="theme-color" content="#3498db">
-
-  <!-- IOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-
-  <link rel="apple-touch-icon" href="{{ asset('img/icons/icon-192x192.png')}}">
-  <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('img/icons/icon-152x152.png') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('img/icons/icon-192x192.png') }}">
-  <link rel="apple-touch-icon" sizes="167x167" href="{{ asset('img/icons/icon-152x152.png') }}">
-
-  <!-- iPhone X (1125px x 2436px) -->
-  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="{{ asset('img/icons-ios/apple-launch-1125x2436.png') }}">
-  <!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
-  <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="{{ asset('img/icons-ios/apple-launch-750x1334.png') }}">
-  <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
-  <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="{{ asset('img/icons-ios/apple-launch-1242x2208.png') }}">
-  <!-- iPhone 5 (640px x 1136px) -->
-  <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="{{ asset('img/icons-ios/apple-launch-640x1136.png') }}">
-
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <meta name="apple-mobile-web-app-title" content="Don Nelso"> --}}
-
-
-
-
+    @laravelPWA
 
 </head>
 
