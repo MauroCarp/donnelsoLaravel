@@ -9,8 +9,8 @@
     @php( $profile_url = $profile_url ? route($profile_url) : '' )
     @php( $logout_url = $logout_url ? route($logout_url) : '' )
 @else
-    @php( $profile_url = $profile_url ? url($profile_url) : '' )
-    @php( $logout_url = $logout_url ? url($logout_url) : '' )
+    @php( $profile_url = $profile_url ? secure($profile_url) : '' )
+    @php( $logout_url = $logout_url ? secure($logout_url) : '' )
 @endif
 
 <li class="nav-item dropdown user-menu">
