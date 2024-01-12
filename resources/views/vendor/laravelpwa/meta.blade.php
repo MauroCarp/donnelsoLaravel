@@ -1,5 +1,5 @@
 <!-- Web Application Manifest -->
-<link rel="manifest" href="{{ URL::secure(route('laravel.manifest')) }}">
+<link rel="manifest" href="{{ str_replace('http','https',route('laravelpwa.manifest')) }}">
 <!-- Chrome for Android theme color -->
 <meta name="theme-color" content="{{ $config['theme_color'] }}">
 
