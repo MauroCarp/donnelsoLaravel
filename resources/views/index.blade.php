@@ -84,10 +84,10 @@
 
                     if (isLoading) {
                         $('#calendarOverlay').show()
-                        console.log('cargando')
+                        console.log('cargandooooooooooo')
                     } else {
                         $('#calendarOverlay').hide(500)
-                        console.log('cargo')
+                        console.log('cargoooooooooo')
 
                     }
 
