@@ -10,6 +10,7 @@
 
             <button type="button" class="btn btn-success mt-2 ml-3" data-toggle="modal" data-target="#modalEvent" id="btnNewEventIndex">Agregar Nuevo Evento</button>
 
+            <div id='calendarOverlay' class="overlay"></div>
             <div id='calendar'></div>
 
         </div>
@@ -44,7 +45,15 @@
 
                 locale:'es',
                 events:'events',
+                loading:function(isLoading){
 
+                    if (isLoading) {
+                        $('#calendarOverlay').show()
+                    } else {
+                        $('#calendarOverlay').hide(500)
+                    }
+
+                },
                 dateClick:function(info){
 
                     $('#modalCalendar').modal('show')
@@ -153,7 +162,7 @@
                         clickedElement = clickedElement.parentNode;
 
                     $(`#${clickedElement.attributes.form.value}`).submit()
-                    
+
                 }
 
             });
@@ -184,10 +193,6 @@
 
 @endif
 
-
-
-
-
 @if(session('create') == 'ok')
 
     <script>
@@ -205,3 +210,21 @@
     </script>
 
 @endif
+
+
+@section('css')
+
+    <style>
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Color oscuro semitransparente */
+            display: none; /* Inicialmente oculto */
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        }    
+    </style>
+
+@endsection
