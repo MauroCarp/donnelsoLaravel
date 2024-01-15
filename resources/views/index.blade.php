@@ -181,7 +181,12 @@
 
                 if (result.isConfirmed) {
                     
-                    $(`#${event.target.attributes.form.value}`).submit()
+                    let clickedElement = event.target;
+
+                    if (clickedElement.tagName.toLowerCase() === 'i')
+                        clickedElement = clickedElement.parentNode;
+                    
+                    $(`#${clickedElement.attributes.form.value}`).submit()
 
                 }
 

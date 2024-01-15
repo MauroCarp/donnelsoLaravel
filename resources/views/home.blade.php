@@ -132,7 +132,7 @@
         const deleteEvent = (event) => {
 
             event.preventDefault();
-
+            console.log(event)
             Swal.fire({
             title: "Estas seguro?",
             text: "Si no lo estas, puedes cancelar!",
