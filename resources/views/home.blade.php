@@ -50,8 +50,12 @@
 
                     if (isLoading) {
                         $('#calendarOverlay').show()
+                        console.log('cargando')
+
                     } else {
                         $('#calendarOverlay').hide(500)
+                        console.log('cargo')
+
                     }
 
                 },
