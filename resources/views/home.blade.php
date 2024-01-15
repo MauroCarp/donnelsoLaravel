@@ -132,7 +132,7 @@
         const deleteEvent = (event) => {
 
             event.preventDefault();
-            console.log(event)
+
             Swal.fire({
             title: "Estas seguro?",
             text: "Si no lo estas, puedes cancelar!",
@@ -147,8 +147,13 @@
 
                 if (result.isConfirmed) {
                     
-                    $(`#${event.target.attributes.form.value}`).submit()
+                    let clickedElement = event.target;
 
+                    if (clickedElement.tagName.toLowerCase() === 'i')
+                        clickedElement = clickedElement.parentNode;
+
+                    $(`#${clickedElement.attributes.form.value}`).submit()
+                    
                 }
 
             });
