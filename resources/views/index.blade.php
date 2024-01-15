@@ -10,7 +10,9 @@
 
             <button type="button" class="btn btn-success mt-2 ml-3" data-toggle="modal" data-target="#modalEvent" id="btnNewEventIndex">Agregar Nuevo Evento</button>
 
-            <div id='calendar'></div>
+            <div id='calendar'>
+                <div id='calendarOverlay' class="overlay"></div>
+            </div>
 
         </div>
         
@@ -78,7 +80,15 @@
 
                 locale:'es',
                 events:'events',
+                loading:function(isLoading){
 
+                    if (isLoading) {
+                        $('#calendarOverlay').show()
+                    } else {
+                        $('#calendarOverlay').hide(500)
+                    }
+
+                },
                 dateClick:function(info){
 
                     $('#modalCalendar').modal('show')

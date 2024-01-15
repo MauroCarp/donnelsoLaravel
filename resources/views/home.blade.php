@@ -10,8 +10,9 @@
 
             <button type="button" class="btn btn-success mt-2 ml-3" data-toggle="modal" data-target="#modalEvent" id="btnNewEventIndex">Agregar Nuevo Evento</button>
 
-            <div id='calendarOverlay' class="overlay"></div>
-            <div id='calendar'></div>
+            <div id='calendar'>
+                <div id='calendarOverlay' class="overlay"></div>
+            </div>
 
         </div>
 
