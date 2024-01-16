@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/offline',function(){
-    return view('layouts/vendor/laravelpwa/offline');
-});
+// Route::get('/offline',function(){
+//     return view('layouts/vendor/laravelpwa/offline');
+// });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio')->middleware('auth');
 Route::get('/costs', [App\Http\Controllers\SaleController::class, 'costs'])->name('costos')->middleware('auth');
