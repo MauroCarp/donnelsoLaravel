@@ -21,10 +21,9 @@ Auth::routes();
 //     return view('layouts/vendor/laravelpwa/offline');
 // });
 
-// Route::get('/', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio')->middleware('auth');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio')->middleware('auth');
 Route::get('/costs', [App\Http\Controllers\SaleController::class, 'costs'])->name('costos')->middleware('auth');
 Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio')->middleware('auth');
-Route::redirect('/', '/inicio');
 Route::post('/deaths/getAnimals', [App\Http\Controllers\DeadController::class, 'getAnimals'])->name('getAnimals')->middleware('auth');
 Route::resource('/deaths', 'App\Http\Controllers\DeadController')->middleware('auth');
 
