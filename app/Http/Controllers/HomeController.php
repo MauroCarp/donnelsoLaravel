@@ -43,7 +43,7 @@ class HomeController extends Controller
         $categorizedAnimals = array('cerdo'=>array('total'=>0,'faena'=>0),
                                     'ovino'=>array('total'=>0,'faena'=>0),
                                     'chivo'=>array('total'=>0,'faena'=>0),
-                                    'vacas'=>array('total'=>0,'faena'=>0),
+                                    'vaca'=>array('total'=>0,'faena'=>0),
                                     'pollo'=>array('total'=>0,'faena'=>0)
                                 );
 
