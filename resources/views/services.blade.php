@@ -169,7 +169,7 @@
 
             $.ajax({
                 method:'POST',
-                url:`https:donnelso.com.ar/services/changeState`,
+                url:`https://donnelso.com.ar/services/changeState`,
                 data:{
                     'id':id,
                     '_token':token,
