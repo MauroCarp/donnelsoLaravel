@@ -47,7 +47,13 @@
                             @if ($animal->destination == 'reproductive')
                             Reproductor                            
                             @else
-                            {{ ucfirst($animal->destination) }}
+                                
+                                @if($animal->destination == '')
+                                    -
+                                @else
+                                    {{ ucfirst($animal->destination) }}
+                                @endif
+                                
                             @endif
 
                         </span>
