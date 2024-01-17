@@ -18,7 +18,7 @@
         
         <div class="col-lg-4 col-sm-12 col-md-12 py-5">
             @foreach ($animals as $type => $animalType)
-
+                @dd($animals)
                 @if($loop->iteration == 1 || $loop->iteration % 2 !== 0)
                 <div class="row">
                 @endif
