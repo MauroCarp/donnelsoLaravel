@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('type');
             $table->datetime('date');
             $table->integer('amount');
-            $table->integer('males');
-            $table->integer('females');
+            $table->integer('males')->default(0);
+            $table->integer('females')->default(0);
             $table->string('idProvider');
             $table->string('destination');
             $table->float('cost');

@@ -60,7 +60,7 @@ class PurchaseController extends Controller
 
         $providerName = Provider::find($validate['idProvider'])->pluck('name');
 
-        if($request->type != 'pollos'){
+        if($request->type != 'pollo'){
             
             $validate['males'] = $request->males; 
             $validate['females'] = $request->females; 
