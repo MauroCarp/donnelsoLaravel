@@ -44,7 +44,7 @@ class HomeController extends Controller
                                     'ovino'=>array('total'=>0,'faena'=>0),
                                     'chivo'=>array('total'=>0,'faena'=>0),
                                     'vacas'=>array('total'=>0,'faena'=>0),
-                                    'pollos'=>array('total'=>0,'faena'=>0)
+                                    'pollo'=>array('total'=>0,'faena'=>0)
                                 );
 
         foreach ($activeAnimals as $value) {
