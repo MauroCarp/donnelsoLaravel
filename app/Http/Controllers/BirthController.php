@@ -41,7 +41,7 @@ class BirthController extends Controller
 
         }
 
-        $males = Animal::where(['sex'=>'m','active'=>1])->
+        $males = Animal::where(['sex'=>'m','destination'=>'reproductive','active'=>1])->
         where('caravan','not like','%/%')->get();
 
         $malesByType = array();
