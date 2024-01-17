@@ -6,7 +6,7 @@
     @csrf           
     <div class='row'>
         
-        <div class="col-xs-12 col-lg-5">
+        <div class="col-xs-12 col-lg-4">
         
                 <label for="type">Animal:</label><br>
 
@@ -22,7 +22,7 @@
 
         </div>
 
-        <div class="col-xs-12 col-lg-5">
+        <div class="col-xs-12 col-lg-8">
 
             <div class="row">
 
