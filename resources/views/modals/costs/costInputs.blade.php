@@ -28,6 +28,8 @@
             
     </div>
 
+    @if($type != 'pollo' && $type != 'vaca')
+
     <div class="col-xs-6 col-lg-4 border-right border-success">
 
         <label for="costHalf">Medio:</label>
@@ -85,8 +87,11 @@
         
     </div>
 
+    @endif
 
 </div>
+
+@if($type != 'pollo' && $type != 'vaca')
 
 <div class="row py-1 border-bottom border-success">
 
@@ -177,6 +182,103 @@
 
 
 </div>
+
+@endif
+
+@if($type == 'ovino')
+
+<div class="row py-1 border-bottom border-success">
+
+    <div class="col-xs-6 col-lg-4 border-right border-success">
+
+        <label for="costGround">Picada:</label>
+        
+        <div class="input-group">                    
+                                        
+            <div class="input-group-prepend">
+
+                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+            </div>
+
+            <input type="number" step="0.01" name="costGround{{ $type }}" id="costGround{{ $type }}" class="form-control" value="0"> 
+            
+            <div class="input-group-append">
+
+                <div class="input-group-text">
+
+                    <button type="button" class="btn btn-primary btnHistorial" title="Historico Precio" section="shoulder" id="costGroundHist{{ $type }}" style="padding:4px 10px"><i class="fa fa-list" style="font-size:.8em"></i></button>
+
+                </div>
+
+            </div>
+            
+
+        </div>                                    
+
+    </div>
+
+    <div class="col-xs-6 col-lg-4 border-right border-success">
+
+        <label for="costMeat">Pulpa:</label>
+        
+        <div class="input-group">                    
+                                            
+            <div class="input-group-prepend">
+
+                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+            </div>
+
+            <input type="number" step="0.01" name="costMeat{{ $type }}" id="costMeat{{ $type }}" class="form-control" value="0"> 
+            
+            <div class="input-group-append">
+
+                <div class="input-group-text">
+
+                    <button type="button" class="btn btn-primary btnHistorial" title="Historico Precio" section="rearQuarter" id="costMeatHist{{ $type }}" style="padding:4px 10px"><i class="fa fa-list" style="font-size:.8em"></i></button>
+
+                </div>
+
+            </div>
+            
+        </div>
+            
+    </div>
+
+    <div class="col-xs-6 col-lg-4">
+
+        <label for="costSalame">Salame:</label>
+
+        <div class="input-group">                    
+                                                
+            <div class="input-group-prepend">
+
+                <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+
+            </div>
+
+            <input type="number" step="0.01" name="costSalame{{ $type }}" id="costSalame{{ $type }}" class="form-control" value="0"> 
+            
+            <div class="input-group-append">
+
+                <div class="input-group-text">
+
+                    <button type="button" class="btn btn-primary btnHistorial" title="Historico Precio" section="head" id="costSalameHist{{ $type }}" style="padding:4px 10px"><i class="fa fa-list" style="font-size:.8em"></i></button>
+
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+
+</div>
+
+@endif
+
 
 <div class="row pt-1">
 
