@@ -46,7 +46,7 @@ class CostController extends Controller
         foreach ($sections as $key => $section) {
 
             if($costs[$section] != $request['cost' . ucfirst($section) . $request->typeCost]){
-                // dump('hola');
+
                 Cost::create(['type'=>$request->typeCost,'section'=>$section,'cost'=>$request['cost' . ucfirst($section) . $request->typeCost]]);
 
             }

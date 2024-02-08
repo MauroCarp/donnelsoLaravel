@@ -237,17 +237,31 @@
                 }
 
             }).done(resp=>{
-
+                console.log(resp)
                 $('#loaderCost').hide()
 
                 localStorage.setItem('costs',JSON.stringify(resp))
                 
                 $(`#costEntire${type}`).val(resp.actual.entire) 
-                $(`#costHalf${type}`).val(resp.actual.half)
-                $(`#costRibs${type}`).val(resp.actual.ribs)
-                $(`#costRearQuarter${type}`).val(resp.actual.rearQuarter)
-                $(`#costShoulder${type}`).val(resp.actual.shoulder)
-                $(`#costHead${type}`).val(resp.actual.head)
+
+                if(type != 'pollo' && type != 'vaca'){
+
+                    $(`#costHalf${type}`).val(resp.actual.half)
+                    $(`#costRibs${type}`).val(resp.actual.ribs)
+                    $(`#costRearQuarter${type}`).val(resp.actual.rearQuarter)
+                    $(`#costShoulder${type}`).val(resp.actual.shoulder)
+                    $(`#costHead${type}`).val(resp.actual.head)
+    
+                    if(type == 'ovino'){
+        
+                        $(`#costGround${type}`).val(resp.actual.ground)
+                        $(`#costMeat${type}`).val(resp.actual.meat)
+                        $(`#costSalame${type}`).val(resp.actual.salame)
+    
+                    }
+
+                }
+
                 $(`#costMatadero${type}`).val(resp.actual.matadero)
                 $(`#costAdmin${type}`).val(resp.actual.admin)
                 $(`#costEmployer${type}`).val(resp.actual.employer)
