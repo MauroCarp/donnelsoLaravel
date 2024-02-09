@@ -209,6 +209,84 @@
                             
                         </div>
     
+                        <div class="col-xs-6 col-lg-4" style="display:none" id="inputGroundFinalize">
+
+                            <div class="small-box bg-teal">
+
+                                <div class="inner">
+
+                                    <p style="font-weight: bolder; font-size: 1.5em;">Picada<br> 
+
+                                        <strong><span id="amountGroundFinalize"></span></strong> <br>
+
+                                        <div class="form-group">
+                            
+                                            <label for="kgGround">Kg:</label>
+                                            
+                                            <input type="number" step="0.01" name="kgGround" id="kgGround" class="form-control" value="0"> 
+                                            
+                                        </div>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+    
+                        <div class="col-xs-6 col-lg-4" style="display:none" id="inputMeatFinalize">
+
+                            <div class="small-box bg-teal">
+
+                                <div class="inner">
+
+                                    <p style="font-weight: bolder; font-size: 1.5em;">Pulpa<br> 
+
+                                        <strong><span id="amountMeatFinalize"></span></strong> <br>
+
+                                        <div class="form-group">
+                            
+                                            <label for="kgMeat">Kg:</label>
+                                            
+                                            <input type="number" step="0.01" name="kgMeat" id="kgMeat" class="form-control" value="0"> 
+                                            
+                                        </div>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+    
+                        <div class="col-xs-6 col-lg-4" style="display:none" id="inputSalameFinalize">
+
+                            <div class="small-box bg-teal">
+
+                                <div class="inner">
+
+                                    <p style="font-weight: bolder; font-size: 1.5em;">Cabeza<br> 
+
+                                        <strong><span id="amountSalameFinalize"></span></strong> <br>
+
+                                        <div class="form-group">
+                            
+                                            <label for="kgSalame">Kg:</label>
+                                            
+                                            <input type="number" step="0.01" name="kgSalame" id="kgSalame" class="form-control" value="0"> 
+                                            
+                                        </div>
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+                            
+                        </div>
+    
                     
                     </div>
 

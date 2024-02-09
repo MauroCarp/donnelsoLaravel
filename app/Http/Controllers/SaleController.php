@@ -65,6 +65,9 @@ class SaleController extends Controller
         $validate['amountShoulder'] = $request->amountShoulder ?? 0;
         $validate['amountRearQuarter'] = $request->amountRearQuarter ?? 0;
         $validate['amountHead'] = $request->amountHead ?? 0;
+        $validate['amountGround'] = $request->amountGround ?? 0;
+        $validate['amountMeat'] = $request->amountMeat ?? 0;
+        $validate['amountSalame'] = $request->amountSalame ?? 0;
 
         $validate['preSale'] = 1;
 
@@ -142,6 +145,9 @@ class SaleController extends Controller
         $sale->kgShoulder = $request->kgShoulder;
         $sale->kgRearQuarter = $request->kgRearQuarter;
         $sale->kgHead = $request->kgHead;
+        $sale->kgGround = $request->kgGround;
+        $sale->kgMeat = $request->kgMeat;
+        $sale->kgSalame = $request->kgSalame;
 
         $sale->preSale = 0;
 
@@ -185,9 +191,7 @@ class SaleController extends Controller
         $sections = DB::select('SELECT DISTINCT(section) FROM costs');
 
         $sections = array_column($sections,'section');
-
         // $costs = Cost::where('type',$saleDetail->type)->get();
-
         $costs = array();
 
         foreach ($sections as $section) {

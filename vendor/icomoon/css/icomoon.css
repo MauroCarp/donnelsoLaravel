@@ -70,3 +70,12 @@
 .icon-jeringa:before {
   content: "\e90e";
 }
+.icon-picadora:before {
+  content: "\e90f";
+}
+.icon-carne:before {
+  content: "\e9aa";
+}
+.icon-salame:before {
+  content: "\e9ab";
+}

@@ -146,6 +146,74 @@
                         </div>
                         
                     </div>
+                    
+                    <div class="col-xs-6 col-lg-4 border-right border-success inputsDetails" id="inputGround">
+
+                        <div class="small-box bg-teal">
+
+                            <div class="inner">
+
+                                <p style="font-weight: bolder; font-size: 1.5em;">Picada<br> 
+
+                                    <strong><span id="amountGround"></span></strong> <br>
+                                    <strong><span id="kgGround"></span> Kg </strong> <br>
+                                    <strong>$ <span id="costGround"></span></strong> <br>
+
+                                </p>
+
+                            </div>
+
+                            <div class="icon"><i class="icon-picadora" style="font-size:5em;right:5px;top:45px"></i></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-xs-6 col-lg-4 border-right border-success inputsDetails" id="inputMeat">
+
+                        <div class="small-box bg-teal">
+
+                            <div class="inner">
+
+                                <p style="font-weight: bolder; font-size: 1.5em;">Pulpa<br> 
+
+                                    <strong><span id="amountMeat"></span></strong> <br>
+                                    <strong><span id="kgMeat"></span> Kg </strong> <br>
+                                    <strong>$ <span id="costMeat"></span></strong> <br>
+
+                                </p>
+
+                            </div>
+
+                            <div class="icon"><i class="icon-carne" style="font-size:5em;right:5px;top:45px"></i></div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-xs-6 col-lg-4 inputsDetails" id="inputSalame">
+
+                        <div class="small-box bg-teal">
+
+                            <div class="inner">
+
+                                <p style="font-weight: bolder; font-size: 1.5em;">Salame<br> 
+
+                                    <strong><span id="amountSalame"></span></strong> <br>
+                                    <strong><span id="kgSalame"></span> Kg </strong> <br>
+                                    <strong>$ <span id="costSalame"></span></strong> <br>
+
+                                </p>
+
+                            </div>
+
+                            <div class="icon"><i class="icon-salame" style="font-size:5em;right:5px;top:45px"></i></div>
+
+                        </div>
+                        
+                    </div>
+
+
 
                 </div>
 

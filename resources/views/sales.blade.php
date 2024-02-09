@@ -108,7 +108,16 @@
                 $(`#amountHead${finalize}`).html(resp.amountHead)
                 $(`#kgHead${finalize}`).html(resp.kgHead)
 
+                $(`#amountGround${finalize}`).html(resp.amountGround)
+                $(`#kgGround${finalize}`).html(resp.kgGround)
 
+                $(`#amountMeat${finalize}`).html(resp.amountMeat)
+                $(`#kgMeat${finalize}`).html(resp.kgMeat)
+
+                $(`#amountSalame${finalize}`).html(resp.amountSalame)
+                $(`#kgSalame${finalize}`).html(resp.kgSalame)
+
+                console.log(resp)
                 if(resp.amountEntire > 0){
                     $(`#inputEntire${finalize}`).show()
 
@@ -132,7 +141,6 @@
                 } else {
                     $(`#inputHalf${finalize}`).hide() 
                 }
-
 
                 if(resp.amountRibs > 0){
                     $(`#inputRibs${finalize}`).show()
@@ -180,6 +188,42 @@
 
                 } else {
                     $(`#inputHead${finalize}`).hide() 
+                }
+
+                if(resp.amountGround > 0){
+                    $(`#inputGround${finalize}`).show()
+
+                    if(resp.kgGround > 0) 
+                        $(`#costGround${finalize}`).html(resp.costs.ground)
+                    else
+                        $(`#costGround${finalize}`).html('-')
+
+                } else {
+                    $(`#inputGround${finalize}`).hide() 
+                }
+
+                if(resp.amountMeat > 0){
+                    $(`#inputMeat${finalize}`).show()
+
+                    if(resp.kgMeat > 0) 
+                        $(`#costMeat${finalize}`).html(resp.costs.meat)
+                    else
+                        $(`#costMeat${finalize}`).html('-')
+
+                } else {
+                    $(`#inputMeat${finalize}`).hide() 
+                }
+
+                if(resp.amountSalame > 0){
+                    $(`#inputSalame${finalize}`).show()
+
+                    if(resp.kgSalame > 0) 
+                        $(`#costSalame${finalize}`).html(resp.costs.salame)
+                    else
+                        $(`#costSalame${finalize}`).html('-')
+
+                } else {
+                    $(`#inputSalame${finalize}`).hide() 
                 }
 
 

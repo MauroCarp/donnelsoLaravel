@@ -12,35 +12,35 @@
 
         /* Unchecked */
         input[type="radio"] + .icon-cerdo:before,
-        input[type="radio"] + label > .icon-cerdo:before { content: "\e906";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-cerdo:before { content: "\e90a";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-chivo:before,
-        input[type="radio"] + label > .icon-chivo:before { content: "\e907";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-chivo:before { content: "\e90b";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-cordero:before,
-        input[type="radio"] + label > .icon-cordero:before { content: "\e908";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-cordero:before { content: "\e90c";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-pollo:before,
-        input[type="radio"] + label > .icon-pollo:before { content: "\e90b";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-pollo:before { content: "\e906";color:black; border-right-color: black;} 
 
         input[type="radio"] + .icon-vaca:before,
-        input[type="radio"] + label > .icon-vaca:before { content: "\e90d";color:black; border-right-color: black;} 
+        input[type="radio"] + label > .icon-vaca:before { content: "\e908";color:black; border-right-color: black;} 
 
         /* CHECKED */
         input[type="radio"]:checked + .icon-cerdo:before,
-        input[type="radio"]:checked + label > .icon-cerdo:before { content: "\e906";color:green; }
+        input[type="radio"]:checked + label > .icon-cerdo:before { content: "\e90a";color:green; }
 
         input[type="radio"]:checked + .icon-chivo:before,
-        input[type="radio"]:checked + label > .icon-chivo:before { content: "\e907";color:green; }
+        input[type="radio"]:checked + label > .icon-chivo:before { content: "\e90b";color:green; }
 
         input[type="radio"]:checked + .icon-cordero:before,
-        input[type="radio"]:checked + label > .icon-cordero:before { content: "\e908";color:green; }
+        input[type="radio"]:checked + label > .icon-cordero:before { content: "\e90c";color:green; }
 
         input[type="radio"]:checked + .icon-pollo:before,
-        input[type="radio"]:checked + label > .icon-pollo:before { content: "\e90b";color:green; }
+        input[type="radio"]:checked + label > .icon-pollo:before { content: "\e906";color:green; }
 
         input[type="radio"]:checked + .icon-vaca:before,
-        input[type="radio"]:checked + label > .icon-vaca:before { content: "\e90d";color:green; }
+        input[type="radio"]:checked + label > .icon-vaca:before { content: "\e908";color:green; }
 
 
         .select2-container .select2-selection--single {
@@ -227,7 +227,7 @@
 
             $.ajax({
                 'method':'POST',
-                'url':'https://donnelso.com.ar/costs/getCosts',
+                'url':'costs/getCosts',
                 'data':{
                     'type':type,
                     '_token':token
@@ -443,29 +443,42 @@
             $('#modalCosts').modal('show')    
         });
 
-        if($('#newPreSaleForm input[name="type"]:checked').val() == 'pollo'){
+        if($('#newPreSaleForm input[name="type"]:checked').val() == 'pollo' || $('#newPreSaleForm input[name="type"]:checked').val() == 'vaca'){
 
             $('.inputAmount').each(function(){
                 $(this).hide()
             })
 
         }
-            
+         
+        if($('#newPreSaleForm input[name="type"]:checked').val() == 'ovino'){
+
+            $('.inputAmount').each(function(){
+                $('#inputOvinos').show()
+            })
+
+        }
 
         $('#newPreSaleForm input[name="type"]').on('change',function(){
 
-            if($(this).val() == 'pollo'){
+            if($(this).val() == 'pollo' || $(this).val() == 'vaca'){
 
-                $('.inputAmount').each(function(){
-                    $(this).hide()
-                })
-                
-                
+                    $('.inputAmount').each(function(){
+                        $(this).hide()
+                    })
+                    
+                    
             } else {
 
                 $('.inputAmount').each(function(){
                     $(this).show()
                 })
+
+                if ($(this).val() == 'ovino'){
+                    $('#inputOvinos').show()
+                } else {
+                    $('#inputOvinos').hide()
+                }
 
             }
 

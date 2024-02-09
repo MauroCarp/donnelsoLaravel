@@ -159,6 +159,47 @@
                     
                     </div>
 
+                    <div class="row" id="inputOvinos" style="display:none">
+
+                        <div class="col-xs-6 col-lg-4 inputAmount">
+
+                            <div class="form-group">
+                            
+                                <label for="amountGround">Picada:</label>
+                                
+                                <input type="number" name="amountGround" id="amountGround" class="form-control" value="0"> 
+                                
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-xs-6 col-lg-4 inputAmount">
+
+                            <div class="form-group">
+                            
+                                <label for="amountMeat">Pulpa:</label>
+                                
+                                <input type="number" name="amountMeat" id="amountMeat" class="form-control" value="0"> 
+                                
+                            </div>
+                            
+                        </div>
+
+                        <div class="col-xs-6 col-lg-4 inputAmount">
+
+                            <div class="form-group">
+                            
+                                <label for="amountSalame">Salame:</label>
+                                
+                                <input type="number" name="amountSalame" id="amountSalame" class="form-control" value="0"> 
+                                
+                            </div>
+                            
+                        </div>
+
+                    
+                    </div>
+
                 </form>
 
             </div>
