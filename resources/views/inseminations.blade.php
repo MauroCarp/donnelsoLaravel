@@ -75,6 +75,7 @@
 @stop
 
 @include('modals/inseminations/newInsemination')
+@include('modals/inseminations/secondHeat')
 
 @section('js')
 
@@ -107,6 +108,12 @@ $(document).ready(function(){
                 }
 
             });
+
+    })
+
+    $('.inseminationsTable').on('click','.btnSecondHeat',function(){
+
+      
 
     })
 

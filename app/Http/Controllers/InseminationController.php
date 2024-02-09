@@ -57,11 +57,21 @@ class InseminationController extends Controller
 
         $newInsemination = Insemination::create($validate);
 
-        $days = ($request->type == 'cerdo') ? 20 : 25;
+        $heatDays = ($request->type == 'cerdo') ? 20 : 25;
+
+        $heatDate = new Carbon($request->date);
+        $heatDate->addDays($heatDays);
 
         $birthDate = new Carbon($request->date);
-        $birthDate->addDays($days);
+        $birthDate->addMonths(3);
+        $birthDate->addWeeks(3);
+        $birthDate->addDays(3);
 
+        Event::create(['title'=> '2do Celo ' . ucfirst($request->type) . ' ' . $caravans,
+                       'start'=> $heatDate,
+                       'end'=> $heatDate,
+                       'referenceId'=> $newInsemination->id]);
+        
         Event::create(['title'=> 'Parto ' . ucfirst($request->type) . ' ' . $caravans,
                        'start'=> $birthDate,
                        'end'=> $birthDate,

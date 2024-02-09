@@ -37,7 +37,11 @@
                 <tr>
                     <td>{{ implode(' - ',$insemination->caravans) }}</td>
                     <td>{{ date('d-m-Y',strtotime($insemination->date)) }}</td>
-                    <td>{{ $heatDate->format('d-m-Y') }} <button class="btn btn-info float-right" id="secodHeat{{$insemination->id}}">2do Celo</button></td>
+                    <td>
+                        {{ $heatDate->format('d-m-Y') }} 
+                        <button class="btn btn-info float-right btnSecondHeat" data-toggle="modal" data-target="#modalSecondHeat" id="btnSecodHeat{{$insemination->id}}">2do Celo</button>
+                    </td>
+
                     <td>{{ $birthDate->format('d-m-Y') }}</td>
                     <td>
 
