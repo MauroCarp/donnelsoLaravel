@@ -6,6 +6,7 @@
                 
             <th>Madres</th>
             <th>Fecha Inseminaci&oacute;n</th>
+            <th>Posible Fecha de Celo</th>
             <th>Posible Fecha de Parto</th>
             <th></th> 
 
@@ -20,16 +21,23 @@
             @if($insemination->type == $type)    
                 @php
                 
-                    $days = ($type == 'cerdo') ? 20 : 25;
-
+                    $heatDays = ($type == 'cerdo') ? 20 : 25;
+                    $birthDays = ($type == 'cerdo') ? 20 : 25;
+                    
+                    $heatDate = new DateTime($insemination->date);
+                    $heatDate->add(new DateInterval('P' . $heatDays . 'D'));
+                    
                     $birthDate = new DateTime($insemination->date);
-                    $birthDate->add(new DateInterval('P' . $days . 'D'));
+                    $birthDate->add(new DateInterval('P3M'));
+                    $birthDate->add(new DateInterval('P3W'));
+                    $birthDate->add(new DateInterval('P3D'));
                     
                 @endphp
 
                 <tr>
                     <td>{{ implode(' - ',$insemination->caravans) }}</td>
                     <td>{{ date('d-m-Y',strtotime($insemination->date)) }}</td>
+                    <td>{{ $heatDate->format('d-m-Y') }} <button class="btn btn-info float-right" id="secodHeat{{$insemination->id}}">2do Celo</button></td>
                     <td>{{ $birthDate->format('d-m-Y') }}</td>
                     <td>
 

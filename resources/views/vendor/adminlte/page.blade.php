@@ -119,7 +119,7 @@
             let token = $('input[name="_token"]').val();
 
             $.ajax({
-                url: 'https://donnelso.com.ar/inseminations/getFemales',
+                url: 'inseminations/getFemales',
                 method: 'POST',
                 data: {
                     'type': type,
