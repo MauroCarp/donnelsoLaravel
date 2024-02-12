@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Animal;
 use App\Models\Event;
+use App\Models\Insemination;
 use App\Models\Service;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -150,4 +152,52 @@ class ServiceController extends Controller
         return response($service->state,200);    
 
     }
+
+    public function sentToService(Request $request){
+
+        $validateData = $request->validate([
+            'type'=>'required',
+            'date'=>'required',
+            'idReproductiveMales'=>'required',
+            'idMothersToService'=>'required'
+        ]);
+        $caravans = Animal::where('type',$validateData['type'])
+        ->whereIn('id',$validateData['idReproductiveMales'])
+        ->get('caravan');
+        
+        $caravans = array_column($caravans->toArray(), 'caravan');
+        $caravans = implode(' - ' , $caravans);
+        
+        $endDate = new Carbon($validateData['date']);
+        
+        $days = ($validateData['type'] == 'cerdo') ? 20 : 25;
+        
+        $endDate->addDays($days);
+        
+        $newService = Service::create([
+            'type'=>$validateData['type'],
+            'startDate'=>$validateData['date'],
+            'endDate'=>$endDate->format('Y-m-d'),
+            'idMothers'=>implode(' - ',$validateData['idMothersToService']),
+            'idMales'=>json_encode($validateData['idReproductiveMales'])
+    
+        ]);
+
+        Event::create(['title'=>'Servicio ' . $validateData['type'] . ' - Caravanas Machos: ' . $caravans . ' - Caravanas Hembras: ' . implode(' - ',$validateData['idMothersToService']),
+                       'referenceId'=>$newService->id,
+                       'start'=>$validateData['date'],
+                       'end'=>$endDate->format('Y-m-d')
+                    ]);
+                    
+        $insemination = Insemination::find($request->inseminationId);
+
+        $insemination->annotations = 'Pasa a servicio: ' . implode(' - ',$validateData['idMothersToService']) . '. Con reproductor: ' . $caravans;
+        $insemination->save();
+
+        return redirect('services')->with(['created'=>'ok','type'=>$validateData['type']]);
+
+
+        
+    }
+
 }

@@ -8,6 +8,7 @@
             <th>Fecha Inseminaci&oacute;n</th>
             <th>Posible Fecha de Celo</th>
             <th>Posible Fecha de Parto</th>
+            <th>Anotaciones</th> 
             <th></th> 
 
         </tr> 
@@ -39,10 +40,14 @@
                     <td>{{ date('d-m-Y',strtotime($insemination->date)) }}</td>
                     <td>
                         {{ $heatDate->format('d-m-Y') }} 
-                        <button class="btn btn-info float-right btnSecondHeat" data-toggle="modal" data-target="#modalSecondHeat" id="btnSecodHeat{{$insemination->id}}">2do Celo</button>
+                        <button class="btn btn-info float-right btnSecondHeat" data-toggle="modal" data-target="#modalSecondHeat" id="{{ $insemination->id }}"
+                            caravans="{{ implode('-',$insemination->caravans) }}"
+                            type="{{ $type }}"
+                            date="{{ $insemination->date }}">2do Celo</button>
                     </td>
 
                     <td>{{ $birthDate->format('d-m-Y') }}</td>
+                    <td>{{ $insemination->annotations ?? '-'}}</td>
                     <td>
 
                         <form action="inseminations/{{ $insemination->id }}" method="POST" id="deleteInseminationForm{{$insemination->id}}">

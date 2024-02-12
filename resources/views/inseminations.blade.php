@@ -113,7 +113,40 @@ $(document).ready(function(){
 
     $('.inseminationsTable').on('click','.btnSecondHeat',function(){
 
-      
+        let caravans = $(this).attr('caravans').split('-')
+        let type = $(this).attr('type')
+        let inseminationId = $(this).attr('id')
+
+        $('#idMothersToService').html('')
+
+        caravans.forEach(element => {
+            $('#idMothersToService').append($(`<option value="${element}">${element}</option>`))
+        });
+
+        let token = $('input[name="_token"]').val();
+
+        $('#inseminationDate').val($(this).attr('date'))
+        $('#inseminationType').val(type)
+        $('#inseminationId').val(inseminationId)
+
+        $.ajax({
+            'method':'POST',
+            'url':'services/reproductiveMales',
+            'data':{
+                'type':type,
+                '_token':token
+            }
+        }).done(resp=>{
+
+            $('#idReproductiveMales').html()
+            console.log(resp)
+            resp.forEach(reproductiveMale => {
+                
+                $('#idReproductiveMales').append($(`<option value="${reproductiveMale.id}">${reproductiveMale.caravan}</option>`))
+
+            });
+
+        })
 
     })
 

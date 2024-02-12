@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->string('idMothers');
+            $table->string('annotations');
             $table->datetime('date');
 
             $table->timestamps();

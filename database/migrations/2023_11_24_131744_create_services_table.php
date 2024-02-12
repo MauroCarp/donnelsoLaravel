@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->string('idMales');
+            $table->string('idMothers')->default('General');
             $table->string('state');
             $table->datetime('startDate');
             $table->datetime('endDate');

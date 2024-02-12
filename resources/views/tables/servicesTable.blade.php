@@ -7,6 +7,7 @@
             <th>Fecha Comienzo</th>
             <th>Fecha Fin</th>
             <th>Caravanas Machos</th>
+            <th>Hembras</th>
             <th>Estado</th> 
             <th></th> 
 
@@ -24,6 +25,7 @@
                     <td>{{ date('d-m-Y',strtotime($service->startDate)) }}</td>
                     <td>{{ date('d-m-Y',strtotime($service->endDate)) }}</td>
                     <td>{{ implode(' - ',$service->caravans) }}</td>
+                    <td>{{ $service->idMothers }}</td>
                     <td><button idService="{{ $service->id }}" class="btnStateService badge  @if($service->state) bg-success">Activo @else bg-danger">Inactivo @endif</button></td>
 
                     <td>

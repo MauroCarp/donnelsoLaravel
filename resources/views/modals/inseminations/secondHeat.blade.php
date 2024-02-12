@@ -12,8 +12,13 @@
 
             <div class="modal-body">
 
-                <form action="services" method="POST" id="secondHeatForm">
-                    @csrf           
+                <form action="{{ route('servicios.enviarAServicio') }}" method="POST" id="secondHeatForm">
+                    @csrf         
+
+                    <input type="hidden" name="date" id="inseminationDate">  
+                    <input type="hidden" name="type" id="inseminationType">  
+                    <input type="hidden" name="inseminationId" id="inseminationId">  
+
                     <div class='row'>
                 
                         <div class="col-xs-12 col-lg-8">
@@ -39,6 +44,32 @@
                         </div> 
                 
                     </div> 
+
+                    <div class='row'>
+                
+                        <div class="col-xs-12 col-lg-8">
+                
+                            <div class="row">
+                
+                                <div class="col-xs-12 col-lg-12">
+                
+                                    <div class="form-group">
+                                
+                                        <label for="reproductiveMales">Machos Reproductores: <i class="fa fa-sync-alt rotating d-none" id="loaderReproductiveMales"></i></label><br>
+                                    
+                                        <select name="idReproductiveMales[]" id="idReproductiveMales">
+                        
+                                        </select>
+                                    
+                                    </div>
+                
+                                </div>
+                
+                            </div>
+                
+                        </div> 
+                
+                    </div> 
                 
                 </form>
 
@@ -48,7 +79,7 @@
 
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 
-                <button class="btn btn-success" type="submit" form="newSecondHeatForm" id="btnSecondHeat" name="btnSecondHeat">Enviar a Servicio</button>
+                <button class="btn btn-success" type="submit" form="secondHeatForm" id="btnSecondHeat" name="btnSecondHeat">Enviar a Servicio</button>
                 
             </div>
 

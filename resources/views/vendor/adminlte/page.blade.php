@@ -163,6 +163,20 @@
 
         };
 
+        $('#idMothersToService').select2({
+            multiple:true,
+            closeOnSelect:false,
+            placeholder:'',
+            width: '100%',
+        }) 
+
+        $('#idReproductiveMales').select2({
+            multiple:true,
+            closeOnSelect:false,
+            placeholder:'',
+            width: '100%',
+        }) 
+
         const getAnimals = () => {
             
             let type = $('input[name="type"]:checked').val()
@@ -237,7 +251,7 @@
                 }
 
             }).done(resp=>{
-                console.log(resp)
+
                 $('#loaderCost').hide()
 
                 localStorage.setItem('costs',JSON.stringify(resp))
