@@ -382,6 +382,12 @@ return [
                 ],
             ]
         ],
+        [
+            'text' => 'Gastos',
+            'icon' => 'far fa fa-fw fa-money-bill',
+            'url'  => 'bills',
+            'master'  => true,
+        ],
 
     ],
 
