@@ -109,6 +109,38 @@
 
                 </div>
 
+                <div class="col-12" id="mfInput" style="display:none">
+                
+                    <div class="row">
+
+                        <div class="col-xs-6 col-lg-6">
+
+                            <div class="form-group">
+                            
+                                <label for="males">Machos:</label>
+                                            
+                                <input type="number" class="form-control" name="males" id="males" value="0">
+                            
+                            </div>
+
+                        </div> 
+
+                        <div class="col-xs-6 col-lg-6">
+
+                            <div class="form-group">
+                            
+                                <label for="females">Hembras:</label>
+
+                                <input type="number" class="form-control" name="females" id="females" value="0">
+                            
+                            </div>
+
+                        </div> 
+
+                    </div> 
+
+                </div> 
+                
                 <div class="col-12">
 
                     <div class="form-group" style="display:flex">
@@ -152,6 +184,71 @@
                     </div>
 
                 </div>
+
+                <div class="col-12" id="mfDeadInput" style="display:none">
+                
+                    <div class="row">
+
+                        <div class="col-xs-6 col-lg-6">
+
+                            <div class="form-group">
+                            
+                                <label for="malesDead">Machos:</label>
+                                            
+                                <input type="number" class="form-control" name="malesDead" id="malesDead" value="0">
+                            
+                            </div>
+
+                        </div> 
+
+                        <div class="col-xs-6 col-lg-6">
+
+                            <div class="form-group">
+                            
+                                <label for="femalesDead">Hembras:</label>
+
+                                <input type="number" class="form-control" name="femalesDead" id="femalesDead" value="0">
+                            
+                            </div>
+
+                        </div> 
+
+                    </div> 
+
+                </div> 
+
+                <div class="col-12" id="mfDeadMotiveInput" style="display:none">
+
+                    <div class="form-group">
+                            
+                        <label for="deadMotive">Motivo:</label><br>
+                
+                        <select name="deadMotive" id="deadMotive" required>
+        
+                            <option value="">Seleccionar Motivo</option>
+        
+                            @foreach ($motives as $motive)
+                                
+                                <option value="{{$motive->name}}">{{$motive->name}}</option>
+        
+                            @endforeach
+        
+                            <option value="other">Otro</option>
+        
+                        </select>                
+        
+                    </div>
+        
+                    <div class="form-group d-none" id="otherInput" >
+        
+                        <label for="other">Otro Motivo:</label><br>
+        
+                        <input type="text" class="form-control" name="other" id="other">
+        
+                    </div>
+                    
+                </div>
+
 
             </div>
 

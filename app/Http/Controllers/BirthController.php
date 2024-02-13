@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\Birth;
 use App\Models\Dead;
+use App\Models\Motive;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Math\BrickMathCalculator;
@@ -50,7 +51,9 @@ class BirthController extends Controller
             $malesByType[$male['type']][] = array('id'=>$male['id'],'caravan'=>$male['caravan']);    
         }
 
-        return view('births',['births'=>$births,'malesByType'=>$malesByType]);
+        $motives = Motive::all();
+
+        return view('births',['births'=>$births,'malesByType'=>$malesByType,'motives'=>$motives]);
     }
 
     /**
@@ -78,6 +81,13 @@ class BirthController extends Controller
         $validate['deaths'] = $request->deaths;
         $validate['twins'] = isset($request->twins) ? 1 : 0;
 
+        if($validate['sex'] == 'mf'){
+
+            $validate['males'] = $request->males;
+            $validate['females'] = $request->females;
+
+        }
+
         $newBirth = Birth::create($validate);
 
         $mother = Animal::find($request->idMother);
@@ -101,51 +111,143 @@ class BirthController extends Controller
 
         $newAnimals = array();
 
-        $sex = 'm';
-        
-        for ($i=0; $i < $validate['amount']; $i++) { 
-            
-            $newCaravan = $mother->caravan . '/' . $numberChildren;
-            
-            if($validate['sex'] == 'mf'){
+        if($validate['sex'] == 'mf'){
+
+            for ($i=0; $i < $validate['males'] ; $i++) { 
                 
-                if($sex == 'm'){
-                    $sex = 'f';
-                } else {
-                    $sex = 'm';
-                } 
+                $newCaravan = $mother->caravan . '/' . $numberChildren;
 
+                $newAnimals[] = array('type'=>$request->type,
+                                    'caravan'=>$newCaravan,
+                                    'age'=>'RN',
+                                    'destination'=>'RN',
+                                    'sex'=>'m',
+                                    'idBirth'=>$newBirth->id,
+                                    'idDead'=>null,
+                                    'active'=>true
+                                );
 
-            } else {
-                $sex = $validate['sex'];
+                $numberChildren++;
+
+            }
+      
+            for ($i=0; $i < $validate['females'] ; $i++) { 
+                
+                $newCaravan = $mother->caravan . '/' . $numberChildren;
+
+                $newAnimals[] = array('type'=>$request->type,
+                                    'caravan'=>$newCaravan,
+                                    'age'=>'RN',
+                                    'destination'=>'RN',
+                                    'sex'=>'f',
+                                    'idBirth'=>$newBirth->id,
+                                    'idDead'=>null,
+                                    'active'=>true
+
+                                );
+
+                $numberChildren++;
+
             }
 
-            $newAnimals[] = array('type'=>$request->type,
+        } else {
+                
+            for ($i=0; $i < $validate['amount']; $i++) { 
+                
+                $newCaravan = $mother->caravan . '/' . $numberChildren;
+
+                $sex = $validate['sex'];
+
+                $newAnimals[] = array('type'=>$request->type,
                                     'caravan'=>$newCaravan,
                                     'age'=>'RN',
                                     'destination'=>'RN',
                                     'sex'=>$sex,
                                     'idBirth'=>$newBirth->id,
+                                    'idDead'=>null,
+                                    'active'=>true
                                 );
 
-            $numberChildren++;
+                $numberChildren++;
 
-        }
+            }
 
+        }   
+
+        
         // SI NACE MUERTO, PASARLO A MUERTO Y DESACTIVARLO
 
         if($request->deaths > 0){
+            
+            $motive = $request->deadMotive;
 
-            for ($i=0; $i < $request->deaths ; $i++) { 
+            if($request->deadMotive == 'other'){
 
-                $newAnimals[$i]['destination'] = 'dead';
-                $newAnimals[$i]['active'] = false;
+                $motive = $request->other;
 
-                $dead = Dead::create(['date'=>$request->date,'motive'=>'Nacimiento']);
+                Motive::create(['name'=>$motive]);
 
-                $newAnimals[$i]['idDead'] = $dead->id;
-                
             }
+            
+            if($request->sex == 'mf'){
+                
+                for ($i=0; $i < $request->malesDead ; $i++) { 
+
+                    foreach ($newAnimals as $key => $animal) {
+
+                        if ($animal['sex'] === 'm' && is_null($animal['idDead'])) {
+
+                            $newAnimals[$key]['destination'] = 'dead';
+                            $newAnimals[$key]['active'] = false;
+            
+                            $dead = Dead::create(['date'=>$request->date,'motive'=>$motive]);
+            
+                            $newAnimals[$key]['idDead'] = $dead->id;
+                                    
+                            break;
+
+                        }
+
+                    }
+    
+                }
+
+                for ($i=0; $i < $request->femalesDead ; $i++) { 
+
+                    foreach ($newAnimals as $key => $animal) {
+
+                        if ($animal['sex'] === 'f' && is_null($animal['idDead'])) {
+
+                            $newAnimals[$key]['destination'] = 'dead';
+                            $newAnimals[$key]['active'] = false;
+            
+                            $dead = Dead::create(['date'=>$request->date,'motive'=>$motive]);
+            
+                            $newAnimals[$key]['idDead'] = $dead->id;
+                                    
+                            break;
+
+                        }
+
+                    }
+
+                }
+
+            } else {
+
+                for ($i=0; $i < $request->deaths ; $i++) { 
+    
+                    $newAnimals[$i]['destination'] = 'dead';
+                    $newAnimals[$i]['active'] = false;
+    
+                    $dead = Dead::create(['date'=>$request->date,'motive'=>'Nacimiento']);
+    
+                    $newAnimals[$i]['idDead'] = $dead->id;
+    
+                }
+
+            }
+
 
         }
 

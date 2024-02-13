@@ -8,6 +8,54 @@
 
     $('input[name="type"]').on('change',getFemales)
 
+    $('input[name="sex"]').on('change',function(){
+
+        if($(this).val() == 'mf'){
+
+            $('#mfInput').show()
+
+        } else {
+
+            $('#mfInput').hide()
+
+        }
+
+    })
+
+    $('#deaths').on('change',function(){
+
+        if($(this).val() > 0){
+
+            $('#mfDeadInput').show()
+            $('#mfDeadMotiveInput').show()
+
+        } else {
+
+            $('#mfDeadInput').hide()
+            $('#mfDeadMotiveInput').hide()
+
+        }
+
+    })
+
+    $('#deadMotive').select2({
+        'width':'100%'
+    })
+
+    $('#deadMotive').on('change',function(){
+
+        if($(this).val() == 'other'){
+
+            $('#otherInput').removeClass('d-none')
+
+        } else {
+
+            $('#otherInput').addClass('d-none')
+
+        }
+        
+    })
+
     $('.birthTable').on('click','.btnDeleteBirth',function(e){
 
         e.preventDefault()
