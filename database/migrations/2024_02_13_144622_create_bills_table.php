@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
+            $table->datetime('date');
+            $table->integer('amount');
+            $table->string('description');
+            $table->string('billType');
             $table->timestamps();
         });
     }
