@@ -44,6 +44,12 @@
 
                     </li>
 
+                    <li class="nav-item">
+
+                        <a class="nav-link" id="pollo-tab" data-toggle="pill" href="#tabs-pollo" role="tab" aria-controls="tabs-pollo" aria-selected="false">Pollos</a>
+
+                    </li>
+
                 </ul>
 
             </div>
@@ -86,6 +92,16 @@
 
                         @php
                             $type = 'vaca';   
+                        @endphp
+
+                        @include('tables/billsTable')
+
+                    </div>
+                    
+                    <div class="tab-pane fade" id="tabs-pollo" role="tabpanel" aria-labelledby="tabs-pollo-tab">
+
+                        @php
+                            $type = 'pollo';   
                         @endphp
 
                         @include('tables/billsTable')

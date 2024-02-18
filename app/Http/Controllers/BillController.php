@@ -30,7 +30,24 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $validate = $request->validate([
+            'type'=>'required',
+            'billDate'=>'required',
+            'billAmount'=>'required|numeric|min:0',
+            'billDescription'=>'required',
+            'billType'=>'required',
+        ]);
+
+        $newBill = Bill::create(['type'=>$validate['type'],
+                                 'date'=>$validate['billDate'],
+                                 'amount'=>$validate['billAmount'],
+                                 'description'=>$validate['billDescription'],
+                                 'billType'=>$validate['billType']
+        ]);
+
+        return redirect('bills')->with('created','ok');
+
     }
 
     /**

@@ -18,15 +18,13 @@
 
         @foreach ($bills as $bill)
 
-            {{-- @if($bill->type == $type)    
+            @if($bill->type == $type)    
 
                 <tr>
-                    <td>{{ date('d-m-Y',strtotime($bill->startDate)) }}</td>
-                    <td>{{ date('d-m-Y',strtotime($bill->endDate)) }}</td>
-                    <td>{{ implode(' - ',$bill->caravans) }}</td>
-                    <td>{{ $bill->idMothers }}</td>
-                    <td><button idbill="{{ $bill->id }}" class="btnStatebill badge  @if($bill->state) bg-success">Activo @else bg-danger">Inactivo @endif</button></td>
-
+                    <td>{{ date('d-m-Y',strtotime($bill->date)) }}</td>
+                    <td>{{ ucfirst($bill->billType) }}</td>
+                    <td>{{ $bill->description }}</td>
+                    <td> $ {{ number_format($bill->amount,2,',','.') }}</td>
                     <td>
 
                         <form action="bills/{{ $bill->id }}" method="POST" id="deletebillForm{{$bill->id}}">
@@ -40,7 +38,8 @@
                     </td>
                 </tr>
 
-            @endif --}}
+            @endif
+
         @endforeach
         
     </tbody>
