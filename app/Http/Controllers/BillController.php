@@ -46,7 +46,7 @@ class BillController extends Controller
                                  'billType'=>$validate['billType']
         ]);
 
-        return redirect('bills')->with('created','ok');
+        return redirect('bills')->with(['created'=>'ok','type'=>$validate['type']]);
 
     }
 
@@ -79,6 +79,12 @@ class BillController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
+        $deleteBill = Bill::find($id);
+
+        $deleteBill->delete();
+
+        return redirect('bills')->with(['delete'=>'ok']);
+
     }
 }

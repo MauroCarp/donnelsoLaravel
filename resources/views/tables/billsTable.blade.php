@@ -1,4 +1,4 @@
-<table class="table table-bordered table-striped dt-responsive serviceTable" width="100%">
+<table class="table table-bordered table-striped dt-responsive billsTable" width="100%">
          
     <thead>
      
@@ -27,11 +27,11 @@
                     <td> $ {{ number_format($bill->amount,2,',','.') }}</td>
                     <td>
 
-                        <form action="bills/{{ $bill->id }}" method="POST" id="deletebillForm{{$bill->id}}">
+                        <form action="bills/{{ $bill->id }}" method="POST" id="deleteBillForm{{$bill->id}}">
 
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger btnDeletebill" type="submit" form="deletebillForm{{$bill->id}}"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-danger btnDeleteBill" type="submit" form="deleteBillForm{{$bill->id}}"><i class="fa fa-trash"></i></button>
 
                         </form>
 

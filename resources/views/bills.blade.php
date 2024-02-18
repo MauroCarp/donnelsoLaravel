@@ -171,31 +171,31 @@
         //     })
         // })
 
-        // $('.serviceTable').on('click','.btnDeleteService',function(e){
+        $('.billsTable').on('click','.btnDeleteBill',function(e){
 
-        //     e.preventDefault()
+            e.preventDefault()
             
-        //     Swal.fire({
-        //     title: "Estas seguro?",
-        //     text: "Si no lo estas, puedes cancelar!",
-        //     icon: "warning",
-        //     showCancelButton: true,
-        //     confirmButtonColor: "#3085d6",
-        //     cancelButtonColor: "#d33",
-        //     confirmButtonText: "Si, eliminar!",
-        //     cancelButtonText: "Cancelar"
+            Swal.fire({
+            title: "Estas seguro?",
+            text: "Si no lo estas, puedes cancelar!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Si, eliminar!",
+            cancelButtonText: "Cancelar"
 
-        //     }).then((result) => {
+            }).then((result) => {
 
-        //         if (result.isConfirmed) {
+                if (result.isConfirmed) {
                     
-        //             e.currentTarget.form.submit()
+                    e.currentTarget.form.submit()
 
-        //         }
+                }
 
-        //     });
+            });
 
-        // })
+        })
 
         $('#billType').select2({
             'width':'100%'
@@ -252,15 +252,6 @@
                 showConfirmButton: false,
                 timer: 3000,
             })
-
-            let type = '{{ session("type") }}' 
-            
-            $('.nav-link').removeClass('active') 
-            $(`#${type}-tab`).addClass('active')
-
-            $('.tab-pane').removeClass('active') 
-            $(`#tabs-${type}`).addClass('active')
-            $(`#tabs-${type}`).addClass('show')
 
         })
 
