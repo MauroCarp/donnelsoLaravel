@@ -85,7 +85,7 @@
                             
                                 <label for="amountEntire">Entero:</label>
                                 
-                                <input type="number" name="amountEntire" id="amountEntire" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountEntire" id="amountEntire" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -97,7 +97,7 @@
                             
                                 <label for="amountHalf">Medio:</label>
                                 
-                                <input type="number" name="amountHalf" id="amountHalf" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountHalf" id="amountHalf" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -109,7 +109,7 @@
                             
                                 <label for="amountRibs">Costillar:</label>
                                 
-                                <input type="number" name="amountRibs" id="amountRibs" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountRibs" id="amountRibs" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -126,7 +126,7 @@
                             
                                 <label for="amountShoulder">Paleta:</label>
                                 
-                                <input type="number" name="amountShoulder" id="amountShoulder" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountShoulder" id="amountShoulder" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -138,7 +138,7 @@
                             
                                 <label for="amountRearQuarter">1/4 Trasero:</label>
                                 
-                                <input type="number" name="amountRearQuarter" id="amountRearQuarter" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountRearQuarter" id="amountRearQuarter" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -150,7 +150,7 @@
                             
                                 <label for="amountHead">Cabeza:</label>
                                 
-                                <input type="number" name="amountHead" id="amountHead" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountHead" id="amountHead" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -167,7 +167,7 @@
                             
                                 <label for="amountGround">Picada:</label>
                                 
-                                <input type="number" name="amountGround" id="amountGround" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountGround" id="amountGround" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -179,7 +179,7 @@
                             
                                 <label for="amountMeat">Pulpa:</label>
                                 
-                                <input type="number" name="amountMeat" id="amountMeat" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountMeat" id="amountMeat" class="form-control" value="0"> 
                                 
                             </div>
                             
@@ -191,7 +191,7 @@
                             
                                 <label for="amountSalame">Salame:</label>
                                 
-                                <input type="number" name="amountSalame" id="amountSalame" class="form-control" value="0"> 
+                                <input type="number" min="0" name="amountSalame" id="amountSalame" class="form-control" value="0"> 
                                 
                             </div>
                             

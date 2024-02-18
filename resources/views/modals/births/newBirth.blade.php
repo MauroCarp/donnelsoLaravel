@@ -77,7 +77,7 @@
                                 
                         <label for="amount">Cantidad:</label><br>
 
-                        <input type="number" class="form-control" name="amount" id="amount" value="0">
+                        <input type="number"min="0" class="form-control" name="amount" id="amount" value="0">
                     
                     </div>
 
@@ -119,7 +119,7 @@
                             
                                 <label for="males">Machos:</label>
                                             
-                                <input type="number" class="form-control" name="males" id="males" value="0">
+                                <input type="number" min="0" class="form-control" name="males" id="males" value="0">
                             
                             </div>
 
@@ -131,7 +131,7 @@
                             
                                 <label for="females">Hembras:</label>
 
-                                <input type="number" class="form-control" name="females" id="females" value="0">
+                                <input type="number" min="0" class="form-control" name="females" id="females" value="0">
                             
                             </div>
 
@@ -179,7 +179,7 @@
                     
                         <label for="deaths">Muertes:</label><br>
         
-                        <input type="number" class="form-control" name="deaths" id="deaths" value="0"/>
+                        <input type="number" min="0" class="form-control" name="deaths" id="deaths" value="0"/>
                     
                     </div>
 
@@ -195,7 +195,7 @@
                             
                                 <label for="malesDead">Machos:</label>
                                             
-                                <input type="number" class="form-control" name="malesDead" id="malesDead" value="0">
+                                <input type="number" min="0" class="form-control" name="malesDead" id="malesDead" value="0">
                             
                             </div>
 
@@ -207,7 +207,7 @@
                             
                                 <label for="femalesDead">Hembras:</label>
 
-                                <input type="number" class="form-control" name="femalesDead" id="femalesDead" value="0">
+                                <input type="number" min="0" class="form-control" name="femalesDead" id="femalesDead" value="0">
                             
                             </div>
 

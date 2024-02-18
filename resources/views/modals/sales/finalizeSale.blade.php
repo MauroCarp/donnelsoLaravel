@@ -62,7 +62,7 @@
                             
                                             <label for="kgEntire">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgEntire" id="kgEntire" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgEntire" id="kgEntire" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -88,7 +88,7 @@
                             
                                             <label for="kgHalf">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgHalf" id="kgHalf" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgHalf" id="kgHalf" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -114,7 +114,7 @@
                             
                                             <label for="kgRibs">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgRibs" id="kgRibs" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgRibs" id="kgRibs" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -145,7 +145,7 @@
                             
                                             <label for="kgShoulder">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgShoulder" id="kgShoulder" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgShoulder" id="kgShoulder" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -171,7 +171,7 @@
                             
                                             <label for="kgRearQuarter">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgRearQuarter" id="kgRearQuarter" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgRearQuarter" id="kgRearQuarter" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -197,7 +197,7 @@
                             
                                             <label for="kgHead">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgHead" id="kgHead" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgHead" id="kgHead" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -223,7 +223,7 @@
                             
                                             <label for="kgGround">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgGround" id="kgGround" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgGround" id="kgGround" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -249,7 +249,7 @@
                             
                                             <label for="kgMeat">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgMeat" id="kgMeat" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgMeat" id="kgMeat" class="form-control" value="0"> 
                                             
                                         </div>
 
@@ -275,7 +275,7 @@
                             
                                             <label for="kgSalame">Kg:</label>
                                             
-                                            <input type="number" step="0.01" name="kgSalame" id="kgSalame" class="form-control" value="0"> 
+                                            <input type="number" min="0" step="0.01" name="kgSalame" id="kgSalame" class="form-control" value="0"> 
                                             
                                         </div>
 

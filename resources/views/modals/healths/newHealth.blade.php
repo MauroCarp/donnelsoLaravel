@@ -127,7 +127,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
 
-                <input type="number" step="0.10" id="vetCost" name="vetCost" value="0" class="form-control">
+                <input type="number" min="0" step="0.10" id="vetCost" name="vetCost" value="0" class="form-control">
 
             </div>
 

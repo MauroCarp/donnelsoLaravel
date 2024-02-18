@@ -12,7 +12,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costEntire{{ $type }}" id="costEntire{{ $type }}" class="form-control" value="0"> 
+            <input type="number" min="0" step="0.01" name="costEntire{{ $type }}" id="costEntire{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -42,7 +42,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costHalf{{ $type }}" id="costHalf{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costHalf{{ $type }}" id="costHalf{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -71,7 +71,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costRibs{{ $type }}" id="costRibs{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costRibs{{ $type }}" id="costRibs{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -107,7 +107,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costShoulder{{ $type }}" id="costShoulder{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costShoulder{{ $type }}" id="costShoulder{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -136,7 +136,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costRearQuarter{{ $type }}" id="costRearQuarter{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costRearQuarter{{ $type }}" id="costRearQuarter{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -164,7 +164,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costHead{{ $type }}" id="costHead{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costHead{{ $type }}" id="costHead{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -201,7 +201,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costGround{{ $type }}" id="costGround{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costGround{{ $type }}" id="costGround{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -230,7 +230,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costMeat{{ $type }}" id="costMeat{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costMeat{{ $type }}" id="costMeat{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -258,7 +258,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costSalame{{ $type }}" id="costSalame{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costSalame{{ $type }}" id="costSalame{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -294,7 +294,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costMatadero{{ $type }}" id="costMatadero{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costMatadero{{ $type }}" id="costMatadero{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -322,7 +322,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costAdmin{{ $type }}" id="costAdmin{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costAdmin{{ $type }}" id="costAdmin{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 
@@ -350,7 +350,7 @@
 
             </div>
 
-            <input type="number" step="0.01" name="costEmployer{{ $type }}" id="costEmployer{{ $type }}" class="form-control" value="0"> 
+            <input type="number" step="0.01" min="0" name="costEmployer{{ $type }}" id="costEmployer{{ $type }}" class="form-control" value="0"> 
             
             <div class="input-group-append">
 

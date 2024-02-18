@@ -59,7 +59,7 @@
             
                 <label for="amount">Cantidad:</label>
             
-                <input type="number" id="amount" name="amount" value="0" class="form-control">
+                <input type="number" min="0" id="amount" name="amount" value="0" class="form-control">
             
             </div>
 
@@ -75,7 +75,7 @@
             
                 <label for="males">Machos:</label>
             
-                <input type="number" id="males" name="males" value="0" class="form-control">
+                <input type="number" min="0" id="males" name="males" value="0" class="form-control">
             
             </div>
 
@@ -87,7 +87,7 @@
             
                 <label for="females">Hembras:</label>
             
-                <input type="number" id="females" name="females" value="0" class="form-control">
+                <input type="number" min="0" id="females" name="females" value="0" class="form-control">
             
             </div>
 
@@ -161,7 +161,7 @@
             
                 <label for="cost">Precio Total:</label>
             
-                <input type="number" step="0.01" id="cost" name="cost" class="form-control" value="0" required>
+                <input type="number" min="0" step="0.01" id="cost" name="cost" class="form-control" value="0" required>
             
             </div>
 
@@ -173,7 +173,7 @@
             
                 <label for="kg">Kg Total:</label>
             
-                <input type="number" step="0.100" id="kg" name="kg" class="form-control" value="0" required>
+                <input type="number" min="0" step="0.100" id="kg" name="kg" class="form-control" value="0" required>
             
             </div>
 
