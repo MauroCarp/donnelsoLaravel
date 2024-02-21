@@ -88,8 +88,7 @@ class AnimalController extends Controller
     {
         if($request->hasFile('animalsFile')){
 
-            $path = $request->file('animalsFile')->getRealPath();
-            dd($request->file('animalsFile'));
+            $path = $request->file('animalsFile')->originalName();
             Excel::import(new AnimalsImport, $path);
 
         }
