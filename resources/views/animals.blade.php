@@ -9,6 +9,35 @@
 
 @section('content')
 
+@role('admin')
+
+    <div class="row">
+        <div class="col-lg-4">
+            <form action="animals/import" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    <input
+                        type="file"
+                        class="form-control"
+                        name="animalsFile"
+                    />
+                </div>
+                <div class="d-grid gap-2">
+                    <button
+                        type="submit"
+                        name="submitAnimalsFile"
+                        class="btn btn-primary"
+                    >
+                        Importar
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+    
+@endrole
+
     <div class="row">
 
         <div class="col-lg-12">

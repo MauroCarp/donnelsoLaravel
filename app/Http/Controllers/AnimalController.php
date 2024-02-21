@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\AnimalsImport;
 use App\Models\Animal;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AnimalController extends Controller
 {
@@ -80,5 +82,19 @@ class AnimalController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function import(Request $request)
+    {
+        if($request->hasFile('animalsFile')){
+
+            $path = $request->file('animalsFile')->getRealPath();
+
+            Excel::import(new AnimalsImport, $path);
+
+        }
+
+        return redirect('/animals')->with('success', 'All good!');
+
     }
 }
