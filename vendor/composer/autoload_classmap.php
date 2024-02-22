@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\ValidateSignature' => $baseDir . '/app/Http/Middleware/ValidateSignature.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Imports\\AnimalsImport' => $baseDir . '/app/Imports/AnimalsImport.php',
     'App\\Models\\Animal' => $baseDir . '/app/Models/Animal.php',
     'App\\Models\\Bill' => $baseDir . '/app/Models/Bill.php',
     'App\\Models\\Birth' => $baseDir . '/app/Models/Birth.php',
