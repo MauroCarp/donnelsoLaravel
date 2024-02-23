@@ -88,9 +88,11 @@ class AnimalController extends Controller
     {
         if($request->hasFile('animalsFile')){
 
-            $path = $request->file('animalsFile')->getRealPath();
-            
-            Excel::import(new AnimalsImport, $path, 'public', \Maatwebsite\Excel\Excel::XLSX);
+            $file = $request->file('animalsFile');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('uploads', $fileName); // Almacenar el archivo en storage/uploads
+        
+            Excel::import(new AnimalsImport, storage_path('app/' . $filePath), 'public', \Maatwebsite\Excel\Excel::XLSX);
 
         }
 
