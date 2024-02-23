@@ -90,7 +90,7 @@ class AnimalController extends Controller
 
             $path = $request->file('animalsFile')->getRealPath();
             
-            Excel::import(new AnimalsImport, $path, 'local', \Maatwebsite\Excel\Excel::XLSX);
+            Excel::import(new AnimalsImport, $path, 'public', \Maatwebsite\Excel\Excel::XLSX);
 
         }
 
