@@ -92,7 +92,7 @@ class AnimalController extends Controller
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->storeAs('uploads', $fileName); // Almacenar el archivo en storage/uploads
         
-            Excel::import(new AnimalsImport, storage_path('app/' . $filePath), 'public', \Maatwebsite\Excel\Excel::XLSX);
+            Excel::import(new AnimalsImport, storage_path('app/' . $filePath), 'local', \Maatwebsite\Excel\Excel::XLSX);
 
         }
 
